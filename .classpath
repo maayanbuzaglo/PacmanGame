@@ -13,5 +13,6 @@
 	<classpathentry kind="lib" path="C:/Users/מעיין/eclipse-workspace/Example/Example/src/jsr173_api-1.0.jar"/>
 	<classpathentry kind="lib" path="C:/Users/מעיין/eclipse-workspace/Example/Example/src/mysql-connector-java-5.1.45-bin.jar"/>
 	<classpathentry kind="lib" path="C:/Users/מעיין/eclipse-workspace/Example/Example/src/postgresql-database-1.7.0.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

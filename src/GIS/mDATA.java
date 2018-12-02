@@ -1,7 +1,15 @@
 package GIS;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+import java.util.TimeZone;
 import Geom.Point3D;
 
+/*
+ * This class represents the Meta_data functions of an element.
+ */
 public class mDATA implements Meta_data{
 
 	long getUTC;
@@ -11,28 +19,35 @@ public class mDATA implements Meta_data{
 	String AuthMode;	
 	String FirstSeen;
 	
-	public mDATA(long getUTC, String toString, Point3D get_Orientation) {
-//		super();
-		this.getUTC = getUTC;
-		this.toString = toString;
-
-	}
-
+	/*
+	 * A default constructor.
+	 */
 	public mDATA() {
 		
 		this.getUTC = 0;
 		this.toString = null;
+	}
+	
+	/*
+	 * A constructor that gets the data.
+	 */
+	public mDATA(long getUTC, String toString, Point3D get_Orientation) {
+
+		this.getUTC = getUTC;
+		this.toString = toString;
 	}
 
 	/*
 	 * This function returns the Universal Time Clock associated with this data.
 	 */
 	@Override
-	public long getUTC() {
+	public long getUTC() throws ParseException {
 
-		//String[] arr = this.FirstSeen.split("-");
-		//return Long.parseLong(arr[0]);
-		return (Long) null;
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.US);
+		format.setTimeZone(TimeZone.getTimeZone("UTC"));
+		Date date = format.parse(this.FirstSeen);
+		long millis = date.getTime();
+		return millis;
 	}
 
 	/*
@@ -47,9 +62,6 @@ public class mDATA implements Meta_data{
 				", FirstSeen = " + FirstSeen + "]\n";
 	}
 
-	/*
-	 * This function shows the orientation: yaw, pitch and roll associated with this data.
-	 */
 	@Override
 	public Point3D get_Orientation() {
 
@@ -80,10 +92,13 @@ public class mDATA implements Meta_data{
 		
 	}
 
-	public static void main(String[] args) {
+	/*
+	 * Examples.
+	 */
+	public static void main(String[] args) throws ParseException {
 
-		Element el = new Element("40:65:a3:35:4c:c4,Efrat,[WPA-PSK-CCMP+TKIP][WPA2-PSK-CCMP+TKIP][ESS],2017-12-01 10:49:08,1,-75,32.17218268216534,34.81446401702757,13.65040888895076,6,WIFI");
-	    System.out.println(el.getData().toString());
+//		Element el = new Element("40:65:a3:35:4c:c4,Efrat,[WPA-PSK-CCMP+TKIP][WPA2-PSK-CCMP+TKIP][ESS],2017-12-01 10:49:08,1,-75,32.17218268216534,34.81446401702757,13.65040888895076,6,WIFI");
+//	    System.out.println(el.getData().getUTC());
 	}
 
 }

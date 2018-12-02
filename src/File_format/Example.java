@@ -2,7 +2,7 @@ package File_format;
 
 import java.util.ArrayList;
 
-public class Main {
+public class Example {
 	public static void main(String[] args) {
 
 		Csv2kml r = new Csv2kml();

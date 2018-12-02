@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
-
 import de.micromata.opengis.kml.v_2_2_0.Document;
 import de.micromata.opengis.kml.v_2_2_0.Kml;
 import de.micromata.opengis.kml.v_2_2_0.Placemark;
@@ -49,7 +48,7 @@ public class Csv2kml {
 	}
 	
 	/**
-	 * This function create a kml file.
+	 * This function creates a kml file.
 	 */
 	public static void createKML(ArrayList<Row_Locate> list, String f) {
 		Kml kml = new Kml();

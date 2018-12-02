@@ -3,6 +3,7 @@ package GIS;
 import GIS.Element;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
@@ -13,18 +14,25 @@ import de.micromata.opengis.kml.v_2_2_0.Kml;
 import de.micromata.opengis.kml.v_2_2_0.Placemark;
 import java.util.HashSet;
 
+/*
+ * This class represents an object of Element's array (csv file).
+ */
 public class Layer implements GIS_layer{
 
-	//Element el;
 	mDATA_2 data2 = new mDATA_2();
 	Set<GIS_element> element = new HashSet<>();
-	Iterator<Element> it;
 	ArrayList<mDATA> data = new ArrayList<>();
 
+	/*
+	 * A default constructor.
+	 */
 	public Layer() {
 
 	}
 
+	/*
+	 * A constructor that gets a set of elements.
+	 */
 	public Layer(Set<GIS_element> elementList) {
 
 		for(GIS_element it: elementList) {
@@ -146,6 +154,9 @@ public class Layer implements GIS_layer{
 		return element.toArray(arg0);
 	}
 
+	/*
+	 * This function fets the Meta data functions of this layer.
+	 */
 	@Override
 	public Meta_data get_Meta_data() {
 
@@ -163,6 +174,12 @@ public class Layer implements GIS_layer{
 		this.element = element;
 	}
 
+	/*
+	 * This function gets a csv file (String)
+	 * split the elements by ",".
+	 * create for every line an element,
+	 * and returns an array list of elements.
+	 */
 	public Set<GIS_element> ReadCsvFile(String file){
 
 		Set<GIS_element> Csv = new HashSet<>();
@@ -186,6 +203,9 @@ public class Layer implements GIS_layer{
 		return Csv;
 	}
 
+	/**
+	 * This function creates a kml file.
+	 */
 	public static void createKML(Set<GIS_element> list, String f) {
 
 		Kml kml = new Kml();
@@ -208,52 +228,49 @@ public class Layer implements GIS_layer{
 	/*
 	 * Examples.
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args) throws ParseException {
 
-		//		Layer r = new Layer();
-		//		Set<GIS_element> Csv = r.ReadCsvFile("C:\\Users\\מעיין\\Desktop\\Ex2\\data\\WigleWifi_20171201110209.csv");
-		//		for (GIS_element it: Csv) {
-		//			System.out.println(it.toString());
-		//		}
-		//
-		//		r.createKML(Csv, "C:\\Users\\מעיין\\Desktop\\Ex2\\data\\try.kml");
-
-
-		Element a = new Element("40:65:a3:35:4c:c4,Efrat,[WPA-PSK-CCMP+TKIP][WPA2-PSK-CCMP+TKIP][ESS],2017-12-01 10:49:08,1,-75,32.17218268216534,34.81446401702757,13.65040888895076,6,WIFI");
-		Element b = new Element("08:97:58:32:69:c6,Volvo247,[WPA2-PSK-CCMP][WPS][ESS],2017-12-01 10:49:14,4,-81,32.172209259560766,34.814448298318844,15.376435938028056,8,WIFI");
-		Element c = new Element("09:97:58:32:69:c6,Volvbbbo247,[WPA2-PSK-CCMP][WPS][ESS],2017-12-01 10:49:14,4,-81,32.172209259560766,34.814448298318844,16.376435938028056,8,WIFI");
-
-		System.out.println(a.getData().toString());
-
-		Set<GIS_element> element = new HashSet<>();
-		element.add(a);
-		element.add(b);
-
-		Layer l = new Layer(element);
-		System.out.println(l.data);
-		//System.out.println(l.get_Meta_data().toString());
-
-		//		//System.out.println(r.toString());
-		//		
+//		Layer r = new Layer();
+//		Set<GIS_element> Csv = r.ReadCsvFile("C:\\Users\\מעיין\\Desktop\\Ex2\\data\\WigleWifi_20171201110209.csv");
+//		for (GIS_element it: Csv) {
+//			System.out.println(it.toString());
+//		}
+//		System.out.println(r.get_Meta_data().toString());
+//		r.createKML(Csv, "C:\\Users\\מעיין\\Desktop\\Ex2\\data\\null.kml");
+//		
+//		System.out.println(r.get_Meta_data().toString());
+//		
+//		Element a = new Element("40:65:a3:35:4c:c4,Efrat,[WPA-PSK-CCMP+TKIP][WPA2-PSK-CCMP+TKIP][ESS],2017-12-01 10:49:08,1,-75,32.17218268216534,34.81446401702757,13.65040888895076,6,WIFI");
+//		Element b = new Element("08:97:58:32:69:c6,Volvo247,[WPA2-PSK-CCMP][WPS][ESS],2017-12-01 10:49:14,4,-81,32.172209259560766,34.814448298318844,15.376435938028056,8,WIFI");
+//		Element c = new Element("09:97:58:32:69:c6,Volvbbbo247,[WPA2-PSK-CCMP][WPS][ESS],2017-12-01 10:49:14,4,-81,32.172209259560766,34.814448298318844,16.376435938028056,8,WIFI");
+//
+//		System.out.println(a.getData().toString());
+//
+//		Set<GIS_element> element = new HashSet<>();
+//		element.add(a);
+//		element.add(b);
+//
+//		Layer l = new Layer(element);
+//		System.out.println(l.data);
+//		System.out.println(l.get_Meta_data().toString());
+//
+//		System.out.println(r.toString());
+//
 //		System.out.println(l.isEmpty());
 //
 //		System.out.println(l.size());
 //
 //		System.out.println(l.contains(a));
 //
-//		//System.out.println(l.get_Meta_data().toString());
-//
+//		System.out.println(l.get_Meta_data().toString());
 //
 //		System.out.println(l.isEmpty());
-
-		//System.out.println(b.getData().toString());
-		
-		System.out.println(l.get_Meta_data().toString());
-		
-		System.out.println(l.remove(a));
-//		Layer l2 = new Layer(element);
-		System.out.println(l.get_Meta_data().toString());
-
+//
+//		System.out.println(b.getData().toString());
+//
+//		System.out.println(l.get_Meta_data().toString());
+//
+//		System.out.println(l.remove(a));
 	}
 
 }
