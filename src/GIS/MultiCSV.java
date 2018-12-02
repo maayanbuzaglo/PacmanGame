@@ -12,7 +12,7 @@ import java.util.Set;
  */
 public class MultiCSV {
 
-	final static File folder = new File("C:\\Users\\מעיין\\Desktop\\Ex2\\data");
+	final static File folder = new File("C:\\Users\\מעיין\\Desktop\\מדעי המחשב");
 	private static BufferedReader br;
 	static Project p = new Project();
 	static Set<GIS_element> e = new HashSet<>();
@@ -31,7 +31,7 @@ public class MultiCSV {
 			}
 			else {
 				System.out.println(fileEntry.getName());
-				if(fileEntry.getName().contains(".csv")) { //reads just if thats a csv file.
+				if(fileEntry.getName().contains(".csv") && (fileEntry.getName().charAt(fileEntry.getName().length()-1) == 'v')) { //reads just if thats a csv file.
 					br = new BufferedReader(new FileReader(fileEntry));
 					br.readLine(); //passes two rows with no data.
 					br.readLine();
@@ -40,7 +40,7 @@ public class MultiCSV {
 					el.add(element);
 					}
 					br.close();
-				}				
+				}
 			}
 			l.add(new Layer(el));
 		}
@@ -55,11 +55,11 @@ public class MultiCSV {
 //		 Layer l = new Layer() ;
 //		 Project p = new Project();
 //		 Set<GIS_layer> l2 = listFilesForFolder(folder,e);
-//		 p = listFilesForFolder(folder,e);
+		 p = listFilesForFolder(folder,e);
 //		 Element e = new Element("09:97:58:32:69:c6,Volvbbbo247,[WPA2-PSK-CCMP][WPS][ESS],2017-12-01 10:49:14,4,-81,32.172209259560766,34.814448298318844,16.376435938028056,8,WIFI");
 //		
 //		 System.out.println(p.get_Meta_data().toString());
-//		 p.createKML(l2, "C:\\Users\\מעיין\\Desktop\\Ex2\\data\\OOP.kml");
+//		 p.createKML(l2, "C:\\Users\\מעיין\\Desktop\\Ex2\\data\\myKML.kml");
 	}
 	
 }
