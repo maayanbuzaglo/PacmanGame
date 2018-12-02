@@ -4,7 +4,7 @@ In this project we have a complex system that enables the collection of geograph
 
 packages:
 
-# **Geom:**
+# ***Geom:***
 A package of geometry that includes points, lines, paths, circles, squares, etc..
 
 # Coords:
