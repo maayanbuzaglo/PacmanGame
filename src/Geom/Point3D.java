@@ -1,5 +1,6 @@
 package Geom;
 
+
 import java.io.Serializable;
 public class Point3D implements Geom_element, Serializable {
 
@@ -46,6 +47,19 @@ public class Point3D implements Geom_element, Serializable {
 
 	public double z() {
 		return _z;
+	}
+	
+	public void set_x(double _x) {
+		this._x = _x;
+	}
+	
+	public void set_y(double _y) {
+		this._y = _y;
+	}
+
+
+	public void set_z(double _z) {
+		this._z = _z;
 	}
 
 	public int ix() {
@@ -279,5 +293,45 @@ public class Point3D implements Geom_element, Serializable {
 		return Math.toRadians(a);
 	}
 	////////////////////////////////////////////////////////////////////////////////
+
 	
+		/**
+		 * The function change the point gps from coordinates geometric to cartesian
+		 */
+		public void chang_Geometric_To_Cart()
+		{
+			//changing the point gps from coordinates geometric to cartesian
+			// we used https://stackoverflow.com/questions/1185408/converting-from-longitude-latitude-to-cartesian-coordinates
+			
+	//		this._y= this.y()*R;
+	//		this._x= this.x()R/ Math.cos(this.y()(Math.PI/180));
+			
+			this._x=Math.toRadians(_x);// X From GPS To Rad
+			this._y=Math.toRadians(_y);// Y From GPS To Rad
+			this._x=Math.sin(_x)*6371000;
+			this._y=Math.sin(_y)*6371000*0.847091174;
+			
+		}
+		/** 
+		 * The function change the point gps from coordinates cartesian to geometric
+		 */
+		
+		public void chang_Cart_To_Geometric()
+		{
+			//changing the point gps from coordinates cartesian to geometric
+			// we used https://stackoverflow.com/questions/1185408/converting-from-longitude-latitude-to-cartesian-coordinates
+			
+	//		double y = this.y()/R;
+	//		double x =  (this.x()Math.cos(this.y()(Math.PI/180))/R);
+	//		this._y = y;
+	//		this._x = x;
+			
+			this._x=_x/6371000;
+			this._y=(_y/6371000)/0.847091174;
+			this._x=Math.asin(_x);
+			this._y=Math.asin(_y);
+			this._x=Math.toDegrees(_x);
+			this._y=Math.toDegrees(_y);
+	
+		}
 }
