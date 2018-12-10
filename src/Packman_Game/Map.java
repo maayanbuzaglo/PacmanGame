@@ -23,7 +23,7 @@ public class Map {
 	static int image_width = 1433;
 	static int image_height = 642;
 
-	Map() {
+	public Map() {
 		
 		image = null;
 		pStart= new Point3D (32.10571,35.20232);

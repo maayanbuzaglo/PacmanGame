@@ -1,21 +1,19 @@
-package Packman_Game;
+package GUI;
 
 import java.util.ArrayList;
 
 import javax.swing.JFrame;
 
-import GUI.MainWindow;
 
 
 
-
-public class Main 
-{
-	public static void main(String[] args)
-	{
+public class Main {
+	
+	public static void main(String[] args) {
+		
 				MainWindow window = new MainWindow();
 				window.setVisible(true);
-				window.setSize(window.background.getWidth(),window.background.getHeight());
+				window.setSize(window.background.getWidth(), window.background.getHeight());
 				window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		//		Pacman p = new Pacman();
