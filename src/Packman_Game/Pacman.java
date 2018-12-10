@@ -99,6 +99,12 @@ public class Pacman {
 				", radius = " + radius + "]";
 	}
 
+	public void setID(int id) {
+		this.ID = id;
+		// TODO Auto-generated method stub
+		
+	}
+
 //	public void move(double x_move, double y_move, double z_move) 
 //	{
 //		this.location.set_x(location.x() + x_move);

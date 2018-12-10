@@ -26,8 +26,8 @@ public class Map {
 	public Map() {
 		
 		image = null;
-		pStart= new Point3D (32.10571,35.20232);
-		pEnd= new Point3D (32.10180,35.21239);
+		pStart= new Point3D (35.20232,32.10571);
+		pEnd= new Point3D (35.21239,32.10180);
 		image_height = 642;
 		image_width = 1433;
 
