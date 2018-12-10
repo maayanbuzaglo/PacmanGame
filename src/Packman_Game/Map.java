@@ -18,12 +18,13 @@ import Geom.Point3D;
 public class Map {
 
 	private Image image;
-	private Point3D pStart;
-	private Point3D pEnd;
-	int image_width = 1433;
-	int image_height = 642;
+	private static Point3D pStart;
+	private static Point3D pEnd;
+	static int image_width = 1433;
+	static int image_height = 642;
 
 	Map() {
+		
 		image = null;
 		pStart= new Point3D (32.10571,35.20232);
 		pEnd= new Point3D (32.10180,35.21239);
@@ -33,12 +34,13 @@ public class Map {
 	}
 	
 	Map(String imgLocation) throws IOException {
+		
 		File f = new File(imgLocation);
 		image = ImageIO.read(f);
 	}
 	
-	public Pixel Point2Pixel(Point3D gps)
-	{
+	public Pixel Point2Pixel(Point3D gps) {
+		
 		gps.chang_Geometric_To_Cart();
 		pStart.chang_Geometric_To_Cart();
 		double x = gps.x() - pStart.x();
@@ -51,8 +53,8 @@ public class Map {
 
 	}
 	
-	public Point3D Pixel2Point(Pixel pixel) 
-	{
+	public static Point3D Pixel2Point(Pixel pixel)  {
+		
 		Pixel pix = Pix_Worth_Point(image_width, image_height);
 		double x = pixel.getX() * pix.getX();
 		double y = pixel.getY() * pix.getY();
@@ -63,8 +65,8 @@ public class Map {
 		return ans;
 	}
 	
-	public Pixel Pix_Worth_Point(double pixWidth, double pixHeight)
-	{
+	public static Pixel Pix_Worth_Point(double pixWidth, double pixHeight) {
+		
 		pStart.chang_Geometric_To_Cart();
 		pEnd.chang_Geometric_To_Cart();
 		double x = pEnd.x() - pStart.x();
@@ -73,5 +75,14 @@ public class Map {
 		double dy = y / pixHeight;
 		Pixel ans = new Pixel (dx,dy);
 		return ans;
+	}
+	
+	public static void main(String[] args) {
+		
+		
+		Pixel p = new Pixel(705, 541);
+		Point3D p2 = new Point3D(Pixel2Point(p));
+		p2.toString();
+		
 	}
 }

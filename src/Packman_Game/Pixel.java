@@ -6,11 +6,13 @@ public class Pixel {
 	private double y;
 
 	public Pixel(double x, double y) {
+		
 		this.x = x;
 		this.y = y;
 	}
 
 	public boolean equals(Pixel arg0) {
+		
 		if (getX() != arg0.getX() || getY() != arg0.getY())
 			return false;
 
@@ -26,16 +28,16 @@ public class Pixel {
 		return this.y;
 	}
 
-	public Pixel move(Pixel p) 
-	{
+	public Pixel move(Pixel p)  {
+		
 		double pX = this.getX() + p.getX();
 		double pY = this.getY() + p.getY();
 		Pixel ans = new Pixel (pX, pY);
 		return ans;
 	}
 	
-	public Pixel subtract(Pixel p)
-	{
+	public Pixel subtract(Pixel p) {
+		
 		double pX = this.getX() - p.getX();
 		double pY = this.getY() - p.getY();
 		Pixel ans = new Pixel (pX, pY);
