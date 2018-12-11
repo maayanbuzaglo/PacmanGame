@@ -21,7 +21,7 @@ public class Pacman {
 		radius = 1;
 	}
 
-	Pacman(Point3D point, long ID, double speed, double radius) 
+	public Pacman(Point3D point, long ID, double speed, double radius) 
 	{
 		this.location = point;
 		this.ID = ID;

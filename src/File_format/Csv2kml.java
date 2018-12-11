@@ -22,6 +22,7 @@ public class Csv2kml {
 	 * and returns an array list of Row_Locate.
 	 */
 	public ArrayList<Row_Locate> ReadCsvFile(String file){
+		
 		ArrayList<Row_Locate> Csv = new ArrayList<Row_Locate>();
 		Scanner sc = null;
 		File fi = new File(file); //gets the file.
@@ -51,6 +52,7 @@ public class Csv2kml {
 	 * This function creates a kml file.
 	 */
 	public static void createKML(ArrayList<Row_Locate> list, String f) {
+		
 		Kml kml = new Kml();
 		Document doc = kml.createAndSetDocument();
 		for (Row_Locate it: list) { //The iterator runs on a csv file (List of Row_Locate).

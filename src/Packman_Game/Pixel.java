@@ -11,6 +11,12 @@ public class Pixel {
 		this.y = y;
 	}
 
+	public Pixel(Pixel p) {
+		
+		this.x = p.x;
+		this.y = p.y;
+	}
+
 	public boolean equals(Pixel arg0) {
 		
 		if (getX() != arg0.getX() || getY() != arg0.getY())

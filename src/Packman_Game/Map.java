@@ -64,7 +64,6 @@ public class Map {
 		pStart.chang_Cart_To_Geometric();
 		pEnd.chang_Cart_To_Geometric();
 		return ans;
-
 	}
 
 	public Point3D Pixel2Point(Pixel pixel)  {
@@ -93,22 +92,34 @@ public class Map {
 		return ans;
 	}
 
-	public void changFrame(Pixel p, ArrayList<Pixel> pList) {
+	public void changFrame(Pixel p, ArrayList<Pixel> pList, ArrayList<Pixel> fList) {
 
 		this.setImage_width((int)p.getX());
 		this.setImage_height((int)p.getY());
 		
 		ArrayList<Point3D> pTemp = new ArrayList<Point3D>();
+		ArrayList<Point3D> fTemp = new ArrayList<Point3D>();
+		
 		for (int i = 0; i < pList.size(); i++) {
 			Pixel tmp = new Pixel (pList.get(i).getX(), pList.get(i).getY());
 			pTemp.add(this.Pixel2Point(tmp));
 		}
 		
+		for (int i = 0; i < fList.size(); i++) {
+			Pixel tmp = new Pixel (fList.get(i).getX(), fList.get(i).getY());
+			fTemp.add(this.Pixel2Point(tmp));
+		}
 		
 		for (int i = 0; i < pTemp.size(); i++) {
 			Pixel tmp = this.Point2Pixel(pTemp.get(i));
 			pList.get(i).setX(tmp.getX());
 			pList.get(i).setY(tmp.getY());
+		}
+		
+		for (int i = 0; i < fTemp.size(); i++) {
+			Pixel tmp = this.Point2Pixel(fTemp.get(i));
+			fList.get(i).setX(tmp.getX());
+			fList.get(i).setY(tmp.getY());
 		}
 		
 	}

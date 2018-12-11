@@ -20,7 +20,7 @@ public class Fruit {
 		this.price = 1;
 	}
 
-	Fruit(Point3D point, long ID,int price)
+	public Fruit(Point3D point, long ID,int price)
 	{
 		this.location = new Point3D(point);
 		this.ID = ID;

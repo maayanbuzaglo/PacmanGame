@@ -36,7 +36,7 @@ public class Game {
 		this.Fruit_list = f.ReadCsvFile(file);
 	}
 	
-	public void readCsv(Game g) {
+	public void read_create_CSV(Game g) {
 		
 		String file = "Type,id,Lat,Lon,Alt,Speed/Weight,Radius," + g.Pacman_list.size() + "," + g.Fruit_list.size() + "\n";
 		for(Pacman it: g.Pacman_list) {
@@ -81,6 +81,7 @@ public class Game {
 	 * This function creates a kml file.
 	 */
 	public static void createKML(Game g, String f) {
+		
 		Kml kml = new Kml();
 		Document doc = kml.createAndSetDocument();
 		Placemark p = doc.createAndAddPlacemark();

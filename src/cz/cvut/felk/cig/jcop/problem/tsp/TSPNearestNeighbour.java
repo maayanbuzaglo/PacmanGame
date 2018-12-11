@@ -3,18 +3,18 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.Stack;
  
-public class TSPNearestNeighbour
-{
+public class TSPNearestNeighbour {
+	
     private int numberOfPacman;
     private Stack<Integer> stack;
  
-    public TSPNearestNeighbour()
-    {
+    public TSPNearestNeighbour() {
+    	
         stack = new Stack<Integer>();
     }
  
-    public void tsp(int adjacencyMatrix[][])
-    {
+    public void tsp(int adjacencyMatrix[][]) {
+    	
         numberOfPacman = adjacencyMatrix[1].length - 1;
         int[] visited = new int[numberOfPacman + 1];
         visited[1] = 1;
@@ -54,13 +54,12 @@ public class TSPNearestNeighbour
         }
     }
  
-    public static void main(String... arg)
-    {
+    public static void main(String... arg) {
+    	
         int number_of_nodes;
         Scanner scanner = null;
-        try
-        {
-            System.out.println("Enter the number of nodes in the graph");
+        try {
+            System.out.println("Enter the number of nodes in the graph: ");
             scanner = new Scanner(System.in);
             number_of_nodes = scanner.nextInt();
             int adjacency_matrix[][] = new int[number_of_nodes + 1][number_of_nodes + 1];
