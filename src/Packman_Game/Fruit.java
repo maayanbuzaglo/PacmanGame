@@ -83,9 +83,16 @@ public class Fruit {
 		return location;
 	}
 	
+	public void setLocation(Point3D p) {
+		this.location = p;
+	}
+	
 	public int getPrice() {
 		return price;
 	}
 
+	public void setPrice(int price) {
+		this.price = price;
+	}
 
 }

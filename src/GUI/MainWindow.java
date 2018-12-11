@@ -68,8 +68,9 @@ public class MainWindow extends JFrame implements MouseListener {
 		MenuItem fruit = new MenuItem("Fruit");
 
 		Menu data = new Menu("Data"); //Data - Speed, Radius.
-		MenuItem speed = new MenuItem("Speed");
-		MenuItem radius = new MenuItem("Radius");
+		MenuItem speed = new MenuItem("Speed (pacman)");
+		MenuItem radius = new MenuItem("Radius (pacman)");
+		MenuItem price = new MenuItem("Price (fruit)");
 
 		Menu options = new Menu("Options"); //Options - Create kml file, Create csv file, Export csv file, Clear.
 		MenuItem createKML = new MenuItem("Create kml file");
@@ -84,6 +85,7 @@ public class MainWindow extends JFrame implements MouseListener {
 		menuBar.add(data);
 		data.add(speed);
 		data.add(radius);
+		data.add(price);
 
 		menuBar.add(options);
 		options.add(createKML);
@@ -122,20 +124,46 @@ public class MainWindow extends JFrame implements MouseListener {
 				repaint();
 			}
 		});
+		
+		//listens to speed key.
+		speed.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(WhoAreYOU) {
+		        System.out.print("Enter pacman speed: ");
+				Scanner sc = new Scanner(System.in);
+		        double speed = sc.nextDouble();
+		        pList.get(pList.size()-1).setSpeed(speed);
+		        System.out.println(pList);
+				}
+			}
+		});
 
 		//listens to radius key.
 		radius.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Scanner s = new Scanner("Enter radius: ");
+				if(WhoAreYOU) {
+		        System.out.print("Enter pacman radius: ");
+				Scanner sc = new Scanner(System.in);
+		        double radius = sc.nextDouble();
+		        pList.get(pList.size()-1).setRadius(radius);
+		        System.out.println(pList);
+				}
 			}
 		});
-
-		//listens to speed key.
-		speed.addActionListener(new ActionListener() {
+		
+		//listens to price key.
+		price.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Scanner s = new Scanner("Enter speed: ");
+				if(!WhoAreYOU) {
+			        System.out.print("Enter fruit price: ");
+					Scanner sc = new Scanner(System.in);
+			        int price = sc.nextInt();
+			        fList.get(fList.size()-1).setPrice(price);
+			        System.out.println(fList);
+				}	
 			}
 		});
 
@@ -143,7 +171,8 @@ public class MainWindow extends JFrame implements MouseListener {
 		createKML.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-
+				Game g = new Game(pList, fList);
+				g.createKML(g, "C:\\Users\\מעיין\\eclipse-workspace\\OopNavigtion\\myGame.kml");
 			}
 		});
 		
@@ -151,7 +180,6 @@ public class MainWindow extends JFrame implements MouseListener {
 		readCSV.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-//				readCsv = true;
 				Game g = new Game();
 				pList.clear();
 				fList.clear();
@@ -182,12 +210,6 @@ public class MainWindow extends JFrame implements MouseListener {
 			public void actionPerformed(ActionEvent e) {
 				Game g = new Game(pList, fList);
 				g.createCSV(g);
-//				for (Pacman it1: g.Pacman_list) {
-//					System.out.println(it1.toString());
-//				}
-//				for (Fruit it: g.Fruit_list) {
-//					System.out.println(it.toString());
-//				}
 			}
 		});
 
@@ -230,10 +252,14 @@ public class MainWindow extends JFrame implements MouseListener {
 		g.drawImage(background, 0, 0, this.getWidth(), this.getHeight(), this);
 		Pixel pFram = new Pixel(background.getWidth(), background.getHeight());
 		m.changFrame(pFram, pacmanPixel, fruitPixel);
+		
 		for (int i = 0; i < pacmanPixel.size(); i++) {
+			Point3D p1 = m.Pixel2Point(pacmanPixel.get(i));
+			Pixel pix = m.Point2Pixel(p1.x(), p1.y());
+			pacmanPixel.get(i).setX(pix.getX());
+			pacmanPixel.get(i).setY(pix.getY());
 			g.drawImage(pacmanImage, (int)pacmanPixel.get(i).getX(), (int)pacmanPixel.get(i).getY(), 30, 30, this);
 			System.out.println("(" + pacmanPixel.get(i).getX() + "," + pacmanPixel.get(i).getY() + ")");
-			Point3D p1 = m.Pixel2Point(pacmanPixel.get(i));
 			pointList.add(p1);
 			System.out.println("(" + pointList.get(i).x() + "," + pointList.get(i).y() + ")");
 		}

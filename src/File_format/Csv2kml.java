@@ -58,7 +58,7 @@ public class Csv2kml {
 		for (Row_Locate it: list) { //The iterator runs on a csv file (List of Row_Locate).
 			Placemark p = doc.createAndAddPlacemark();
 			p.createAndSetTimeStamp().withWhen(it.getFirstSeen().replace(' ','T'));
-			p.withDescription("Mac: "+it.getMAC()+"\nCapabilities:   "+it.getAuthMode())
+			p.withDescription("Mac: " + it.getMAC() + "\nCapabilities:   " + it.getAuthMode())
 			.withName(it.getSSID()).withOpen(Boolean.TRUE).createAndSetPoint().
 			addToCoordinates(it.getCurrentLongitude(),it.getCurrentLatitude());
 		}
