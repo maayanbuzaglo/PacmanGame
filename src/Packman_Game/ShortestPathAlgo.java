@@ -75,15 +75,15 @@ public class ShortestPathAlgo {
     }
     public static void main(String[] args) {
 		
-		Game g = new Game("C:\\Users\\מעיין\\Desktop\\data\\game_1543684662657.csv");
-//		for (Pacman it1: g.Pacman_list) {
-//			System.out.println(it1.toString());
-//		}
-//		for (Fruit it: g.Fruit_list) {
-//			System.out.println(it.toString());
-//		}
-		ShortestPathAlgo s = new ShortestPathAlgo(g);
-		s.tsp();
-		
+////		Game g = new Game("C:\\Users\\מעיין\\Desktop\\data\\game_1543684662657.csv");
+////		for (Pacman it1: g.Pacman_list) {
+////			System.out.println(it1.toString());
+////		}
+////		for (Fruit it: g.Fruit_list) {
+////			System.out.println(it.toString());
+////		}
+//		ShortestPathAlgo s = new ShortestPathAlgo(g);
+//		s.tsp();
+//		
 	}
 }

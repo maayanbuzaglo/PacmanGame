@@ -5,8 +5,6 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-
-import File_format.Row_Locate;
 import de.micromata.opengis.kml.v_2_2_0.Document;
 import de.micromata.opengis.kml.v_2_2_0.Kml;
 import de.micromata.opengis.kml.v_2_2_0.Placemark;
@@ -28,7 +26,7 @@ public class Game {
 		this.Fruit_list = null;
 	}
 	
-	public Game(String file) {
+	public void readCsv(String file) {
 		
 		Pacman p  = new Pacman();
 		this.Pacman_list = p.ReadCsvFile(file);
@@ -36,7 +34,7 @@ public class Game {
 		this.Fruit_list = f.ReadCsvFile(file);
 	}
 	
-	public void read_create_CSV(Game g) {
+	public void createCSV(Game g) {
 		
 		String file = "Type,id,Lat,Lon,Alt,Speed/Weight,Radius," + g.Pacman_list.size() + "," + g.Fruit_list.size() + "\n";
 		for(Pacman it: g.Pacman_list) {
@@ -48,22 +46,22 @@ public class Game {
 		                 + it.getRadius() + ",,\n";
 		}
 		for(Fruit it: g.Fruit_list) {
-			file += "P," + it.getID() + ","
+			file += "F," + it.getID() + ","
 		                 + it.getLocation().x() + ","
 		                 + it.getLocation().y() + "," 
 		                 + it.getLocation().z() + ","
 		                 + it.getPrice() + ",,,\n";
 		}
-		createCSV(file);
+		createCSV2(file);
 	}
 	
 	/**
 	 * This function creates a csv file.
 	 */
-	public static void createCSV(String f) {
+	public static void createCSV2(String f) {
 		
 		try {
-			File file = new File("try.csv");
+			File file = new File("game.csv");
 			if(!file.exists())
 				file.createNewFile();
 

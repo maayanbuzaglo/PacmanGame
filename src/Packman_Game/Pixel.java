@@ -5,10 +5,10 @@ public class Pixel {
 	private double x;
 	private double y;
 
-	public Pixel(double x, double y) {
+	public Pixel(double dx, double dy) {
 		
-		this.x = x;
-		this.y = y;
+		this.x = dx;
+		this.y = dy;
 	}
 
 	public Pixel(Pixel p) {
@@ -34,19 +34,19 @@ public class Pixel {
 		return this.y;
 	}
 	
-	public void setX(double x) {
-		this.x = x;
+	public void setX(double d) {
+		this.x = d;
 	}
 
-	public void setY(double y) {
-		this.y = y;
+	public void setY(double d) {
+		this.y = d;
 	}
 
 	public Pixel move(Pixel p)  {
 		
 		double pX = this.getX() + p.getX();
 		double pY = this.getY() + p.getY();
-		Pixel ans = new Pixel (pX, pY);
+		Pixel ans = new Pixel(pX, pY);
 		return ans;
 	}
 	
@@ -54,13 +54,13 @@ public class Pixel {
 		
 		double pX = this.getX() - p.getX();
 		double pY = this.getY() - p.getY();
-		Pixel ans = new Pixel (pX, pY);
+		Pixel ans = new Pixel(pX, pY);
 		return ans;
 	}
 
 	@Override
-	public String toString()
-	{
+	public String toString() {
+		
 		return " x value : " + this.getX() + " y value : " + this.getY();
 	}
 

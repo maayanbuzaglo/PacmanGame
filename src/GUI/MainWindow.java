@@ -31,6 +31,7 @@ public class MainWindow extends JFrame implements MouseListener {
 	public BufferedImage pacmanImage;
 	public BufferedImage fruitImage;
 	private boolean WhoAreYOU = true; //if true  - pacman. else - fruit.
+//	private boolean readCsv = true;
 	public ArrayList<Pacman> pList;
 	public ArrayList<Fruit> fList;
 	public ArrayList<Pixel> pacmanPixel;
@@ -114,6 +115,10 @@ public class MainWindow extends JFrame implements MouseListener {
 			public void actionPerformed(ActionEvent e) {
 				pList.clear();
 				fList.clear();
+				pacmanPixel.clear();
+				fruitPixel.clear();
+				countPacman = 0;
+				countFruit = 0;
 				repaint();
 			}
 		});
@@ -142,12 +147,47 @@ public class MainWindow extends JFrame implements MouseListener {
 			}
 		});
 		
-		//listens to create csv file key.
+		//listens to read csv file key.
 		readCSV.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+//				readCsv = true;
+				Game g = new Game();
+				pList.clear();
+				fList.clear();
+				g.readCsv("C:\\Users\\מעיין\\Desktop\\Ex3\\data\\game_1543693822377.csv");
+			
+				for(Pacman it: g.Pacman_list) {
+					pList.add(it);
+					
+					Pixel p = new Pixel(m.Point2Pixel(it.getLocation().y(),it.getLocation().x()));
+					System.out.println(p);
+					pacmanPixel.add(p);
+				}
+				for(Fruit it: g.Fruit_list) {
+					fList.add(it);
+					
+					Pixel f = new Pixel(m.Point2Pixel(it.getLocation().y(), it.getLocation().x()));
+					System.out.println(f);
+					fruitPixel.add(f);
+				}
+
+				repaint();
+			}
+		});
+		
+		//listens to create kml file key.
+		exportCSV.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
 				Game g = new Game(pList, fList);
-				
+				g.createCSV(g);
+//				for (Pacman it1: g.Pacman_list) {
+//					System.out.println(it1.toString());
+//				}
+//				for (Fruit it: g.Fruit_list) {
+//					System.out.println(it.toString());
+//				}
 			}
 		});
 
@@ -186,17 +226,18 @@ public class MainWindow extends JFrame implements MouseListener {
 	 * @see java.awt.Window#paint(java.awt.Graphics)
 	 */
 	public void paint(Graphics g) {
-				
+		
 		g.drawImage(background, 0, 0, this.getWidth(), this.getHeight(), this);
 		Pixel pFram = new Pixel(background.getWidth(), background.getHeight());
 		m.changFrame(pFram, pacmanPixel, fruitPixel);
 		for (int i = 0; i < pacmanPixel.size(); i++) {
 			g.drawImage(pacmanImage, (int)pacmanPixel.get(i).getX(), (int)pacmanPixel.get(i).getY(), 30, 30, this);
+			System.out.println("(" + pacmanPixel.get(i).getX() + "," + pacmanPixel.get(i).getY() + ")");
 			Point3D p1 = m.Pixel2Point(pacmanPixel.get(i));
 			pointList.add(p1);
 			System.out.println("(" + pointList.get(i).x() + "," + pointList.get(i).y() + ")");
 		}
-		for (int i = 0; i < fList.size(); i++) {
+		for (int i = 0; i < fruitPixel.size(); i++) {
 			g.drawImage(fruitImage, (int)fruitPixel.get(i).getX(), (int)fruitPixel.get(i).getY(), 40, 30, this);
 			Point3D f1 = m.Pixel2Point(fruitPixel.get(i));
 			pointList.add(f1);
