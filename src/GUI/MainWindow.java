@@ -117,7 +117,7 @@ public class MainWindow extends JFrame implements MouseListener {
 		});
 
 		try {
-			background = ImageIO.read(new File("C:\\Users\\מעיין\\Desktop\\data\\Ariel1.png"));
+			background = ImageIO.read(new File("C:\\Users\\מעיין\\Desktop\\Ex3\\data\\Ariel1.png"));
 		}
 
 		catch (IOException e) {
@@ -125,7 +125,7 @@ public class MainWindow extends JFrame implements MouseListener {
 		}
 
 		try {
-			pacmanImage = ImageIO.read(new File("C:\\Users\\מעיין\\Desktop\\data\\pacman.png"));
+			pacmanImage = ImageIO.read(new File("C:\\Users\\מעיין\\Desktop\\Ex3\\data\\pacman.png"));
 		}
 
 		catch (IOException e) {
@@ -133,7 +133,7 @@ public class MainWindow extends JFrame implements MouseListener {
 		}
 
 		try {
-			fruitImage = ImageIO.read(new File("C:\\Users\\מעיין\\Desktop\\data\\fruit.png"));
+			fruitImage = ImageIO.read(new File("C:\\Users\\מעיין\\Desktop\\Ex3\\data\\fruit.png"));
 		}
 		catch (IOException e) {
 			e.printStackTrace();

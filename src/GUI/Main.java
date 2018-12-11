@@ -45,7 +45,7 @@ public class Main {
 		//		}
 		//		r.createKML(Csv,"C:\\Users\\מעיין\\Desktop\\Ex2\\data\\f.kml");
 
-		Game g = new Game("C:\\Users\\מעיין\\Desktop\\data\\game_1543684662657.csv");
+		Game g = new Game("C:\\Users\\מעיין\\Desktop\\Ex3\\data\\game_1543684662657.csv");
 		for (Pacman it1: g.Pacman_list) {
 			System.out.println(it1.toString());
 		}

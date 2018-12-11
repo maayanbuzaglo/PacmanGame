@@ -1,7 +1,7 @@
 package Geom;
 
 /**
- * This class represents a 2D (open set) circle
+ * This class represents a 2D (open set) circle.
  * @author maayan
  */
 public class Circle implements Geom_element {
