@@ -32,7 +32,7 @@ public class MainWindow extends JFrame implements MouseListener {
 
 
 	public MainWindow() {
-		
+
 		pList = new ArrayList<Point>();
 		fList = new ArrayList<Point>();
 		initGUI();		
@@ -49,7 +49,7 @@ public class MainWindow extends JFrame implements MouseListener {
 		Menu data = new Menu("Data");
 		MenuItem speed = new MenuItem("Speed");
 		MenuItem radius = new MenuItem("Radius");
-		
+
 		Menu options = new Menu("Options");
 		MenuItem createKML = new MenuItem("Create kml file");
 		MenuItem createCSV = new MenuItem("Create csv file");
@@ -63,7 +63,7 @@ public class MainWindow extends JFrame implements MouseListener {
 		menuBar.add(data);
 		data.add(speed);
 		data.add(radius);
-		
+
 		menuBar.add(options);
 		options.add(createKML);
 		options.add(createCSV);
@@ -85,41 +85,41 @@ public class MainWindow extends JFrame implements MouseListener {
 				WhoAreYOU = false;
 			}
 		});
-		
+
 		clear.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-					pList.clear();
-					fList.clear();
-					repaint();
+				pList.clear();
+				fList.clear();
+				repaint();
 			}
 		});
 
 		radius.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-					Scanner s = new Scanner("Enter radius: ");
+				Scanner s = new Scanner("Enter radius: ");
 			}
 		});
-		
+
 		speed.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-					Scanner s = new Scanner("Enter speed: ");
+				Scanner s = new Scanner("Enter speed: ");
 			}
 		});
-		
+
 		createKML.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-					
+
 			}
 		});
-		
+
 		try {
 			background = ImageIO.read(new File("C:\\Users\\מעיין\\Desktop\\data\\Ariel1.png"));
 		}
-		
+
 		catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -127,11 +127,11 @@ public class MainWindow extends JFrame implements MouseListener {
 		try {
 			pacmanImage = ImageIO.read(new File("C:\\Users\\מעיין\\Desktop\\data\\pacman.png"));
 		}
-		
+
 		catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+
 		try {
 			fruitImage = ImageIO.read(new File("C:\\Users\\מעיין\\Desktop\\data\\fruit.png"));
 		}
@@ -144,55 +144,55 @@ public class MainWindow extends JFrame implements MouseListener {
 	int y = -1;
 
 	public void paint(Graphics g) {
-
+				
 		g.drawImage(background, 0, 0, this.getWidth(), this.getHeight(), this);
-			for (int i = 0; i < pList.size(); i++) {
-				g.drawImage(pacmanImage, pList.get(i).x, pList.get(i).y, 30, 30, this);
-			}
-			for (int i = 0; i < fList.size(); i++) {
-				g.drawImage(fruitImage, fList.get(i).x, fList.get(i).y, 50, 50, this);
-			}
+		for (int i = 0; i < pList.size(); i++) {
+			g.drawImage(pacmanImage, pList.get(i).x, pList.get(i).y, 30, 30, this);
+		}
+		for (int i = 0; i < fList.size(); i++) {
+			g.drawImage(fruitImage, fList.get(i).x, fList.get(i).y, 50, 50, this);
+		}
 	}
 
-			@Override
-			public void mouseClicked(MouseEvent arg) {
+	@Override
+	public void mouseClicked(MouseEvent arg) {
 
-				x = arg.getX();
-				y = arg.getY();
-				Pixel p = new Pixel(x, y);
-				if(WhoAreYOU) {
-					pList.add(new Point(x,y));
-				}
-				else {
-					fList.add(new Point(x,y));
-				}
-				Map m = new Map();
-				Point3D p1 = m.Pixel2Point(p);
-				System.out.println("(" + p1.x() + "," + p1.y() + ")");
-				repaint();		
-			}
-
-			@Override
-			public void mouseEntered(MouseEvent arg0) {
-
-			}
-
-			@Override
-			public void mouseExited(MouseEvent arg0) {
-				// TODO Auto-generated method stub
-
-			}
-
-			@Override
-			public void mousePressed(MouseEvent arg0) {
-				// TODO Auto-generated method stub
-
-			}
-
-			@Override
-			public void mouseReleased(MouseEvent arg0) {
-				// TODO Auto-generated method stub
-
-			}
-
+		x = arg.getX();
+		y = arg.getY();
+		Pixel p = new Pixel(x, y);
+		if(WhoAreYOU) {
+			pList.add(new Point(x,y));
 		}
+		else {
+			fList.add(new Point(x,y));
+		}
+		Map m = new Map();
+		Point3D p1 = m.Pixel2Point(p);
+		System.out.println("(" + p1.x() + "," + p1.y() + ")");
+		repaint();		
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent arg0) {
+
+	}
+
+	@Override
+	public void mouseExited(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void mousePressed(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
