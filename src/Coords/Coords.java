@@ -6,7 +6,7 @@ public class Coords implements coords_converter {
 
 	final static int earth_rad = 6371000;
 	final static double norm_lan = 0.847091174;
-
+    
 	/*
 	 * This function computes a new point which is the gps point transformed by a 3D vector (in meters).
 	 */
