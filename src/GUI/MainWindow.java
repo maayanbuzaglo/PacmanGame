@@ -249,32 +249,21 @@ public class MainWindow extends JFrame implements MouseListener {
 		g.drawImage(m.getImage(), 0, 0, this.getWidth(), this.getHeight(), this);
 		Pixel pFram = new Pixel(this.getWidth(), this.getHeight());
 		m.changFrame(pFram, pacmanPixel, fruitPixel);
-		m.setImage_width(this.getWidth());
-		m.setImage_height(this.getHeight());
+
 
 		for (int i = 0; i < pacmanPixel.size(); i++) {
-			Point3D p1 = m.Pixel2Point(pacmanPixel.get(i));
-			pointListP.add(p1);
-			Pixel pix = m.Point2Pixel(pointListP.get(i).x(), pointListP.get(i).y());
-			pacmanPixel.get(i).setX(pix.getX());
-			pacmanPixel.get(i).setY(pix.getY());
 			
 			g.drawImage(pacmanImage, (int)pacmanPixel.get(i).getX(), (int)pacmanPixel.get(i).getY(), 30, 30, this);
 
 			System.out.println("(" + pacmanPixel.get(i).getX() + "," + pacmanPixel.get(i).getY() + ")");
-			System.out.println("(" + pointListP.get(i).x() + "," + pointListP.get(i).y() + ")");
+//			System.out.println("(" + pointListP.get(i).x() + "," + pointListP.get(i).y() + ")");
 		}
 		for (int i = 0; i < fruitPixel.size(); i++) {
 			
-			Point3D f1 = m.Pixel2Point(fruitPixel.get(i));
-			pointListF.add(f1);
-			Pixel pix = m.Point2Pixel(pointListF.get(i).x(), pointListF.get(i).y());
-			fruitPixel.get(i).setX(pix.getX());
-			fruitPixel.get(i).setY(pix.getY());
-			
-			
+			System.out.println("(" + fruitPixel.get(i).getX() + "," + fruitPixel.get(i).getY() + ")");
+
 			g.drawImage(fruitImage, (int)fruitPixel.get(i).getX(), (int)fruitPixel.get(i).getY(), 40, 30, this);
-			System.out.println("(" + pointListF.get(i).x() + "," + pointListF.get(i).y() + ")");
+//			System.out.println("(" + pointListF.get(i).x() + "," + pointListF.get(i).y() + ")");
 		}
 	}
 

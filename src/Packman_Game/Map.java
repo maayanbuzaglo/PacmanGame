@@ -99,9 +99,7 @@ public class Map {
 
 	public void changFrame(Pixel p, ArrayList<Pixel> pList, ArrayList<Pixel> fList) {
 
-		this.setImage_width((int)p.getX());
-		this.setImage_height((int)p.getY());
-
+		
 		ArrayList<Point3D> pTemp = new ArrayList<Point3D>();
 		ArrayList<Point3D> fTemp = new ArrayList<Point3D>();
 
@@ -113,6 +111,9 @@ public class Map {
 			Pixel tmp = new Pixel (fList.get(i).getX(), fList.get(i).getY());
 			fTemp.add(this.Pixel2Point(tmp));
 		}
+		this.setImage_width((int)p.getX());
+		this.setImage_height((int)p.getY());
+
 		for (int i = 0; i < pTemp.size(); i++) {
 			Pixel tmp = this.Point2Pixel(pTemp.get(i).x(),pTemp.get(i).y());
 			pList.get(i).setX(tmp.getX());
