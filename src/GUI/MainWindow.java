@@ -36,22 +36,27 @@ public class MainWindow extends JFrame implements MouseListener {
 	public ArrayList<Fruit> fList;
 	public ArrayList<Pixel> pacmanPixel;
 	public ArrayList<Pixel> fruitPixel;
-	public ArrayList<Point3D> pointList;
+	public ArrayList<Point3D> pointListP;
+	public ArrayList<Point3D> pointListF;
 
-	public Map m = new Map();
-	public int countPacman = 0;
-	public int countFruit = 0;
+
+	public Map m;
+	public int countPacman;
+	public int countFruit;
 
 	/*
 	 * Constructor.
 	 */
-	public MainWindow() {
-
+	public MainWindow() throws IOException {
+		m = new Map();
 		pList = new ArrayList<Pacman>();
 		fList = new ArrayList<Fruit>();
-		pointList = new ArrayList<Point3D>();
+		pointListP = new ArrayList<Point3D>();
+		pointListF = new ArrayList<Point3D>();
 		pacmanPixel = new ArrayList<Pixel>();
 		fruitPixel = new ArrayList<Pixel>();
+		countPacman = 0;
+		countFruit = 0;		
 
 		initGUI();		
 		this.addMouseListener(this);
@@ -172,7 +177,7 @@ public class MainWindow extends JFrame implements MouseListener {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Game g = new Game(pList, fList);
-				g.createKML(g, "C:\\Users\\מעיין\\eclipse-workspace\\OopNavigtion\\myGame.kml");
+				g.createKML(g, "C:\\Users\\nahama\\eclipse-workspace\\OopNavigtion\\myGame.kml");
 			}
 		});
 		
@@ -183,7 +188,7 @@ public class MainWindow extends JFrame implements MouseListener {
 				Game g = new Game();
 				pList.clear();
 				fList.clear();
-				g.readCsv("C:\\Users\\מעיין\\Desktop\\Ex3\\data\\game_1543693822377.csv");
+				g.readCsv("C:\\Users\\nahama\\Desktop\\Ex3\\data\\game_1543693822377.csv");
 			
 				for(Pacman it: g.Pacman_list) {
 					pList.add(it);
@@ -213,18 +218,10 @@ public class MainWindow extends JFrame implements MouseListener {
 			}
 		});
 
-		//gets the backgrounds image.
-		try {
-			background = ImageIO.read(new File("C:\\Users\\מעיין\\Desktop\\Ex3\\data\\Ariel1.png"));
-		}
-
-		catch (IOException e) {
-			e.printStackTrace();
-		}
-
+		
 		//gets the pacman image.
 		try {
-			pacmanImage = ImageIO.read(new File("C:\\Users\\מעיין\\Desktop\\Ex3\\data\\pacman.png"));
+			pacmanImage = ImageIO.read(new File("C:\\Users\\nahama\\Desktop\\Ex3\\data\\pacman.jpg"));
 		}
 
 		catch (IOException e) {
@@ -233,7 +230,7 @@ public class MainWindow extends JFrame implements MouseListener {
 
 		//gets the fruit image.
 		try {
-			fruitImage = ImageIO.read(new File("C:\\Users\\מעיין\\Desktop\\Ex3\\data\\fruit.png"));
+			fruitImage = ImageIO.read(new File("C:\\Users\\nahama\\Desktop\\Ex3\\data\\fruit.jpg"));
 		}
 		catch (IOException e) {
 			e.printStackTrace();
@@ -248,26 +245,36 @@ public class MainWindow extends JFrame implements MouseListener {
 	 * @see java.awt.Window#paint(java.awt.Graphics)
 	 */
 	public void paint(Graphics g) {
-		
-		g.drawImage(background, 0, 0, this.getWidth(), this.getHeight(), this);
-		Pixel pFram = new Pixel(background.getWidth(), background.getHeight());
+	
+		g.drawImage(m.getImage(), 0, 0, this.getWidth(), this.getHeight(), this);
+		Pixel pFram = new Pixel(this.getWidth(), this.getHeight());
 		m.changFrame(pFram, pacmanPixel, fruitPixel);
-		
+		m.setImage_width(this.getWidth());
+		m.setImage_height(this.getHeight());
+
 		for (int i = 0; i < pacmanPixel.size(); i++) {
 			Point3D p1 = m.Pixel2Point(pacmanPixel.get(i));
-			Pixel pix = m.Point2Pixel(p1.x(), p1.y());
+			pointListP.add(p1);
+			Pixel pix = m.Point2Pixel(pointListP.get(i).x(), pointListP.get(i).y());
 			pacmanPixel.get(i).setX(pix.getX());
 			pacmanPixel.get(i).setY(pix.getY());
+			
 			g.drawImage(pacmanImage, (int)pacmanPixel.get(i).getX(), (int)pacmanPixel.get(i).getY(), 30, 30, this);
+
 			System.out.println("(" + pacmanPixel.get(i).getX() + "," + pacmanPixel.get(i).getY() + ")");
-			pointList.add(p1);
-			System.out.println("(" + pointList.get(i).x() + "," + pointList.get(i).y() + ")");
+			System.out.println("(" + pointListP.get(i).x() + "," + pointListP.get(i).y() + ")");
 		}
 		for (int i = 0; i < fruitPixel.size(); i++) {
-			g.drawImage(fruitImage, (int)fruitPixel.get(i).getX(), (int)fruitPixel.get(i).getY(), 40, 30, this);
+			
 			Point3D f1 = m.Pixel2Point(fruitPixel.get(i));
-			pointList.add(f1);
-			System.out.println("(" + pointList.get(i).x() + "," + pointList.get(i).y() + ")");
+			pointListF.add(f1);
+			Pixel pix = m.Point2Pixel(pointListF.get(i).x(), pointListF.get(i).y());
+			fruitPixel.get(i).setX(pix.getX());
+			fruitPixel.get(i).setY(pix.getY());
+			
+			
+			g.drawImage(fruitImage, (int)fruitPixel.get(i).getX(), (int)fruitPixel.get(i).getY(), 40, 30, this);
+			System.out.println("(" + pointListF.get(i).x() + "," + pointListF.get(i).y() + ")");
 		}
 	}
 

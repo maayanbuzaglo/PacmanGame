@@ -1,5 +1,6 @@
 package GUI;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import javax.swing.JFrame;
 import Packman_Game.Fruit;
@@ -9,7 +10,7 @@ import Packman_Game.Pacman;
 public class Main {
 
 	@SuppressWarnings("null")
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 
 		//		Pacman p = new Pacman();
 		//		p.setRadius(1);
@@ -24,7 +25,9 @@ public class Main {
 		//		
 		MainWindow window = new MainWindow();
 		window.setVisible(true);
-		window.setSize(window.background.getWidth(), window.background.getHeight());
+//		window.setSize(window.getWidth(), window.getHeight());
+		window.setSize(1433, 642);
+
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		//		Pacman p = new Pacman();

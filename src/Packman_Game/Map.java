@@ -15,13 +15,22 @@ public class Map {
 	static int image_width;
 	static int image_height;
 
-	public Map() {
+	public Map() throws IOException {
 
-		image = null;
+		image = ImageIO.read(new File("C:\\Users\\nahama\\Desktop\\Ex3\\data\\Ariel1.png")); //gets the backgrounds image.
 		pStart = new Point3D(35.20232, 32.10571);
 		pEnd = new Point3D(35.21239, 32.10180);
 		image_height = 642;
 		image_width = 1433;
+	}
+	
+	public Map(int width, int height) throws IOException {
+
+		image = ImageIO.read(new File("C:\\Users\\nahama\\Desktop\\Ex3\\data\\Ariel1.png")); //gets the backgrounds image.
+		pStart = new Point3D(35.20232, 32.10571);
+		pEnd = new Point3D(35.21239, 32.10180);
+		image_height = width;
+		image_width = height;
 	}
 
 	Map(String imgLocation) throws IOException {
@@ -37,8 +46,16 @@ public class Map {
 	public void setImage_height(int image_height) {
 		this.image_height = image_height;
 	}
+	
+	public Image getImage() {
+		return image;
+	}
 
-	public static Pixel Point2Pixel(double longitude, double latitude) {
+	public void setImage(Image image) {
+		this.image = image;
+	}
+
+	public Pixel Point2Pixel(double longitude, double latitude) {
 		
 		double mapLongitudeStart = pStart.x();
 		double mapLatitudeStart = pStart.y();
@@ -54,7 +71,7 @@ public class Map {
 	    return new Pixel((int)x, (int)y);
 	}
 
-	public static Point3D Pixel2Point(Pixel pixel)  {
+	public Point3D Pixel2Point(Pixel pixel)  {
 
 		Pixel pix = Pix_Worth_Point(image_width, image_height);
 		double x = pixel.getX() * pix.getX();
@@ -68,7 +85,7 @@ public class Map {
 		return ans;
 	}
 
-	public static Pixel Pix_Worth_Point(double pixWidth, double pixHeight) {
+	public Pixel Pix_Worth_Point(double pixWidth, double pixHeight) {
 
 		pStart.chang_Geometric_To_Cart();
 		pEnd.chang_Geometric_To_Cart();
@@ -108,7 +125,7 @@ public class Map {
 		}
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 
 		Map m = new Map();
 		Pixel p;
