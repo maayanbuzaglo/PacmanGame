@@ -6,7 +6,7 @@
             <description>Mac: 1
 Type: pacman</description>
             <Point>
-                <coordinates>35.20707024216263,32.10251255761955</coordinates>
+                <coordinates>35.20709835093141,32.10250646735993</coordinates>
             </Point>
         </Placemark>
         <Placemark>
@@ -14,7 +14,7 @@ Type: pacman</description>
             <description>Mac: 2
 Type: pacman</description>
             <Point>
-                <coordinates>35.20762539214771,32.10267090451222</coordinates>
+                <coordinates>35.207534038091794,32.10261000182871</coordinates>
             </Point>
         </Placemark>
         <Placemark>
@@ -22,7 +22,7 @@ Type: pacman</description>
             <description>Mac: 3
 Type: pacman</description>
             <Point>
-                <coordinates>35.20768161007934,32.102262857308176</coordinates>
+                <coordinates>35.207716746306396,32.1023603012509</coordinates>
             </Point>
         </Placemark>
         <Placemark>
@@ -30,7 +30,15 @@ Type: pacman</description>
             <description>Mac: 4
 Type: pacman</description>
             <Point>
-                <coordinates>35.20712645970992,32.10216541346941</coordinates>
+                <coordinates>35.20739349359109,32.102287218284104</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark>
+            <open>1</open>
+            <description>Mac: 5
+Type: pacman</description>
+            <Point>
+                <coordinates>35.207463765811035,32.102415113514375</coordinates>
             </Point>
         </Placemark>
         <Placemark>
@@ -38,7 +46,7 @@ Type: pacman</description>
             <description>Mac: 1
 Type: fruit</description>
             <Point>
-                <coordinates>35.20780107331333,32.102944967090636</coordinates>
+                <coordinates>35.20490589618511,32.1030363214662</coordinates>
             </Point>
         </Placemark>
         <Placemark>
@@ -46,7 +54,7 @@ Type: fruit</description>
             <description>Mac: 2
 Type: fruit</description>
             <Point>
-                <coordinates>35.20777999155339,32.10327993358114</coordinates>
+                <coordinates>35.205285355270625,32.103133766234194</coordinates>
             </Point>
         </Placemark>
         <Placemark>
@@ -54,7 +62,7 @@ Type: fruit</description>
             <description>Mac: 3
 Type: fruit</description>
             <Point>
-                <coordinates>35.20778701880609,32.10365144330757</coordinates>
+                <coordinates>35.20552427486377,32.102884064224355</coordinates>
             </Point>
         </Placemark>
         <Placemark>
@@ -62,7 +70,55 @@ Type: fruit</description>
             <description>Mac: 4
 Type: fruit</description>
             <Point>
-                <coordinates>35.20778701880609,32.104053406353124</coordinates>
+                <coordinates>35.20533454454116,32.1026526337029</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark>
+            <open>1</open>
+            <description>Mac: 5
+Type: fruit</description>
+            <Point>
+                <coordinates>35.2049199501937,32.10248819658351</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark>
+            <open>1</open>
+            <description>Mac: 6
+Type: fruit</description>
+            <Point>
+                <coordinates>35.20480049119825,32.10299977970501</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark>
+            <open>1</open>
+            <description>Mac: 7
+Type: fruit</description>
+            <Point>
+                <coordinates>35.20444914223014,32.10313985653565</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark>
+            <open>1</open>
+            <description>Mac: 8
+Type: fruit</description>
+            <Point>
+                <coordinates>35.20429454916575,32.103011960290445</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark>
+            <open>1</open>
+            <description>Mac: 9
+Type: fruit</description>
+            <Point>
+                <coordinates>35.20435779174743,32.10275007806151</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark>
+            <open>1</open>
+            <description>Mac: 10
+Type: fruit</description>
+            <Point>
+                <coordinates>35.20480049119825,32.10250037710072</coordinates>
             </Point>
         </Placemark>
     </Document>

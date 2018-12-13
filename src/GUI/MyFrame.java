@@ -183,7 +183,9 @@ public class MyFrame extends JFrame implements MouseListener {
 				Game g = new Game();
 				pList.clear();
 				fList.clear();
-				g.readCsv("C:\\Users\\nahama\\Desktop\\Ex3\\data\\game_1543693822377.csv");
+				pacmanPixel.clear();
+				fruitPixel.clear();
+				g.readCsv("C:\\Users\\מעיין\\eclipse-workspace\\OopNavigtion\\data\\game_1543693822377.csv");
 			
 				for(Pacman it: g.Pacman_list) {
 					pList.add(it);
@@ -251,14 +253,12 @@ public class MyFrame extends JFrame implements MouseListener {
 			g.drawImage(pacmanImage, (int)pacmanPixel.get(i).getX(), (int)pacmanPixel.get(i).getY(), 30, 30, this);
 
 			System.out.println("(" + pacmanPixel.get(i).getX() + "," + pacmanPixel.get(i).getY() + ")");
-//			System.out.println("(" + pointListP.get(i).x() + "," + pointListP.get(i).y() + ")");
 		}
 		for (int i = 0; i < fruitPixel.size(); i++) {
 			
 			System.out.println("(" + fruitPixel.get(i).getX() + "," + fruitPixel.get(i).getY() + ")");
 
 			g.drawImage(fruitImage, (int)fruitPixel.get(i).getX(), (int)fruitPixel.get(i).getY(), 40, 30, this);
-//			System.out.println("(" + pointListF.get(i).x() + "," + pointListF.get(i).y() + ")");
 		}
 	}
 

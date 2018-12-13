@@ -25,7 +25,6 @@ public class Main {
 		//				
 		MyFrame window = new MyFrame();
 		window.setVisible(true);
-		//		window.setSize(window.getWidth(), window.getHeight());
 		window.setSize(1433, 642);
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -42,17 +41,17 @@ public class Main {
 		//		}
 		//		r.createKML(Csv,"C:\\Users\\מעיין\\Desktop\\Ex2\\data\\f.kml");
 
-//		Game g = new Game();
-//		g.readCsv("C:\\Users\\מעיין\\eclipse-workspace\\OopNavigtion\\data\\game_1543684662657.csv");
-//		for (Pacman it1: g.Pacman_list) {
-//			System.out.println(it1.toString());
-//		}
-//		for (Fruit it: g.Fruit_list) {
-//			System.out.println(it.toString());
-//		}
-//
-//		Game.createKML(g, "C:\\Users\\מעיין\\eclipse-workspace\\OopNavigtion\\data\\game.kml");
-//		g.createCSV(g);
+		//		Game g = new Game();
+		//		g.readCsv("C:\\Users\\מעיין\\eclipse-workspace\\OopNavigtion\\data\\game_1543684662657.csv");
+		//		for (Pacman it1: g.Pacman_list) {
+		//			System.out.println(it1.toString());
+		//		}
+		//		for (Fruit it: g.Fruit_list) {
+		//			System.out.println(it.toString());
+		//		}
+		//
+		//		Game.createKML(g, "C:\\Users\\מעיין\\eclipse-workspace\\OopNavigtion\\data\\game.kml");
+		//		g.createCSV(g);
 	}
 
 }

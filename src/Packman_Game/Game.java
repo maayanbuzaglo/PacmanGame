@@ -54,16 +54,16 @@ public class Game {
 		String file = "Type,id,Lat,Lon,Alt,Speed/Weight,Radius," + g.Pacman_list.size() + "," + g.Fruit_list.size() + "\n";
 		for(Pacman it: g.Pacman_list) {
 			file += "P," + it.getID() + ","
-					+ it.getLocation().x() + ","
-					+ it.getLocation().y() + "," 
+					+ it.getLocation().y() + ","
+					+ it.getLocation().x() + "," 
 					+ it.getLocation().z() + ","
 					+ it.getSpeed() + ","
 					+ it.getRadius() + ",,\n";
 		}
 		for(Fruit it: g.Fruit_list) {
 			file += "F," + it.getID() + ","
-					+ it.getLocation().x() + ","
-					+ it.getLocation().y() + "," 
+					+ it.getLocation().y() + ","
+					+ it.getLocation().x() + "," 
 					+ it.getLocation().z() + ","
 					+ it.getWeight() + ",,,\n";
 		}

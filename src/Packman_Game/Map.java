@@ -65,7 +65,7 @@ public class Map {
 		double y = gps.y() - pStart.y();
 		double dx = x / pix.getX();
 		double dy = y / pix.getY();
-		Pixel ans = new Pixel (dx,dy);
+		Pixel ans = new Pixel (dx, dy);
 		gps.change_Cart_To_Geometric();
 		pStart.change_Cart_To_Geometric();
 		pEnd.change_Cart_To_Geometric();
