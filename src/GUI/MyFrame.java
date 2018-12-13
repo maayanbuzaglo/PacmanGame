@@ -25,45 +25,44 @@ import Packman_Game.Pixel;
 /*
  * This class represents the game frame.
  */
-public class MainWindow extends JFrame implements MouseListener {
-
-	public BufferedImage background;
-	public BufferedImage pacmanImage;
-	public BufferedImage fruitImage;
-	private boolean WhoAreYOU = true; //if true  - pacman. else - fruit.
-//	private boolean readCsv = true;
-	public ArrayList<Pacman> pList;
-	public ArrayList<Fruit> fList;
-	public ArrayList<Pixel> pacmanPixel;
-	public ArrayList<Pixel> fruitPixel;
-	public ArrayList<Point3D> pointListP;
-	public ArrayList<Point3D> pointListF;
-
+public class MyFrame extends JFrame implements MouseListener {
 
 	public Map m;
-	public int countPacman;
-	public int countFruit;
+	public BufferedImage background; //game background image.
+	public BufferedImage pacmanImage; //pacman icon.
+	public BufferedImage fruitImage; //fruit icon.
+	public ArrayList<Pacman> pList;
+	public ArrayList<Fruit> fList;
+	public ArrayList<Pixel> pacmanPixel; //pacmans pixels list.
+	public ArrayList<Pixel> fruitPixel; //fruits pixel list.
+	public ArrayList<Point3D> pointListP; //pacmans coordinates list.
+	public ArrayList<Point3D> pointListF; //fruits coordinates list.
+	public int countPacman; //pacman id.
+	public int countFruit; //fruit id.
+	private boolean WhoAreYOU; //if true - draws pacman. else - draws fruit.
 
 	/*
 	 * Constructor.
 	 */
-	public MainWindow() throws IOException {
+	public MyFrame() throws IOException {
+		
 		m = new Map();
 		pList = new ArrayList<Pacman>();
 		fList = new ArrayList<Fruit>();
-		pointListP = new ArrayList<Point3D>();
-		pointListF = new ArrayList<Point3D>();
 		pacmanPixel = new ArrayList<Pixel>();
 		fruitPixel = new ArrayList<Pixel>();
+		pointListP = new ArrayList<Point3D>();
+		pointListF = new ArrayList<Point3D>();
 		countPacman = 0;
-		countFruit = 0;		
+		countFruit = 0;
+		WhoAreYOU = true;
 
 		initGUI();		
 		this.addMouseListener(this);
 	}
 
 	/*
-	 * This functions makes the frame.
+	 * This function makes the frame.
 	 */
 	private void initGUI() {
 
@@ -75,12 +74,12 @@ public class MainWindow extends JFrame implements MouseListener {
 		Menu data = new Menu("Data"); //Data - Speed, Radius.
 		MenuItem speed = new MenuItem("Speed (pacman)");
 		MenuItem radius = new MenuItem("Radius (pacman)");
-		MenuItem price = new MenuItem("Price (fruit)");
+		MenuItem weight = new MenuItem("Weight (fruit)");
 
 		Menu options = new Menu("Options"); //Options - Create kml file, Create csv file, Export csv file, Clear.
 		MenuItem createKML = new MenuItem("Create kml file");
-		MenuItem readCSV = new MenuItem("Read csv file");
-		MenuItem exportCSV = new MenuItem("Export csv file");
+		MenuItem readCSV = new MenuItem("Read game");
+		MenuItem exportCSV = new MenuItem("Save game");
 		MenuItem clear = new MenuItem("Clear");
 
 		menuBar.add(icons);
@@ -90,7 +89,7 @@ public class MainWindow extends JFrame implements MouseListener {
 		menuBar.add(data);
 		data.add(speed);
 		data.add(radius);
-		data.add(price);
+		data.add(weight);
 
 		menuBar.add(options);
 		options.add(createKML);
@@ -158,15 +157,15 @@ public class MainWindow extends JFrame implements MouseListener {
 			}
 		});
 		
-		//listens to price key.
-		price.addActionListener(new ActionListener() {
+		//listens to weight key.
+		weight.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(!WhoAreYOU) {
 			        System.out.print("Enter fruit price: ");
 					Scanner sc = new Scanner(System.in);
-			        int price = sc.nextInt();
-			        fList.get(fList.size()-1).setPrice(price);
+			        int weight = sc.nextInt();
+			        fList.get(fList.size()-1).setWeight(weight);
 			        System.out.println(fList);
 				}	
 			}
@@ -221,7 +220,7 @@ public class MainWindow extends JFrame implements MouseListener {
 		
 		//gets the pacman image.
 		try {
-			pacmanImage = ImageIO.read(new File("C:\\Users\\nahama\\Desktop\\Ex3\\data\\pacman.jpg"));
+			pacmanImage = ImageIO.read(new File("C:\\Users\\מעיין\\eclipse-workspace\\OopNavigtion\\pictures\\pacman.png"));
 		}
 
 		catch (IOException e) {
@@ -230,7 +229,7 @@ public class MainWindow extends JFrame implements MouseListener {
 
 		//gets the fruit image.
 		try {
-			fruitImage = ImageIO.read(new File("C:\\Users\\nahama\\Desktop\\Ex3\\data\\fruit.jpg"));
+			fruitImage = ImageIO.read(new File("C:\\Users\\מעיין\\eclipse-workspace\\OopNavigtion\\pictures\\fruit.png"));
 		}
 		catch (IOException e) {
 			e.printStackTrace();
@@ -248,7 +247,7 @@ public class MainWindow extends JFrame implements MouseListener {
 	
 		g.drawImage(m.getImage(), 0, 0, this.getWidth(), this.getHeight(), this);
 		Pixel pFram = new Pixel(this.getWidth(), this.getHeight());
-		m.changFrame(pFram, pacmanPixel, fruitPixel);
+		m.changeFrame(pFram, pacmanPixel, fruitPixel);
 
 
 		for (int i = 0; i < pacmanPixel.size(); i++) {

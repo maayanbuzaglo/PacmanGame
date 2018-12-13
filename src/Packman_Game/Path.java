@@ -2,34 +2,42 @@ package Packman_Game;
 
 import java.util.ArrayList;
 
+/*
+ * This class represents a track consisting of a collection of points.
+ */
 public class Path {
 	
 	ArrayList<Line> path;
-	double dis;
+	double distance;
 	
-	public Path(ArrayList<Line> path) {
-		
-		this.path = path;
-		for(Line it: path)
-		{
-			this.dis += it.dis;
-		}
-	}
-	
+	/*
+	 * An empty constructor.
+	 */
 	public Path() {
 		
 		this.path = null;
-		this.dis = 0;
+		this.distance = 0;
+	}
+	
+	/*
+	 * Constructor.
+	 */
+	public Path(ArrayList<Line> path) {
+		
+		this.path = path;
+		for(Line it: path) {
+			this.distance += it.distance;
+		}
 	}
 
 	@Override
 	public String toString() {
 		return "Path [path = " + path +
-				", dis = " + dis + "]";
+				", Distance = " + distance + "]\n";
 	}
 
 	public ArrayList<Line> getPath() {
-		return path;
+		return this.path;
 	}
 
 	public void setPath(ArrayList<Line> path) {
@@ -37,10 +45,11 @@ public class Path {
 	}
 
 	public double getDis() {
-		return dis;
+		return distance;
 	}
 
-	public void setDis(double dis) {
-		this.dis = dis;
+	public void setDis(double distance) {
+		this.distance = distance;
 	}
+	
 }

@@ -12,22 +12,21 @@ public class Main {
 	@SuppressWarnings("null")
 	public static void main(String[] args) throws IOException {
 
-		//		Pacman p = new Pacman();
-		//		p.setRadius(1);
-		//		p.setSpeed(2);
-		//		p.setID(2);
-		//		ArrayList<Pacman> Pacman_list = new ArrayList<>();
-		//		ArrayList<Fruit> Fruit_list = new ArrayList<>();
-		//		Pacman_list.add(p);
-		//		Game g = new Game(Pacman_list, Fruit_list);
-		//
-		//		g.createCSV("C:\\Users\\מעיין\\Desktop\\data\\try.csv");
-		//		
-		MainWindow window = new MainWindow();
+//				Pacman p = new Pacman();
+//				p.setRadius(1);
+//				p.setSpeed(2);
+//				p.setID(2);
+//				ArrayList<Pacman> Pacman_list = new ArrayList<>();
+//				ArrayList<Fruit> Fruit_list = new ArrayList<>();
+//				Pacman_list.add(p);
+//				Game g = new Game(Pacman_list, Fruit_list);
+//		
+//				g.createCSV("C:\\Users\\מעיין\\Desktop\\data\\try.csv");
+//				
+		MyFrame window = new MyFrame();
 		window.setVisible(true);
 //		window.setSize(window.getWidth(), window.getHeight());
 		window.setSize(1433, 642);
-
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		//		Pacman p = new Pacman();

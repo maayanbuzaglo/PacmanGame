@@ -351,10 +351,10 @@ public class Point3D implements Geom_element, Serializable {
 		/**
 		 * The function changes the gps point from coordinates geometric to cartesian.
 		 */
-		public void chang_Geometric_To_Cart() {
+		public void change_Geometric_To_Cart() {
 
-			this._x = Math.toRadians(_x);// X From GPS To Rad
-			this._y = Math.toRadians(_y);// Y From GPS To Rad
+			this._x = Math.toRadians(_x); //X From GPS To Rad
+			this._y = Math.toRadians(_y); //Y From GPS To Rad
 			this._x = Math.sin(_x) * 6371000;
 			this._y = Math.sin(_y) * 6371000 * 0.847091174;	
 		}
@@ -362,7 +362,7 @@ public class Point3D implements Geom_element, Serializable {
 		/** 
 		 * The function changes the gps point from coordinates cartesian to geometric.
 		 */
-		public void chang_Cart_To_Geometric() {
+		public void change_Cart_To_Geometric() {
 
 			this._x = _x / 6371000;
 			this._y = (_y / 6371000) / 0.847091174;

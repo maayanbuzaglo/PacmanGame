@@ -4,37 +4,45 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
-
 import Geom.Point3D;
 
+/*
+ * This class represents a fruit.
+ */
 public class Fruit {
 
 	private Point3D location;
-	private long ID;
-	private int price;
+	private long id;
+	private int weight;
 
-	public Fruit()
-	{
-		location = new Point3D(0,0,0);
-		ID = 0;
-		this.price = 1;
+	/*
+	 * An empty constructor.
+	 */
+	public Fruit() {
+		
+		location = new Point3D(0, 0, 0);
+		id = 0;
+		this.weight = 1;
 	}
 
-	public Fruit(Point3D point, long ID,int price)
-	{
+	/*
+	 * Constructor.
+	 */
+	public Fruit(Point3D point, long id,int weight) {
+		
 		this.location = new Point3D(point);
-		this.ID = ID;
-		this.price = price;
-
+		this.id = id;
+		this.weight = weight;
 	}
 	
 	/*
-	 * This function gets a csv file (String)
+	 * This function gets a csv file (String),
 	 * split the elements by ",".
-	 * create for every line a Row_Locate,
-	 * and returns an array list of Row_Locate.
+	 * create for every line a fruit,
+	 * and returns an array list of fruits.
 	 */
 	public ArrayList<Fruit> ReadCsvFile(String file) {
+		
 		ArrayList<Fruit> Csv = new ArrayList<Fruit>();
 		Scanner sc = null;
 		File fi = new File(file); //gets the file.
@@ -54,7 +62,7 @@ public class Fruit {
 			double lon = Double.parseDouble(arr[3]); //changes the longitude from String to double.
 			double alt = Double.parseDouble(arr[4]); //changes the altitude from String to double.
 			Point3D point = new Point3D(lat, lon, alt);
-			int weight = Integer.parseInt(arr[5]); //changes the speed from String to double.
+			int weight = Integer.parseInt(arr[5]); //changes the weight from String to int.
 			Fruit row = new Fruit(point, id, weight);
 			Csv.add(row); //adds the line.
 			}
@@ -66,33 +74,32 @@ public class Fruit {
 	@Override
 	public String toString() {
 		return "Fruit [location = " + location +
-				", ID = " + ID +
-				", price = " + price + "]";
+				", ID = " + id +
+				", Weight = " + weight + "]\n";
 	}
-
-	public long getID() {
-		return ID;
-	}
-	
-	public void setID(long iD) {
-		ID = iD;
-	}
-	
 	
 	public Point3D getLocation() {
 		return location;
 	}
 	
-	public void setLocation(Point3D p) {
-		this.location = p;
-	}
-	
-	public int getPrice() {
-		return price;
+	public void setLocation(Point3D point) {
+		this.location = point;
 	}
 
-	public void setPrice(int price) {
-		this.price = price;
+	public long getID() {
+		return id;
+	}
+	
+	public void setID(long id) {
+		this.id = id;
+	}
+	
+	public int getWeight() {
+		return weight;
+	}
+
+	public void setWeight(int price) {
+		this.weight = price;
 	}
 
 }

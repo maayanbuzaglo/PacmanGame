@@ -9,60 +9,75 @@ import de.micromata.opengis.kml.v_2_2_0.Document;
 import de.micromata.opengis.kml.v_2_2_0.Kml;
 import de.micromata.opengis.kml.v_2_2_0.Placemark;
 
+/*
+ * This class represents a game which is made of pacmans and fruits.
+ */
 public class Game {
-	
-	public ArrayList<Pacman> Pacman_list;
-	public ArrayList<Fruit> Fruit_list;
-	
-	public Game(ArrayList<Pacman> pacman_list, ArrayList<Fruit> fruit_list) {
-		
-		this.Pacman_list = pacman_list;
-		this.Fruit_list = fruit_list;
-	}
-	
+
+	public ArrayList<Pacman> Pacman_list; //Pacman list.
+	public ArrayList<Fruit> Fruit_list; //Fruit list.
+
+	/*
+	 * An empty constructor.
+	 */
 	public Game() {
-		
+
 		this.Pacman_list = null;
 		this.Fruit_list = null;
 	}
-	
-	public void readCsv(String file) {
-		
-		Pacman p  = new Pacman();
-		this.Pacman_list = p.ReadCsvFile(file);
-		Fruit f = new Fruit();
-		this.Fruit_list = f.ReadCsvFile(file);
+
+	/*
+	 * Constructor.
+	 */
+	public Game(ArrayList<Pacman> pacman_list, ArrayList<Fruit> fruit_list) {
+
+		this.Pacman_list = pacman_list;
+		this.Fruit_list = fruit_list;
 	}
-	
+
+	/*
+	 * This function read a csv game file.
+	 */
+	public void readCsv(String file) {
+
+		Pacman p  = new Pacman();
+		this.Pacman_list = p.ReadCsvFile(file); //reads the fruits on the csv file.
+		Fruit f = new Fruit();
+		this.Fruit_list = f.ReadCsvFile(file); //reads the pacmans on the csv file.
+	}
+
+	/*
+	 * This function creates a csv game file.
+	 */
 	public void createCSV(Game g) {
-		
+
 		String file = "Type,id,Lat,Lon,Alt,Speed/Weight,Radius," + g.Pacman_list.size() + "," + g.Fruit_list.size() + "\n";
 		for(Pacman it: g.Pacman_list) {
 			file += "P," + it.getID() + ","
-		                 + it.getLocation().x() + ","
-		                 + it.getLocation().y() + "," 
-		                 + it.getLocation().z() + ","
-		                 + it.getSpeed() + ","
-		                 + it.getRadius() + ",,\n";
+					+ it.getLocation().x() + ","
+					+ it.getLocation().y() + "," 
+					+ it.getLocation().z() + ","
+					+ it.getSpeed() + ","
+					+ it.getRadius() + ",,\n";
 		}
 		for(Fruit it: g.Fruit_list) {
 			file += "F," + it.getID() + ","
-		                 + it.getLocation().x() + ","
-		                 + it.getLocation().y() + "," 
-		                 + it.getLocation().z() + ","
-		                 + it.getPrice() + ",,,\n";
+					+ it.getLocation().x() + ","
+					+ it.getLocation().y() + "," 
+					+ it.getLocation().z() + ","
+					+ it.getWeight() + ",,,\n";
 		}
 		createCSV2(file);
 	}
-	
+
 	/**
-	 * This function creates a csv file.
+	 * This function helps to create a csv file.
 	 */
 	public static void createCSV2(String f) {
-		
+
 		try {
-			File file = new File("game.csv");
-			if(!file.exists())
+			File file = new File("game.csv"); //csv name file.
+			if(!file.exists()) //checks if there is a file with the same name.
 				file.createNewFile();
 
 			PrintWriter print = new PrintWriter(file);
@@ -74,22 +89,22 @@ public class Game {
 			e.printStackTrace();
 		}
 	}
-	
+
 	/**
 	 * This function creates a kml file.
 	 */
 	public static void createKML(Game g, String f) {
-		
+
 		Kml kml = new Kml();
 		Document doc = kml.createAndSetDocument();
 		Placemark p = doc.createAndAddPlacemark();
-		for (Pacman it: g.Pacman_list) { //The iterator runs on a csv file (List of Row_Locate).
+		for (Pacman it: g.Pacman_list) { //The iterator runs on a csv file.
 			p.withDescription("Mac: " + it.getID())
 			.withOpen(Boolean.TRUE).createAndSetPoint().
 			addToCoordinates(it.getLocation().x(),it.getLocation().y());
 		}
-		
-		for (Fruit it: g.Fruit_list) { //The iterator runs on a csv file (List of Row_Locate).
+
+		for (Fruit it: g.Fruit_list) { //The iterator runs on a csv file.
 			p.withDescription("Mac: " + it.getID())
 			.withOpen(Boolean.TRUE).createAndSetPoint().
 			addToCoordinates(it.getLocation().x(),it.getLocation().y());
@@ -100,7 +115,6 @@ public class Game {
 			 * write to kml file
 			 */
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -120,5 +134,5 @@ public class Game {
 	public void setFruit_list(ArrayList<Fruit> fruit_list) {
 		Fruit_list = fruit_list;
 	}
-	
+
 }
