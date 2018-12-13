@@ -55,21 +55,35 @@ public class Map {
 	/*
 	 * This function converts from point to pixel.
 	 */
+	
 	public Pixel Point2Pixel(double longitude, double latitude) {
 		
-		double mapLongitudeStart = pStart.x();
-		double mapLatitudeStart = pStart.y();
-		double mapLongitude = pEnd.x() - mapLongitudeStart;
-		double mapLatitude = mapLatitudeStart - pEnd.y();
-		
-		double lng = longitude - mapLongitudeStart;
-	    double  lat = mapLatitudeStart-latitude;
-
-	    double x =  (image_weight * (lng / mapLongitude));
-	    double y =  (image_height * (lat / mapLatitude));
-
-	    return new Pixel((int)x, (int)y);
+		Pixel pix = pix_Worth_Point(image_weight, image_height);
+		Point3D gps = new Point3D (longitude,latitude);
+		gps.change_Geometric_To_Cart();
+		double x = gps.x() - pStart.x();
+		double y = gps.y() - pStart.y();
+		double dx = x / pix.getX();
+		double dy = y / pix.getY();
+		Pixel ans = new Pixel (dx,dy);
+		gps.change_Cart_To_Geometric();
+		pStart.change_Cart_To_Geometric();
+		pEnd.change_Cart_To_Geometric();
+		return ans;
 	}
+//		double mapLongitudeStart = pStart.x();
+//		double mapLatitudeStart = pStart.y();
+//		double mapLongitude = pEnd.x() - mapLongitudeStart;
+//		double mapLatitude = mapLatitudeStart - pEnd.y();
+//		
+//		double lng = longitude - mapLongitudeStart;
+//	    double  lat = mapLatitudeStart-latitude;
+//
+//	    double x =  (image_weight * (lng / mapLongitude));
+//	    double y =  (image_height * (lat / mapLatitude));
+//
+//	    return new Pixel((int)x, (int)y);
+//	}
 
 	/*
 	 * This function converts from pixel to point.
@@ -91,13 +105,13 @@ public class Map {
 	/*
 	 * This function helps the the Pixel2Point function.
 	 */
-	public Pixel pix_Worth_Point(double pixWidth, double pixHeight) {
+	public Pixel pix_Worth_Point(double pixWeight, double pixHeight) {
 
 		pStart.change_Geometric_To_Cart();
 		pEnd.change_Geometric_To_Cart();
 		double x = pEnd.x() - pStart.x();
 		double y = pEnd.y() - pStart.y();
-		double dx = x / pixWidth;
+		double dx = x / pixWeight;
 		double dy = y / pixHeight;
 		Pixel ans = new Pixel (dx,dy);
 		return ans;

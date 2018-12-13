@@ -97,24 +97,26 @@ public class Game {
 
 		Kml kml = new Kml();
 		Document doc = kml.createAndSetDocument();
-		Placemark p = doc.createAndAddPlacemark();
 		for (Pacman it: g.Pacman_list) { //The iterator runs on a csv file.
-			p.withDescription("Mac: " + it.getID())
+			Placemark p = doc.createAndAddPlacemark();
+			p.withDescription("Mac: " + it.getID() + "\nType: pacman")
 			.withOpen(Boolean.TRUE).createAndSetPoint().
 			addToCoordinates(it.getLocation().x(),it.getLocation().y());
 		}
 
 		for (Fruit it: g.Fruit_list) { //The iterator runs on a csv file.
-			p.withDescription("Mac: " + it.getID())
+			Placemark p = doc.createAndAddPlacemark();
+			p.withDescription("Mac: " + it.getID() + "\nType: fruit")
 			.withOpen(Boolean.TRUE).createAndSetPoint().
 			addToCoordinates(it.getLocation().x(),it.getLocation().y());
 		}
 		try {
-			kml.marshal(new File(f));  //"final.kml"
+			kml.marshal(new File(f));
 			/**
 			 * write to kml file
 			 */
-		} catch (FileNotFoundException e) {
+		}
+		catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
 	}

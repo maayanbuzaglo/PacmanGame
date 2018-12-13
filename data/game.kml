@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:xal="urn:oasis:names:tc:ciq:xsdschema:xAL:2.0">
+    <Document>
+        <Placemark>
+            <open>1</open>
+            <description>Mac: 0
+Type: pacman</description>
+            <Point>
+                <coordinates>35.2035022,32.1045513</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark>
+            <open>1</open>
+            <description>Mac: 1
+Type: pacman</description>
+            <Point>
+                <coordinates>35.21019738,32.10451344</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark>
+            <open>1</open>
+            <description>Mac: 2
+Type: pacman</description>
+            <Point>
+                <coordinates>35.21035679,32.1042768</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark>
+            <open>1</open>
+            <description>Mac: 0
+Type: fruit</description>
+            <Point>
+                <coordinates>35.20573393,32.10462702</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark>
+            <open>1</open>
+            <description>Mac: 1
+Type: fruit</description>
+            <Point>
+                <coordinates>35.20498036,32.10478793</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark>
+            <open>1</open>
+            <description>Mac: 2
+Type: fruit</description>
+            <Point>
+                <coordinates>35.20411086,32.10458916</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark>
+            <open>1</open>
+            <description>Mac: 3
+Type: fruit</description>
+            <Point>
+                <coordinates>35.2035022,32.1045513</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark>
+            <open>1</open>
+            <description>Mac: 4
+Type: fruit</description>
+            <Point>
+                <coordinates>35.20727005,32.10483526</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark>
+            <open>1</open>
+            <description>Mac: 5
+Type: fruit</description>
+            <Point>
+                <coordinates>35.20825549,32.1050151</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark>
+            <open>1</open>
+            <description>Mac: 6
+Type: fruit</description>
+            <Point>
+                <coordinates>35.20960322,32.1050435</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark>
+            <open>1</open>
+            <description>Mac: 7
+Type: fruit</description>
+            <Point>
+                <coordinates>35.20922643,32.10315989</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark>
+            <open>1</open>
+            <description>Mac: 8
+Type: fruit</description>
+            <Point>
+                <coordinates>35.20942932,32.10336813</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark>
+            <open>1</open>
+            <description>Mac: 9
+Type: fruit</description>
+            <Point>
+                <coordinates>35.20983508,32.10362369</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark>
+            <open>1</open>
+            <description>Mac: 10
+Type: fruit</description>
+            <Point>
+                <coordinates>35.21035679,32.1042768</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark>
+            <open>1</open>
+            <description>Mac: 11
+Type: fruit</description>
+            <Point>
+                <coordinates>35.21019738,32.10451344</coordinates>
+            </Point>
+        </Placemark>
+    </Document>
+</kml>

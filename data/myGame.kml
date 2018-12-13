@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:xal="urn:oasis:names:tc:ciq:xsdschema:xAL:2.0">
+    <Document>
+        <Placemark>
+            <open>1</open>
+            <description>Mac: 1
+Type: pacman</description>
+            <Point>
+                <coordinates>35.20707024216263,32.10251255761955</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark>
+            <open>1</open>
+            <description>Mac: 2
+Type: pacman</description>
+            <Point>
+                <coordinates>35.20762539214771,32.10267090451222</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark>
+            <open>1</open>
+            <description>Mac: 3
+Type: pacman</description>
+            <Point>
+                <coordinates>35.20768161007934,32.102262857308176</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark>
+            <open>1</open>
+            <description>Mac: 4
+Type: pacman</description>
+            <Point>
+                <coordinates>35.20712645970992,32.10216541346941</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark>
+            <open>1</open>
+            <description>Mac: 1
+Type: fruit</description>
+            <Point>
+                <coordinates>35.20780107331333,32.102944967090636</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark>
+            <open>1</open>
+            <description>Mac: 2
+Type: fruit</description>
+            <Point>
+                <coordinates>35.20777999155339,32.10327993358114</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark>
+            <open>1</open>
+            <description>Mac: 3
+Type: fruit</description>
+            <Point>
+                <coordinates>35.20778701880609,32.10365144330757</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark>
+            <open>1</open>
+            <description>Mac: 4
+Type: fruit</description>
+            <Point>
+                <coordinates>35.20778701880609,32.104053406353124</coordinates>
+            </Point>
+        </Placemark>
+    </Document>
+</kml>

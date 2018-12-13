@@ -176,7 +176,7 @@ public class MyFrame extends JFrame implements MouseListener {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Game g = new Game(pList, fList);
-				g.createKML(g, "C:\\Users\\nahama\\eclipse-workspace\\OopNavigtion\\myGame.kml");
+				g.createKML(g, "C:\\Users\\מעיין\\eclipse-workspace\\OopNavigtion\\data\\myGame.kml");
 			}
 		});
 		

@@ -68,7 +68,6 @@ public class Csv2kml {
 			 * write to kml file
 			 */
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
