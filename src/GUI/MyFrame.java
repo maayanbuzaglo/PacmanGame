@@ -35,8 +35,6 @@ public class MyFrame extends JFrame implements MouseListener {
 	public ArrayList<Fruit> fList;
 	public ArrayList<Pixel> pacmanPixel; //pacmans pixels list.
 	public ArrayList<Pixel> fruitPixel; //fruits pixel list.
-	public ArrayList<Point3D> pointListP; //pacmans coordinates list.
-	public ArrayList<Point3D> pointListF; //fruits coordinates list.
 	public int countPacman; //pacman id.
 	public int countFruit; //fruit id.
 	private boolean WhoAreYOU; //if true - draws pacman. else - draws fruit.
@@ -51,8 +49,6 @@ public class MyFrame extends JFrame implements MouseListener {
 		fList = new ArrayList<Fruit>();
 		pacmanPixel = new ArrayList<Pixel>();
 		fruitPixel = new ArrayList<Pixel>();
-		pointListP = new ArrayList<Point3D>();
-		pointListF = new ArrayList<Point3D>();
 		countPacman = 0;
 		countFruit = 0;
 		WhoAreYOU = true;
