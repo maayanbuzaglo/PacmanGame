@@ -16,6 +16,7 @@ public class Pacman {
 	double speed;
 	double radius;
 	public double time;
+	public Path pat;
 
 	/*
 	 * An empty constructor.
@@ -26,7 +27,8 @@ public class Pacman {
 		this.id = 0;
 		this.speed = 1;
 		this.radius = 1;
-		time = 0;
+		this.time = 0;
+		this.pat = new Path();
 	}
 
 	/*
@@ -38,6 +40,8 @@ public class Pacman {
 		this.id = p.getID();
 		this.speed = p.getSpeed();
 		this.radius = p.getRadius();
+		this.pat = p.getPat();
+
 	}
 	
 	/*
@@ -49,6 +53,8 @@ public class Pacman {
 		this.id = id;
 		this.speed = speed;
 		this.radius = radius;
+		this.pat = new Path();
+
 	}
 
 	/*
@@ -128,6 +134,14 @@ public class Pacman {
 		this.time = time;
 	}
 
+	public Path getPat() {
+		return this.pat;
+	}
+
+	public void setPat(Path pat) {
+		this.pat = pat;
+	}
+
 	@Override
 	public String toString() {
 
@@ -135,7 +149,9 @@ public class Pacman {
 				", ID = " + id + 
 				", Speed = " + speed +
 				", Radius = " + radius +
-				", Time = " + time + "]\n";
+				", Time = " + time + 
+				pat.toString() + "]\n";
+
 	}
 
 	/*

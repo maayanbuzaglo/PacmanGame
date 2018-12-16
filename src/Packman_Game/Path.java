@@ -19,7 +19,7 @@ public class Path {
 
 		this.path = new ArrayList<Line>();
 		this.distance = 0;
-		this.pacman = null;
+		this.pacman = this.pacman;
 		this.fruit_list = new ArrayList<Fruit>();
 
 	}
@@ -53,10 +53,13 @@ public class Path {
 
 	@Override
 	public String toString() {
-		return "Path [Path = " + path.toString() + 
-				", Distance = " + distance + 
-				", Pacman =" + pacman.toString() +
+		String s="Path: ";
+		for (int i = 0; i < path.size(); i++) {
+			s += path.get(i).toString()+ ", ";
+		}
+		s += "Pacman =" + pacman.toString() +
 				", Fruit list = " + fruit_list.toString() + "]\n";
+		return s;
 	}
 
 	public ArrayList<Line> getPath() {

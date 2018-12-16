@@ -172,7 +172,7 @@ public class MyFrame extends JFrame implements MouseListener {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Game g = new Game(pList, fList);
-				g.createKML(g, "C:\\Users\\מעיין\\eclipse-workspace\\OopNavigtion\\data\\myGame.kml");
+				g.createKML(g, "C:\\Users\\nahama\\eclipse-workspace\\OopNavigtion\\data\\myGame.kml");
 			}
 		});
 		
@@ -185,7 +185,7 @@ public class MyFrame extends JFrame implements MouseListener {
 				fList.clear();
 				pacmanPixel.clear();
 				fruitPixel.clear();
-				g.readCsv("C:\\\\Users\\\\מעיין\\\\eclipse-workspace\\\\OopNavigtion\\\\data\\\\game_1543693822377.csv");
+				g.readCsv("C:\\\\Users\\\\nahama\\\\eclipse-workspace\\\\OopNavigtion\\\\data\\\\game_1543693822377.csv");
 			
 				for(Pacman it: g.Pacman_list) {
 					pList.add(it);
@@ -218,7 +218,7 @@ public class MyFrame extends JFrame implements MouseListener {
 		
 		//gets the pacman image.
 		try {
-			pacmanImage = ImageIO.read(new File("C:\\Users\\מעיין\\eclipse-workspace\\OopNavigtion\\pictures\\pacman.png"));
+			pacmanImage = ImageIO.read(new File("C:\\Users\\nahama\\eclipse-workspace\\OopNavigtion\\data\\pacman.jpg"));
 		}
 
 		catch (IOException e) {
@@ -227,7 +227,7 @@ public class MyFrame extends JFrame implements MouseListener {
 
 		//gets the fruit image.
 		try {
-			fruitImage = ImageIO.read(new File("C:\\Users\\מעיין\\eclipse-workspace\\OopNavigtion\\pictures\\fruit.png"));
+			fruitImage = ImageIO.read(new File("C:\\Users\\nahama\\eclipse-workspace\\OopNavigtion\\data\\fruit.jpg"));
 		}
 		catch (IOException e) {
 			e.printStackTrace();

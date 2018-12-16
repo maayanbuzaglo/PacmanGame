@@ -1,5 +1,6 @@
 package Packman_Game;
 
+import Coords.Coords;
 import Geom.Point3D;
 
 /*
@@ -10,6 +11,7 @@ public class Line {
 	Point3D point1;
 	Point3D point2;
 	double distance; //the distance between the 2 points.
+	Coords c = new Coords();
 	
 	public Line() {
 		
@@ -22,7 +24,7 @@ public class Line {
 		
 		this.point1 = p1;
 		this.point2 = p2;
-		this.distance = p1.distance3D(p2);
+		this.distance = c.distance2d(p1, p2);
 	}
 
 	@Override
@@ -37,7 +39,7 @@ public class Line {
 	}
 
 	public void setPoint1(Point3D p1) {
-		this.point2 = p1;
+		this.point1 = p1;
 	}
 
 	public Point3D getPoint2() {
