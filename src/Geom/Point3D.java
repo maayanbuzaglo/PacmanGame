@@ -372,4 +372,5 @@ public class Point3D implements Geom_element, Serializable {
 			this._y = Math.toDegrees(_y);
 		}
 		
+		
 }

@@ -11,10 +11,11 @@ import Geom.Point3D;
  */
 public class Pacman {
 
-	private Point3D location;
-	private long id;
-	private double speed;
-	private double radius;
+	Point3D location;
+	long id;
+	double speed;
+	double radius;
+	public double time;
 
 	/*
 	 * An empty constructor.
@@ -25,8 +26,20 @@ public class Pacman {
 		this.id = 0;
 		this.speed = 1;
 		this.radius = 1;
+		time = 0;
 	}
 
+	/*
+	 * Constructor.
+	 */
+	public Pacman(Pacman p) {
+
+		this.location = new Point3D(p.getLocation().x(), p.getLocation().y(), p.getLocation().z());;
+		this.id = p.getID();
+		this.speed = p.getSpeed();
+		this.radius = p.getRadius();
+	}
+	
 	/*
 	 * Constructor.
 	 */
@@ -100,11 +113,19 @@ public class Pacman {
 	}
 
 	public double getRadius() {
-		return radius;
+		return this.radius;
 	}
 
 	public void setRadius(double radius) {
 		this.radius = radius;
+	}
+
+	public double getTime() {
+		return this.time;
+	}
+
+	public void setTime(double time) {
+		this.time = time;
 	}
 
 	@Override
@@ -113,7 +134,8 @@ public class Pacman {
 		return "Pacman [location = " + location + 
 				", ID = " + id + 
 				", Speed = " + speed +
-				", Radius = " + radius + "]\n";
+				", Radius = " + radius +
+				", Time = " + time + "]\n";
 	}
 
 	/*
@@ -124,25 +146,6 @@ public class Pacman {
 		this.location.set_x(location.x() + Xmove);
 		this.location.set_y(location.y() + Ymove);
 		this.location.set_z(location.z() + Zmove);
-	}
-
-	/*
-	 * This function gets the closest fruit to the pacman.
-	 */
-	public Fruit closestFruit(ArrayList<Fruit> fruit_list) {
-
-		double distance = this.location.distance3D(fruit_list.get(0).getLocation());
-		long id = 0;
-		int weight = 0;
-		Point3D point = fruit_list.get(0).getLocation();
-		for(Fruit it: fruit_list) {
-			if(this.location.distance3D(it.getLocation()) < distance) {
-				point = it.getLocation();
-				id = it.getID();
-				weight = it.getWeight();
-			}
-		}
-		return new Fruit(point, id, weight);
 	}
 
 	/*
@@ -166,6 +169,13 @@ public class Pacman {
 	public int numEatenfruits(ArrayList<Fruit> list) {
 
 		return eatenFruits(list).size();
+	}
+	
+	public static void main(String[] args) {
+		
+		Game g = new Game();
+		g.readCsv("C:\\Users\\מעיין\\eclipse-workspace\\OopNavigtion\\data\\game_1543693822377.csv");
+//		System.out.println(g.Pacman_list.get(0).closestFruit(g.Fruit_list));
 	}
 
 }

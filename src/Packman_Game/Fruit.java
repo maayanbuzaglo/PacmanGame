@@ -28,6 +28,16 @@ public class Fruit {
 	/*
 	 * Constructor.
 	 */
+	public Fruit(Fruit f) {
+		
+		this.location = new Point3D(f.getLocation());
+		this.id = f.getID();
+		this.weight = f.getWeight();
+	}
+	
+	/*
+	 * Constructor.
+	 */
 	public Fruit(Point3D point, long id,int weight) {
 		
 		this.location = new Point3D(point);

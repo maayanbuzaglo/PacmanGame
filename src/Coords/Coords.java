@@ -26,6 +26,21 @@ public class Coords implements coords_converter {
 	 * I used this website to get information for this function:
 	 * https://stackoverflow.com/questions/5557706/calculating-distance-using-latitude-longitude-coordinates-in-kilometers-with-jav
 	 */
+	
+	public double distance2d(Point3D gps0, Point3D gps1)
+	{
+		double lon_norm = Math.cos(gps0.x() * Math.PI / 180);
+		double dis_lat = gps1.x() - gps0.x();
+		double dis_lon = gps1.y() - gps0.y();
+		dis_lat = gps0.d2r(dis_lat);
+		dis_lon = gps0.d2r(dis_lon);
+		dis_lat = Math.sin(dis_lat) * earth_rad;
+		dis_lon = Math.sin(dis_lon) * earth_rad * lon_norm;
+		double dis = dis_lat * dis_lat + dis_lon * dis_lon;
+		return Math.sqrt(dis);
+	}
+	
+	
 	@Override
 	public double distance3d(Point3D gps0, Point3D gps1) {
 

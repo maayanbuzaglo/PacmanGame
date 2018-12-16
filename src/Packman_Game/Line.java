@@ -11,6 +11,13 @@ public class Line {
 	Point3D point2;
 	double distance; //the distance between the 2 points.
 	
+	public Line() {
+		
+		this.point1 = null;
+		this.point2 = null;
+		this.distance = 0;
+	}
+	
 	public Line(Point3D p1, Point3D p2) {
 		
 		this.point1 = p1;
@@ -22,7 +29,7 @@ public class Line {
 	public String toString() {
 		return "Line [Point1 = " + point1 +
 				", Point2 = " + point2 + 
-				", Distance = " + distance + "]";
+				", Distance = " + distance + "]\n";
 	}
 
 	public Point3D getPoint1() {

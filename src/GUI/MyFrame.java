@@ -185,7 +185,7 @@ public class MyFrame extends JFrame implements MouseListener {
 				fList.clear();
 				pacmanPixel.clear();
 				fruitPixel.clear();
-				g.readCsv("C:\\Users\\מעיין\\eclipse-workspace\\OopNavigtion\\data\\game_1543693822377.csv");
+				g.readCsv("C:\\\\Users\\\\מעיין\\\\eclipse-workspace\\\\OopNavigtion\\\\data\\\\game_1543693822377.csv");
 			
 				for(Pacman it: g.Pacman_list) {
 					pList.add(it);
@@ -198,7 +198,7 @@ public class MyFrame extends JFrame implements MouseListener {
 					fList.add(it);
 					
 					Pixel f = new Pixel(m.Point2Pixel(it.getLocation().y(), it.getLocation().x()));
-					System.out.println(f);
+					System.out.println(f.toString() +" :" +it.getID());
 					fruitPixel.add(f);
 				}
 
@@ -252,11 +252,11 @@ public class MyFrame extends JFrame implements MouseListener {
 			
 			g.drawImage(pacmanImage, (int)pacmanPixel.get(i).getX(), (int)pacmanPixel.get(i).getY(), 30, 30, this);
 
-			System.out.println("(" + pacmanPixel.get(i).getX() + "," + pacmanPixel.get(i).getY() + ")");
+//			System.out.println("(" + pacmanPixel.get(i).getX() + "," + pacmanPixel.get(i).getY() + ")");
 		}
 		for (int i = 0; i < fruitPixel.size(); i++) {
 			
-			System.out.println("(" + fruitPixel.get(i).getX() + "," + fruitPixel.get(i).getY() + ")");
+//			System.out.println("(" + fruitPixel.get(i).getX() + "," + fruitPixel.get(i).getY() + ")");
 
 			g.drawImage(fruitImage, (int)fruitPixel.get(i).getX(), (int)fruitPixel.get(i).getY(), 40, 30, this);
 		}
@@ -287,6 +287,7 @@ public class MyFrame extends JFrame implements MouseListener {
 			fList.add(fru);
 		}
 		repaint();		
+		System.out.println("----"+ x+" ,"+y);
 	}
 
 	@Override
