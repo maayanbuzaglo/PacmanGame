@@ -21,6 +21,7 @@ import Packman_Game.Game;
 import Packman_Game.Map;
 import Packman_Game.Pacman;
 import Packman_Game.Pixel;
+import Packman_Game.ShortestPathAlgo;
 
 /*
  * This class represents the game frame.
@@ -43,7 +44,7 @@ public class MyFrame extends JFrame implements MouseListener {
 	 * Constructor.
 	 */
 	public MyFrame() throws IOException {
-		
+
 		m = new Map();
 		pList = new ArrayList<Pacman>();
 		fList = new ArrayList<Fruit>();
@@ -51,6 +52,25 @@ public class MyFrame extends JFrame implements MouseListener {
 		fruitPixel = new ArrayList<Pixel>();
 		countPacman = 0;
 		countFruit = 0;
+		WhoAreYOU = true;
+
+		initGUI();		
+		this.addMouseListener(this);
+	}
+	
+	/*
+	 * Constructor.
+	 */
+	public MyFrame(Game game) throws IOException {
+
+		m = new Map();
+		pList =  game.Pacman_list;
+		fList = game.Fruit_list;
+		pacmanPixel = new ArrayList<Pixel>();
+		fruitPixel = new ArrayList<Pixel>();
+		countPacman = pList.size();
+		countFruit = fList.size();
+		repaint();
 		WhoAreYOU = true;
 
 		initGUI();		
@@ -73,6 +93,7 @@ public class MyFrame extends JFrame implements MouseListener {
 		MenuItem weight = new MenuItem("Weight (fruit)");
 
 		Menu options = new Menu("Options"); //Options - Create kml file, Create csv file, Export csv file, Clear.
+		MenuItem run = new MenuItem("Run");
 		MenuItem createKML = new MenuItem("Create kml file");
 		MenuItem readCSV = new MenuItem("Read game");
 		MenuItem exportCSV = new MenuItem("Save game");
@@ -88,6 +109,7 @@ public class MyFrame extends JFrame implements MouseListener {
 		data.add(weight);
 
 		menuBar.add(options);
+		options.add(run);
 		options.add(createKML);
 		options.add(readCSV);
 		options.add(exportCSV);
@@ -124,17 +146,17 @@ public class MyFrame extends JFrame implements MouseListener {
 				repaint();
 			}
 		});
-		
+
 		//listens to speed key.
 		speed.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(WhoAreYOU) {
-		        System.out.print("Enter pacman speed: ");
-				Scanner sc = new Scanner(System.in);
-		        double speed = sc.nextDouble();
-		        pList.get(pList.size()-1).setSpeed(speed);
-		        System.out.println(pList);
+					System.out.print("Enter pacman speed: ");
+					Scanner sc = new Scanner(System.in);
+					double speed = sc.nextDouble();
+					pList.get(pList.size()-1).setSpeed(speed);
+					System.out.println(pList);
 				}
 			}
 		});
@@ -144,26 +166,44 @@ public class MyFrame extends JFrame implements MouseListener {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(WhoAreYOU) {
-		        System.out.print("Enter pacman radius: ");
-				Scanner sc = new Scanner(System.in);
-		        double radius = sc.nextDouble();
-		        pList.get(pList.size()-1).setRadius(radius);
-		        System.out.println(pList);
+					System.out.print("Enter pacman radius: ");
+					Scanner sc = new Scanner(System.in);
+					double radius = sc.nextDouble();
+					pList.get(pList.size()-1).setRadius(radius);
+					System.out.println(pList);
 				}
 			}
 		});
-		
+
 		//listens to weight key.
 		weight.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(!WhoAreYOU) {
-			        System.out.print("Enter fruit price: ");
+					System.out.print("Enter fruit price: ");
 					Scanner sc = new Scanner(System.in);
-			        int weight = sc.nextInt();
-			        fList.get(fList.size()-1).setWeight(weight);
-			        System.out.println(fList);
+					int weight = sc.nextInt();
+					fList.get(fList.size()-1).setWeight(weight);
+					System.out.println(fList);
 				}	
+			}
+		});
+
+		//listens to pacman key.
+		run.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				ShortestPathAlgo shortPath = new ShortestPathAlgo();
+				Game g = new Game(pList, fList);
+//				System.out.println(pList);
+//				System.out.println(pacmanPixel);
+				try {
+					shortPath.closestFruit(g);
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				repaint(); //?
 			}
 		});
 
@@ -172,10 +212,10 @@ public class MyFrame extends JFrame implements MouseListener {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Game g = new Game(pList, fList);
-				g.createKML(g, "C:\\Users\\nahama\\eclipse-workspace\\OopNavigtion\\data\\myGame.kml");
+				g.createKML(g, "C:\\Users\\מעיין\\eclipse-workspace\\OopNavigtion\\data\\myGame.kml");
 			}
 		});
-		
+
 		//listens to read csv file key.
 		readCSV.addActionListener(new ActionListener() {
 			@Override
@@ -185,27 +225,26 @@ public class MyFrame extends JFrame implements MouseListener {
 				fList.clear();
 				pacmanPixel.clear();
 				fruitPixel.clear();
-				g.readCsv("C:\\\\Users\\\\nahama\\\\eclipse-workspace\\\\OopNavigtion\\\\data\\\\game_1543693822377.csv");
-			
+				g.readCsv("C:\\Users\\מעיין\\eclipse-workspace\\OopNavigtion\\data\\game_1543693822377.csv");
 				for(Pacman it: g.Pacman_list) {
 					pList.add(it);
-					
+
 					Pixel p = new Pixel(m.Point2Pixel(it.getLocation().y(),it.getLocation().x()));
-					System.out.println(p);
 					pacmanPixel.add(p);
 				}
 				for(Fruit it: g.Fruit_list) {
 					fList.add(it);
-					
+
 					Pixel f = new Pixel(m.Point2Pixel(it.getLocation().y(), it.getLocation().x()));
 					System.out.println(f.toString() +" :" +it.getID());
 					fruitPixel.add(f);
 				}
-
+				System.out.println(pList.toString()); //delete
+				System.out.println(pacmanPixel.toString()); //delete
 				repaint();
 			}
 		});
-		
+
 		//listens to create kml file key.
 		exportCSV.addActionListener(new ActionListener() {
 			@Override
@@ -215,10 +254,9 @@ public class MyFrame extends JFrame implements MouseListener {
 			}
 		});
 
-		
 		//gets the pacman image.
 		try {
-			pacmanImage = ImageIO.read(new File("C:\\Users\\nahama\\eclipse-workspace\\OopNavigtion\\data\\pacman.jpg"));
+			pacmanImage = ImageIO.read(new File("C:\\Users\\מעיין\\eclipse-workspace\\OopNavigtion\\pictures\\pacman.png"));
 		}
 
 		catch (IOException e) {
@@ -227,7 +265,7 @@ public class MyFrame extends JFrame implements MouseListener {
 
 		//gets the fruit image.
 		try {
-			fruitImage = ImageIO.read(new File("C:\\Users\\nahama\\eclipse-workspace\\OopNavigtion\\data\\fruit.jpg"));
+			fruitImage = ImageIO.read(new File("C:\\Users\\מעיין\\eclipse-workspace\\OopNavigtion\\pictures\\fruit.png"));
 		}
 		catch (IOException e) {
 			e.printStackTrace();
@@ -242,26 +280,28 @@ public class MyFrame extends JFrame implements MouseListener {
 	 * @see java.awt.Window#paint(java.awt.Graphics)
 	 */
 	public void paint(Graphics g) {
-	
+
 		g.drawImage(m.getImage(), 0, 0, this.getWidth(), this.getHeight(), this);
 		Pixel pFram = new Pixel(this.getWidth(), this.getHeight());
+		pacmanPixel = new ArrayList<Pixel>();
+		fruitPixel = new ArrayList<Pixel>();
+		for (int i = 0; i < pList.size(); i++) {
+			Pixel pix = m.Point2Pixel(pList.get(i).getLocation().x(), pList.get(i).getLocation().y());
+			pacmanPixel.add(pix);
+		}
+		for (int i = 0; i < fList.size(); i++) {
+			Pixel pix = m.Point2Pixel(fList.get(i).getLocation().x(), fList.get(i).getLocation().y());
+			fruitPixel.add(pix);
+		}
 		m.changeFrame(pFram, pacmanPixel, fruitPixel);
-
-
 		for (int i = 0; i < pacmanPixel.size(); i++) {
-			
 			g.drawImage(pacmanImage, (int)pacmanPixel.get(i).getX(), (int)pacmanPixel.get(i).getY(), 30, 30, this);
-
-//			System.out.println("(" + pacmanPixel.get(i).getX() + "," + pacmanPixel.get(i).getY() + ")");
 		}
 		for (int i = 0; i < fruitPixel.size(); i++) {
-			
-//			System.out.println("(" + fruitPixel.get(i).getX() + "," + fruitPixel.get(i).getY() + ")");
-
 			g.drawImage(fruitImage, (int)fruitPixel.get(i).getX(), (int)fruitPixel.get(i).getY(), 40, 30, this);
 		}
 	}
-
+	
 	/*
 	 * This function handles mouse clicks events.
 	 * @see java.awt.event.MouseListener#mouseClicked(java.awt.event.MouseEvent)
@@ -287,27 +327,26 @@ public class MyFrame extends JFrame implements MouseListener {
 			fList.add(fru);
 		}
 		repaint();		
-		System.out.println("----"+ x+" ,"+y);
 	}
 
 	@Override
 	public void mouseEntered(MouseEvent arg0) {
-		
+
 	}
 
 	@Override
 	public void mouseExited(MouseEvent arg0) {
-		
+
 	}
 
 	@Override
 	public void mousePressed(MouseEvent arg0) {
-		
+
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent arg0) {
-		
+
 	}
 
 }

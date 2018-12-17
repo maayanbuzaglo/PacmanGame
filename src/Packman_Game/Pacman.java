@@ -16,7 +16,7 @@ public class Pacman {
 	double speed;
 	double radius;
 	public double time;
-	public Path pat;
+	public Path path;
 
 	/*
 	 * An empty constructor.
@@ -28,7 +28,7 @@ public class Pacman {
 		this.speed = 1;
 		this.radius = 1;
 		this.time = 0;
-		this.pat = new Path();
+		this.path = new Path();
 	}
 
 	/*
@@ -40,8 +40,7 @@ public class Pacman {
 		this.id = p.getID();
 		this.speed = p.getSpeed();
 		this.radius = p.getRadius();
-		this.pat = p.getPat();
-
+		this.path = p.getPath();
 	}
 	
 	/*
@@ -53,8 +52,7 @@ public class Pacman {
 		this.id = id;
 		this.speed = speed;
 		this.radius = radius;
-		this.pat = new Path();
-
+		this.path = new Path();
 	}
 
 	/*
@@ -80,8 +78,8 @@ public class Pacman {
 			String[] arr = in.split(","); //splits the elements by ",";
 			if(arr[0].equals("P")) {
 				int id = Integer.parseInt(arr[1]); //changes the id from String to int.
-				double lat = Double.parseDouble(arr[2]); //changes the latitude from String to double.
-				double lon = Double.parseDouble(arr[3]); //changes the longitude from String to double.
+				double lat = Double.parseDouble(arr[3]); //changes the longitude from String to double.
+				double lon = Double.parseDouble(arr[2]); //changes the latitude from String to double.
 				double alt = Double.parseDouble(arr[4]); //changes the altitude from String to double.
 				Point3D point = new Point3D(lat, lon, alt);
 				double speed = Double.parseDouble(arr[5]); //changes the speed from String to double.
@@ -134,12 +132,12 @@ public class Pacman {
 		this.time = time;
 	}
 
-	public Path getPat() {
-		return this.pat;
+	public Path getPath() {
+		return this.path;
 	}
 
-	public void setPat(Path pat) {
-		this.pat = pat;
+	public void setPath(Path path) {
+		this.path = path;
 	}
 
 	@Override
@@ -150,7 +148,7 @@ public class Pacman {
 				", Speed = " + speed +
 				", Radius = " + radius +
 				", Time = " + time + 
-				pat.toString() + "]\n";
+				", Path = " + path.toString() + "]\n";
 
 	}
 

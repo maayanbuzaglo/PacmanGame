@@ -11,7 +11,6 @@ public class Line {
 	Point3D point1;
 	Point3D point2;
 	double distance; //the distance between the 2 points.
-	Coords c = new Coords();
 	
 	public Line() {
 		
@@ -22,6 +21,7 @@ public class Line {
 	
 	public Line(Point3D p1, Point3D p2) {
 		
+		Coords c = new Coords();
 		this.point1 = p1;
 		this.point2 = p2;
 		this.distance = c.distance2d(p1, p2);

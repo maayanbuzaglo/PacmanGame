@@ -24,7 +24,7 @@ public class Map {
 	 */
 	public Map() throws IOException {
 
-		image = ImageIO.read(new File("C:\\Users\\nahama\\eclipse-workspace\\OopNavigtion\\pictures\\Ariel1.png")); //gets the backgrounds image.
+		image = ImageIO.read(new File("C:\\Users\\מעיין\\eclipse-workspace\\OopNavigtion\\pictures\\Ariel1.png")); //gets the backgrounds image.
 		pStart = new Point3D(35.20232, 32.10571);
 		pEnd = new Point3D(35.21239, 32.10180);
 		image_height = 642;
@@ -36,7 +36,7 @@ public class Map {
 	 */
 	public Map(int width, int height) throws IOException {
 
-		image = ImageIO.read(new File("C:\\Users\\nahama\\eclipse-workspace\\OopNavigtion\\pictures\\Ariel1.png")); //gets the backgrounds image.
+		image = ImageIO.read(new File("C:\\Users\\מעיין\\eclipse-workspace\\OopNavigtion\\pictures\\Ariel1.png")); //gets the backgrounds image.
 		pStart = new Point3D(35.20232, 32.10571);
 		pEnd = new Point3D(35.21239, 32.10180);
 		image_height = height;
@@ -71,19 +71,22 @@ public class Map {
 		pEnd.change_Cart_To_Geometric();
 		return ans;
 	}
-//		double mapLongitudeStart = pStart.x();
-//		double mapLatitudeStart = pStart.y();
-//		double mapLongitude = pEnd.x() - mapLongitudeStart;
-//		double mapLatitude = mapLatitudeStart - pEnd.y();
-//		
-//		double lng = longitude - mapLongitudeStart;
-//	    double  lat = mapLatitudeStart-latitude;
-//
-//	    double x =  (image_weight * (lng / mapLongitude));
-//	    double y =  (image_height * (lat / mapLatitude));
-//
-//	    return new Pixel((int)x, (int)y);
-//	}
+	
+	public Pixel Point2Pixel2(double longitude, double latitude) {
+		
+		double mapLongitudeStart = pStart.x();
+		double mapLatitudeStart = pStart.y();
+		double mapLongitude = pEnd.x() - mapLongitudeStart;
+		double mapLatitude = mapLatitudeStart - pEnd.y();
+		
+		double lng = longitude - mapLongitudeStart;
+	    double  lat = mapLatitudeStart-latitude;
+
+	    double x =  (image_weight * (lng / mapLongitude));
+	    double y =  (image_height * (lat / mapLatitude));
+
+	    return new Pixel((int)x, (int)y);
+	}
 
 	/*
 	 * This function converts from pixel to point.

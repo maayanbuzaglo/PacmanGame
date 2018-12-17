@@ -9,7 +9,6 @@ public class Path {
 
 	ArrayList<Line> path;
 	double distance;
-	Pacman pacman;
 	ArrayList<Fruit> fruit_list;
 
 	/*
@@ -19,25 +18,14 @@ public class Path {
 
 		this.path = new ArrayList<Line>();
 		this.distance = 0;
-		this.pacman = this.pacman;
 		this.fruit_list = new ArrayList<Fruit>();
-
 	}
 
 	public Path(Pacman pac) {
 
 		this.path = new ArrayList<Line>();
 		this.distance = 0;
-		this.pacman = new Pacman(pac);
 		this.fruit_list = new ArrayList<Fruit>();
-	}
-
-	public Pacman getPacman() {
-		return this.pacman;
-	}
-
-	public void setPacman(Pacman pacman) {
-		this.pacman = pacman;
 	}
 
 	/*
@@ -53,12 +41,10 @@ public class Path {
 
 	@Override
 	public String toString() {
-		String s="Path: ";
+		String s = "Path: ";
 		for (int i = 0; i < path.size(); i++) {
-			s += path.get(i).toString()+ ", ";
+			s += path.get(i).toString()+ ", ";		
 		}
-		s += "Pacman =" + pacman.toString() +
-				", Fruit list = " + fruit_list.toString() + "]\n";
 		return s;
 	}
 
