@@ -18,6 +18,7 @@ import javax.swing.JFrame;
 import Geom.Point3D;
 import Packman_Game.Fruit;
 import Packman_Game.Game;
+import Packman_Game.Line;
 import Packman_Game.Map;
 import Packman_Game.Pacman;
 import Packman_Game.Pixel;
@@ -32,8 +33,11 @@ public class MyFrame extends JFrame implements MouseListener {
 	public BufferedImage background; //game background image.
 	public BufferedImage pacmanImage; //pacman icon.
 	public BufferedImage fruitImage; //fruit icon.
+	public ArrayList<Line> lList;
 	public ArrayList<Pacman> pList;
 	public ArrayList<Fruit> fList;
+	public ArrayList<Pixel> linePixel; //lines pixels list.
+	public ArrayList<Pixel> linePixel2; //lines pixels list.
 	public ArrayList<Pixel> pacmanPixel; //pacmans pixels list.
 	public ArrayList<Pixel> fruitPixel; //fruits pixel list.
 	public int countPacman; //pacman id.
@@ -46,6 +50,7 @@ public class MyFrame extends JFrame implements MouseListener {
 	public MyFrame() throws IOException {
 
 		m = new Map();
+		lList = new ArrayList<Line>();
 		pList = new ArrayList<Pacman>();
 		fList = new ArrayList<Fruit>();
 		pacmanPixel = new ArrayList<Pixel>();
@@ -57,7 +62,7 @@ public class MyFrame extends JFrame implements MouseListener {
 		initGUI();		
 		this.addMouseListener(this);
 	}
-	
+
 	/*
 	 * Constructor.
 	 */
@@ -139,8 +144,10 @@ public class MyFrame extends JFrame implements MouseListener {
 			public void actionPerformed(ActionEvent e) {
 				pList.clear();
 				fList.clear();
+				lList.clear();
 				pacmanPixel.clear();
 				fruitPixel.clear();
+				linePixel.clear();
 				countPacman = 0;
 				countFruit = 0;
 				repaint();
@@ -194,9 +201,9 @@ public class MyFrame extends JFrame implements MouseListener {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				ShortestPathAlgo shortPath = new ShortestPathAlgo();
-				Game g = new Game(pList, fList);
-//				System.out.println(pList);
-//				System.out.println(pacmanPixel);
+				Game g = new Game(pList, fList , lList);
+				//				System.out.println(pList);
+				//				System.out.println(pacmanPixel);
 				try {
 					shortPath.closestFruit(g);
 				} catch (IOException e1) {
@@ -211,7 +218,7 @@ public class MyFrame extends JFrame implements MouseListener {
 		createKML.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Game g = new Game(pList, fList);
+				Game g = new Game(pList, fList ,lList);
 				g.createKML(g, "C:\\Users\\מעיין\\eclipse-workspace\\OopNavigtion\\data\\myGame.kml");
 			}
 		});
@@ -229,13 +236,13 @@ public class MyFrame extends JFrame implements MouseListener {
 				for(Pacman it: g.Pacman_list) {
 					pList.add(it);
 
-					Pixel p = new Pixel(m.Point2Pixel(it.getLocation().y(),it.getLocation().x()));
+					Pixel p = new Pixel(m.Point2Pixel(it.getLocation().x(),it.getLocation().y()));
 					pacmanPixel.add(p);
 				}
 				for(Fruit it: g.Fruit_list) {
 					fList.add(it);
 
-					Pixel f = new Pixel(m.Point2Pixel(it.getLocation().y(), it.getLocation().x()));
+					Pixel f = new Pixel(m.Point2Pixel(it.getLocation().x(), it.getLocation().y()));
 					System.out.println(f.toString() +" :" +it.getID());
 					fruitPixel.add(f);
 				}
@@ -249,7 +256,7 @@ public class MyFrame extends JFrame implements MouseListener {
 		exportCSV.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Game g = new Game(pList, fList);
+				Game g = new Game(pList, fList, lList);
 				g.createCSV(g);
 			}
 		});
@@ -285,15 +292,35 @@ public class MyFrame extends JFrame implements MouseListener {
 		Pixel pFram = new Pixel(this.getWidth(), this.getHeight());
 		pacmanPixel = new ArrayList<Pixel>();
 		fruitPixel = new ArrayList<Pixel>();
+		linePixel = new ArrayList<Pixel>();
+		linePixel2 = new ArrayList<Pixel>();
+
+		for (int i = 0; i < lList.size(); i++) {
+			Pixel pix = m.Point2Pixel(lList.get(i).getPoint1().x(), lList.get(i).getPoint1().y());
+			System.out.println("==========" + pix);
+			linePixel.add(pix);
+		}
+
+		for (int i = 0; i < lList.size(); i++) {
+			Pixel pix = m.Point2Pixel(lList.get(i).getPoint2().x(), lList.get(i).getPoint2().y());
+			linePixel2.add(pix);
+		}
+
 		for (int i = 0; i < pList.size(); i++) {
 			Pixel pix = m.Point2Pixel(pList.get(i).getLocation().x(), pList.get(i).getLocation().y());
 			pacmanPixel.add(pix);
+			System.out.println("========" + pacmanPixel);
 		}
+
 		for (int i = 0; i < fList.size(); i++) {
 			Pixel pix = m.Point2Pixel(fList.get(i).getLocation().x(), fList.get(i).getLocation().y());
 			fruitPixel.add(pix);
 		}
-		m.changeFrame(pFram, pacmanPixel, fruitPixel);
+
+		m.changeFrame(pFram, pacmanPixel, fruitPixel, linePixel);
+		for (int i = 0; i < linePixel.size(); i++) {
+			g.drawLine((int)linePixel.get(i).getX(), (int)linePixel.get(i).getY(), (int)linePixel2.get(i).getX(), (int)linePixel2.get(i).getY());
+		}
 		for (int i = 0; i < pacmanPixel.size(); i++) {
 			g.drawImage(pacmanImage, (int)pacmanPixel.get(i).getX(), (int)pacmanPixel.get(i).getY(), 30, 30, this);
 		}
@@ -301,7 +328,7 @@ public class MyFrame extends JFrame implements MouseListener {
 			g.drawImage(fruitImage, (int)fruitPixel.get(i).getX(), (int)fruitPixel.get(i).getY(), 40, 30, this);
 		}
 	}
-	
+
 	/*
 	 * This function handles mouse clicks events.
 	 * @see java.awt.event.MouseListener#mouseClicked(java.awt.event.MouseEvent)

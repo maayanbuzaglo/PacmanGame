@@ -60,7 +60,8 @@ public class ShortestPathAlgo {
 				}
 			}
 			l = new Packman_Game.Line(eatData.getPacman().getLocation(), fruitLeft.get(eatData.getIndexFruit()).getLocation());
-			g.Pacman_list.get(indexPacman).getPath().add(l); //add the line to the pacman path.
+			g.Line_list.add(l);
+//			g.Pacman_list.get(indexPacman).getPath().add(l); //add the line to the pacman path.
 			g.Pacman_list.get(indexPacman).setTime(eatData.getTime()); //seting the time of the pacman that ate.
 			g.Pacman_list.get(indexPacman).setLocation(fruitLeft.get(eatData.getIndexFruit()).getLocation()); //moving the pacman to the location of the fruit.
 			g.getFruit_list().remove(eatData.getIndexFruit());
@@ -86,5 +87,5 @@ public class ShortestPathAlgo {
 		closestFruit(g);
 		System.out.println(g.getPacman_list().toString());
 	}
-}	
+}
 

@@ -18,6 +18,7 @@ public class Game {
 
 	public ArrayList<Pacman> Pacman_list; //Pacman list.
 	public ArrayList<Fruit> Fruit_list; //Fruit list.
+	public ArrayList<Line> Line_list;
 
 	/*
 	 * An empty constructor.
@@ -26,15 +27,17 @@ public class Game {
 
 		this.Pacman_list = null;
 		this.Fruit_list = null;
+		this.Line_list = null;
 	}
 
 	/*
 	 * Constructor.
 	 */
-	public Game(ArrayList<Pacman> pacman_list, ArrayList<Fruit> fruit_list) {
+	public Game(ArrayList<Pacman> pacman_list, ArrayList<Fruit> fruit_list, ArrayList<Line> line_list) {
 
 		this.Pacman_list = pacman_list;
 		this.Fruit_list = fruit_list;
+		this.Line_list = line_list;
 	}
 
 	/*
