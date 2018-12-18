@@ -38,7 +38,7 @@ public class Fruit {
 	/*
 	 * Constructor.
 	 */
-	public Fruit(Point3D point, long id,int weight) {
+	public Fruit(Point3D point, long id, int weight) {
 		
 		this.location = new Point3D(point);
 		this.id = id;
@@ -68,8 +68,8 @@ public class Fruit {
 			String[] arr = in.split(","); //splits the elements by ",";
 			if(arr[0].equals("F")) {
 			int id = Integer.parseInt(arr[1]); //changes the id from String to int.
-			double lat = Double.parseDouble(arr[3]); //changes the longitude from String to double.
-			double lon = Double.parseDouble(arr[2]); //changes the latitude from String to double.
+			double lon = Double.parseDouble(arr[2]); //changes the longitude from String to double.
+			double lat = Double.parseDouble(arr[3]); //changes the latitude from String to double.
 			double alt = Double.parseDouble(arr[4]); //changes the altitude from String to double.
 			Point3D point = new Point3D(lat, lon, alt);
 			int weight = Integer.parseInt(arr[5]); //changes the weight from String to int.

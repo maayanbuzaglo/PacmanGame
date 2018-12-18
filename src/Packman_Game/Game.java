@@ -5,20 +5,18 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-
-import Geom.Point3D;
 import de.micromata.opengis.kml.v_2_2_0.Document;
 import de.micromata.opengis.kml.v_2_2_0.Kml;
 import de.micromata.opengis.kml.v_2_2_0.Placemark;
 
 /*
- * This class represents a game which is made of pacmans and fruits.
+ * This class represents a game that mades of pacmans and fruits.
  */
 public class Game {
 
 	public ArrayList<Pacman> Pacman_list; //Pacman list.
 	public ArrayList<Fruit> Fruit_list; //Fruit list.
-	public ArrayList<Line> Line_list;
+	public ArrayList<Line> Line_list; //Line list.
 
 	/*
 	 * An empty constructor.
@@ -81,7 +79,7 @@ public class Game {
 	public static void createCSV2(String f) {
 
 		try {
-			File file = new File("game.csv"); //csv name file.
+			File file = new File("Game.csv"); //csv name file.
 			if(!file.exists()) //checks if there is a file with the same name.
 				file.createNewFile();
 
@@ -102,6 +100,7 @@ public class Game {
 
 		Kml kml = new Kml();
 		Document doc = kml.createAndSetDocument();
+		
 		for (Pacman it: g.Pacman_list) { //The iterator runs on a csv file.
 			Placemark p = doc.createAndAddPlacemark();
 			p.withDescription("Mac: " + it.getID() + "\nType: pacman")
@@ -118,7 +117,7 @@ public class Game {
 		try {
 			kml.marshal(new File(f));
 			/**
-			 * write to kml file
+			 * write to kml file.
 			 */
 		}
 		catch (FileNotFoundException e) {

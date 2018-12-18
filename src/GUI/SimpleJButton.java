@@ -8,7 +8,7 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 /*
- * source: https://javatutorial.net/jframe-buttons-listeners-text-fields
+ * source: https://javatutorial.net/jframe-buttons-listeners-text-fields.
  */
 public class SimpleJButton {
 

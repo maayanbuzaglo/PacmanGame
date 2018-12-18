@@ -12,6 +12,9 @@ public class Line {
 	Point3D point2;
 	double distance; //the distance between the 2 points.
 	
+	/*
+	 * An empty constructor.
+	 */
 	public Line() {
 		
 		this.point1 = null;
@@ -19,6 +22,9 @@ public class Line {
 		this.distance = 0;
 	}
 	
+	/*
+	 * Constructor.
+	 */
 	public Line(Point3D p1, Point3D p2) {
 		
 		Coords c = new Coords();

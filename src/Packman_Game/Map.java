@@ -5,12 +5,10 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import javax.imageio.ImageIO;
-import javax.swing.JFrame;
-
 import Geom.Point3D;
 
 /*
- * This class represents a map that contains a map image file
+ * This class represents a map that contains a map image file,
  * and all the necessary parameters of its alignment to a global coordinate system.
  */
 public class Map {
@@ -57,10 +55,9 @@ public class Map {
 	/*
 	 * This function converts from point to pixel.
 	 */
-	
 	public Pixel Point2Pixel(double longitude, double latitude) {
 		
-		Pixel pix = pix_Worth_Point(image_weight, image_height);
+		Pixel pix = Pixel2Point2(image_weight, image_height);
 		Point3D gps = new Point3D (longitude,latitude);
 		gps.change_Geometric_To_Cart();
 		double x = gps.x() - pStart.x();
@@ -73,29 +70,13 @@ public class Map {
 		pEnd.change_Cart_To_Geometric();
 		return ans;
 	}
-	
-	public Pixel Point2Pixel2(double longitude, double latitude) {
-		
-		double mapLongitudeStart = pStart.x();
-		double mapLatitudeStart = pStart.y();
-		double mapLongitude = pEnd.x() - mapLongitudeStart;
-		double mapLatitude = mapLatitudeStart - pEnd.y();
-		
-		double lng = longitude - mapLongitudeStart;
-	    double  lat = mapLatitudeStart-latitude;
-
-	    double x =  (image_weight * (lng / mapLongitude));
-	    double y =  (image_height * (lat / mapLatitude));
-
-	    return new Pixel((int)x, (int)y);
-	}
 
 	/*
 	 * This function converts from pixel to point.
 	 */
 	public Point3D Pixel2Point(Pixel pixel)  {
 
-		Pixel pix = pix_Worth_Point(image_weight, image_height);
+		Pixel pix = Pixel2Point2(image_weight, image_height);
 		double x = pixel.getX() * pix.getX();
 		double y = pixel.getY() * pix.getY();
 		double dx = x + pStart.x();
@@ -108,9 +89,9 @@ public class Map {
 	}
 
 	/*
-	 * This function helps the the Pixel2Point function.
+	 * This function helps the Pixel2Point function.
 	 */
-	public Pixel pix_Worth_Point(double pixWeight, double pixHeight) {
+	public Pixel Pixel2Point2(double pixWeight, double pixHeight) {
 
 		pStart.change_Geometric_To_Cart();
 		pEnd.change_Geometric_To_Cart();
