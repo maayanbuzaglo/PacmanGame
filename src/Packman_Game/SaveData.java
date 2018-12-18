@@ -1,5 +1,10 @@
 package Packman_Game;
 
+/*
+ * This class represents the data of the pacman should eat next,
+ * the fruit should be eaten next,
+ * and the time it took.
+ */
 public class SaveData {
 
 	Pacman pacman;
@@ -7,6 +12,9 @@ public class SaveData {
 	double time;
 	int indexFruit;
 
+	/*
+	 * An empty constructor.
+	 */
 	public SaveData() {
 
 		this.pacman = null;
@@ -15,15 +23,20 @@ public class SaveData {
 		this.indexFruit = 0;
 	}
 
+	/*
+	 * Constructor.
+	 */
 	public SaveData(Pacman pacman, Fruit fruit,	double time, int indexFruit) {
 
 		this.pacman = new Pacman(pacman);
 		this.fruit = fruit;
 		this.time = time;
 		this.indexFruit = indexFruit;
-
 	}
 
+	/*
+	 * Constructor.
+	 */
 	public SaveData(SaveData s) {
 
 		this.pacman = new Pacman(s.getPacman());
@@ -31,9 +44,13 @@ public class SaveData {
 		this.time = s.getTime();
 		this.indexFruit = s.indexFruit;
 	}
+	
 	@Override
 	public String toString() {
-		return "SaveData [pacman=" + pacman.getID() + ", fruit=" + fruit.getID() + ", time=" + time + ", indexFruit=" + indexFruit + "]";
+		return "Step [Pacman = " + pacman.getID() +
+				", Fruit = " + fruit.getID() +
+				", Time = " + time +
+				", Index fruit = " + indexFruit + "]";
 	}
 
 	public Pacman getPacman() {

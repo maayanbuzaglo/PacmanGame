@@ -9,7 +9,6 @@ public class Path {
 
 	ArrayList<Line> path;
 	double distance;
-	ArrayList<Fruit> fruit_list;
 
 	/*
 	 * An empty constructor.
@@ -18,14 +17,12 @@ public class Path {
 
 		this.path = new ArrayList<Line>();
 		this.distance = 0;
-		this.fruit_list = new ArrayList<Fruit>();
 	}
 
 	public Path(Pacman pac) {
 
 		this.path = new ArrayList<Line>();
 		this.distance = 0;
-		this.fruit_list = new ArrayList<Fruit>();
 	}
 
 	/*
@@ -37,6 +34,13 @@ public class Path {
 		for(Line it: path) {
 			this.distance += it.distance;
 		}
+	}
+
+	/*
+	 * This function adds a line to the path.
+	 */
+	public void add(Line line) {
+		this.path.add(line);
 	}
 
 	@Override
@@ -62,10 +66,6 @@ public class Path {
 
 	public void setDis(double distance) {
 		this.distance = distance;
-	}
-
-	public void add(Line line) {
-		this.path.add(line);
 	}
 
 }

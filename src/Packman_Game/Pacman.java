@@ -16,7 +16,6 @@ public class Pacman {
 	double speed;
 	double radius;
 	public double time;
-	public Path path;
 
 	/*
 	 * An empty constructor.
@@ -28,7 +27,6 @@ public class Pacman {
 		this.speed = 1;
 		this.radius = 1;
 		this.time = 0;
-		this.path = new Path();
 	}
 
 	/*
@@ -40,7 +38,6 @@ public class Pacman {
 		this.id = p.getID();
 		this.speed = p.getSpeed();
 		this.radius = p.getRadius();
-		this.path = p.getPath();
 	}
 	
 	/*
@@ -52,7 +49,6 @@ public class Pacman {
 		this.id = id;
 		this.speed = speed;
 		this.radius = radius;
-		this.path = new Path();
 	}
 
 	/*
@@ -132,14 +128,6 @@ public class Pacman {
 		this.time = time;
 	}
 
-	public Path getPath() {
-		return this.path;
-	}
-
-	public void setPath(Path path) {
-		this.path = path;
-	}
-
 	@Override
 	public String toString() {
 
@@ -147,49 +135,40 @@ public class Pacman {
 				", ID = " + id + 
 				", Speed = " + speed +
 				", Radius = " + radius +
-				", Time = " + time + 
-				", Path = " + path.toString() + "]\n";
-
+				", Time = " + time + "]\n";
 	}
 
-	/*
-	 * This function makes the pacman move to a new point.
-	 */
-	public void move(double Xmove, double Ymove, double Zmove) {
+//	/*
+//	 * This function makes the pacman move to a new point.
+//	 */
+//	public void move(double Xmove, double Ymove, double Zmove) {
+//
+//		this.location.set_x(location.x() + Xmove);
+//		this.location.set_y(location.y() + Ymove);
+//		this.location.set_z(location.z() + Zmove);
+//	}
 
-		this.location.set_x(location.x() + Xmove);
-		this.location.set_y(location.y() + Ymove);
-		this.location.set_z(location.z() + Zmove);
-	}
+//	/*
+//	 * This function gets a list of eaten fruits.
+//	 */
+//	public ArrayList<Fruit> eatenFruits(ArrayList<Fruit> list) {
+//		
+//		ArrayList<Fruit> eatenFruits = new ArrayList<Fruit>();
+//		for(Fruit it: list) {
+//			if (this.location.x() == it.getLocation().x()
+//			 && this.location.y() == it.getLocation().y()) {
+//				eatenFruits.add(it);
+//			}
+//		}
+//		return eatenFruits;
+//	}
 
-	/*
-	 * This function gets a list of eaten fruits.
-	 */
-	public ArrayList<Fruit> eatenFruits(ArrayList<Fruit> list) {
-		
-		ArrayList<Fruit> eatenFruits = new ArrayList<Fruit>();
-		for(Fruit it: list) {
-			if (this.location.x() == it.getLocation().x()
-			 && this.location.y() == it.getLocation().y()) {
-				eatenFruits.add(it);
-			}
-		}
-		return eatenFruits;
-	}
-
-	/*
-	 * This function returns the number of eaten fruits.
-	 */
-	public int numEatenfruits(ArrayList<Fruit> list) {
-
-		return eatenFruits(list).size();
-	}
-	
-	public static void main(String[] args) {
-		
-		Game g = new Game();
-		g.readCsv("C:\\Users\\מעיין\\eclipse-workspace\\OopNavigtion\\data\\game_1543693822377.csv");
-//		System.out.println(g.Pacman_list.get(0).closestFruit(g.Fruit_list));
-	}
+//	/*
+//	 * This function returns the number of eaten fruits.
+//	 */
+//	public int numEatenfruits(ArrayList<Fruit> list) {
+//
+//		return eatenFruits(list).size();
+//	}
 
 }

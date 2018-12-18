@@ -16,6 +16,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.Scanner;
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
@@ -227,8 +228,10 @@ public class MyFrame extends JFrame implements MouseListener {
 				//clears all before read a new game.
 				pList.clear();
 				fList.clear();
+				lList.clear();
 				pacmanPixel.clear();
 				fruitPixel.clear();
+				linePixel.clear();
 				g.readCsv("C:\\Users\\מעיין\\eclipse-workspace\\OopNavigtion\\data\\game_1543693911932_b.csv");
 				//adds all the pacmans in the game to pacman list in this game.
 				for(Pacman it: g.Pacman_list) {
@@ -331,9 +334,9 @@ public class MyFrame extends JFrame implements MouseListener {
 		//draws all the lines on the list.
 		for (int i = 0; i < linePixel.size(); i++) {
 		    Graphics2D g2 = (Graphics2D) g;
-			g2.drawLine((int)linePixel.get(i).getX(), (int)linePixel.get(i).getY(), (int)linePixel2.get(i).getX(), (int)linePixel2.get(i).getY());
 			g2.setStroke(new BasicStroke(1));
 			g2.setColor(Color.orange);
+			g2.drawLine((int)linePixel.get(i).getX(), (int)linePixel.get(i).getY(), (int)linePixel2.get(i).getX(), (int)linePixel2.get(i).getY());
 		}
 	}
 

@@ -2,15 +2,13 @@ package Packman_Game;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import javax.sound.sampled.Line;
-import javax.swing.RepaintManager;
-
-import org.junit.experimental.max.MaxCore;
 import Coords.Coords;
 import GUI.MyFrame;
-import Geom.Point3D;
 import Packman_Game.Game;
 
+/*
+ * This class represents an efficient algorithm which computes the path of every pacman.
+ */
 public class ShortestPathAlgo {
 
 	public static ArrayList<Path> closestFruit(Game g) throws IOException {
@@ -29,7 +27,7 @@ public class ShortestPathAlgo {
 			Path path = new Path(g.getPacman_list().get(i));
 			path_List.add(path);
 		}
-		while (!fruitLeft.isEmpty()) { //until there are fruits to eat.
+		while (!fruitLeft.isEmpty()) { //until there are no more fruits to eat.
 			int indexFruit = 0;
 			int indexPacman = 0;
 			data_List = new ArrayList<SaveData>();
@@ -61,31 +59,32 @@ public class ShortestPathAlgo {
 			}
 			l = new Packman_Game.Line(eatData.getPacman().getLocation(), fruitLeft.get(eatData.getIndexFruit()).getLocation());
 			g.Line_list.add(l);
-//			g.Pacman_list.get(indexPacman).getPath().add(l); //add the line to the pacman path.
-			g.Pacman_list.get(indexPacman).setTime(eatData.getTime()); //seting the time of the pacman that ate.
-			g.Pacman_list.get(indexPacman).setLocation(fruitLeft.get(eatData.getIndexFruit()).getLocation()); //moving the pacman to the location of the fruit.
+			g.Pacman_list.get(indexPacman).setTime(eatData.getTime()); //sets the time of the pacman that ate.
+			g.Pacman_list.get(indexPacman).setLocation(fruitLeft.get(eatData.getIndexFruit()).getLocation()); //moves the pacman to the location of the fruit.
 			g.getFruit_list().remove(eatData.getIndexFruit());
-			fruitLeft.remove(eatData.getIndexFruit()); // removing the fruit.
+			fruitLeft.remove(eatData.getIndexFruit()); // removes the fruit.
 			MyFrame frame = new MyFrame(g);
-//			frame.repaint();
-//			frame.changePlace(g.Pacman_list.get(indexPacman));
 			System.out.println(eatData.toString());
 		}
 		return null;
 	}
 
-	public static void main(String[] args) throws IOException {
-
-		Game g = new Game();
-		g.readCsv("C:\\Users\\מעיין\\eclipse-workspace\\OopNavigtion\\data\\game_1543693822377.csv");
-		for (Pacman it1: g.Pacman_list) {
-			System.out.println(it1.toString());
-		}
-		for (Fruit it: g.Fruit_list) {
-			System.out.println(it.toString());
-		}
-		closestFruit(g);
-		System.out.println(g.getPacman_list().toString());
-	}
+//	/*
+//	 * Example.
+//	 */
+//	public static void main(String[] args) throws IOException {
+//
+//		Game g = new Game();
+//		g.readCsv("C:\\Users\\מעיין\\eclipse-workspace\\OopNavigtion\\data\\game_1543693822377.csv");
+//		for (Pacman it1: g.Pacman_list) {
+//			System.out.println(it1.toString());
+//		}
+//		for (Fruit it: g.Fruit_list) {
+//			System.out.println(it.toString());
+//		}
+//		g.Line_list = new ArrayList<Line>();
+//		closestFruit(g);
+//	}
+	
 }
 

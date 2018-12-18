@@ -1,7 +1,6 @@
 package Utils;
 
 import java.util.Random;
-
 import Geom.Circle;
 import Geom.Point3D;
 
@@ -56,4 +55,5 @@ public class MyRandom {
 		double dy = norm * Math.sin(ang);
 		return new Point3D(x + dx, y + dy, z);
 	}
+	
 }

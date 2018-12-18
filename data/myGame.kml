@@ -1,4 +1,197 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:xal="urn:oasis:names:tc:ciq:xsdschema:xAL:2.0">
-    <Document/>
+    <Document>
+        <Placemark>
+            <open>1</open>
+            <description>Mac: 2
+Type: pacman</description>
+            <Point>
+                <coordinates>35.20724539,32.10394266</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark>
+            <open>1</open>
+            <description>Mac: 3
+Type: pacman</description>
+            <Point>
+                <coordinates>35.20758436,32.10404121</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark>
+            <open>1</open>
+            <description>Mac: 4
+Type: pacman</description>
+            <Point>
+                <coordinates>35.20758436,32.103813</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark>
+            <open>1</open>
+            <description>Mac: 29
+Type: fruit</description>
+            <Point>
+                <coordinates>35.20709657,32.10415012</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark>
+            <open>1</open>
+            <description>Mac: 30
+Type: fruit</description>
+            <Point>
+                <coordinates>35.20674934,32.10441982</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark>
+            <open>1</open>
+            <description>Mac: 31
+Type: fruit</description>
+            <Point>
+                <coordinates>35.20638557,32.10463247</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark>
+            <open>1</open>
+            <description>Mac: 32
+Type: fruit</description>
+            <Point>
+                <coordinates>35.20589779,32.10479325</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark>
+            <open>1</open>
+            <description>Mac: 33
+Type: fruit</description>
+            <Point>
+                <coordinates>35.20546788,32.10489179</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark>
+            <open>1</open>
+            <description>Mac: 34
+Type: fruit</description>
+            <Point>
+                <coordinates>35.20790679,32.10418643</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark>
+            <open>1</open>
+            <description>Mac: 35
+Type: fruit</description>
+            <Point>
+                <coordinates>35.20835323,32.10448724</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark>
+            <open>1</open>
+            <description>Mac: 36
+Type: fruit</description>
+            <Point>
+                <coordinates>35.20860952,32.10463765</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark>
+            <open>1</open>
+            <description>Mac: 37
+Type: fruit</description>
+            <Point>
+                <coordinates>35.20909731,32.10489179</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark>
+            <open>1</open>
+            <description>Mac: 38
+Type: fruit</description>
+            <Point>
+                <coordinates>35.20813001,32.10434721</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark>
+            <open>1</open>
+            <description>Mac: 39
+Type: fruit</description>
+            <Point>
+                <coordinates>35.20779931,32.10358998</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark>
+            <open>1</open>
+            <description>Mac: 40
+Type: fruit</description>
+            <Point>
+                <coordinates>35.20788199,32.10315431</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark>
+            <open>1</open>
+            <description>Mac: 41
+Type: fruit</description>
+            <Point>
+                <coordinates>35.20784892,32.10292092</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark>
+            <open>1</open>
+            <description>Mac: 42
+Type: fruit</description>
+            <Point>
+                <coordinates>35.20773317,32.10259936</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark>
+            <open>1</open>
+            <description>Mac: 43
+Type: fruit</description>
+            <Point>
+                <coordinates>35.20738594,32.10236597</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark>
+            <open>1</open>
+            <description>Mac: 44
+Type: fruit</description>
+            <Point>
+                <coordinates>35.2066832,32.10256305</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark>
+            <open>1</open>
+            <description>Mac: 45
+Type: fruit</description>
+            <Point>
+                <coordinates>35.20617062,32.10280682</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark>
+            <open>1</open>
+            <description>Mac: 46
+Type: fruit</description>
+            <Point>
+                <coordinates>35.20544308,32.1030817</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark>
+            <open>1</open>
+            <description>Mac: 47
+Type: fruit</description>
+            <Point>
+                <coordinates>35.2049553,32.10367296</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark>
+            <open>1</open>
+            <description>Mac: 48
+Type: fruit</description>
+            <Point>
+                <coordinates>35.20490569,32.10417087</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark>
+            <open>1</open>
+            <description>Mac: 49
+Type: fruit</description>
+            <Point>
+                <coordinates>35.20498837,32.10444575</coordinates>
+            </Point>
+        </Placemark>
+    </Document>
 </kml>

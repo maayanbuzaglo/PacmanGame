@@ -1,9 +1,7 @@
 package Utils;
 
 import static org.junit.jupiter.api.Assertions.*;
-
 import org.junit.jupiter.api.Test;
-
 import Geom.Circle;
 import Geom.Point3D;
 
@@ -11,6 +9,7 @@ class MyRandomTest {
 
 	@Test
 	void testMyRandomLong() {
+		
 		long s = 31;
 		MyRandom r1 = new MyRandom(s);
 		MyRandom r2 = new MyRandom(s);
@@ -40,7 +39,7 @@ class MyRandomTest {
 		for(int i = 0; i < times; i++) {
 			double d = r1.nextInRange(min, max);
 			if(d < min || d >= max) {
-				fail("ERR: the random should be between ["+min+","+max+")");
+				fail("ERR: the random should be between [" + min + "," + max + ")");
 			}
 		}
 	}
@@ -103,4 +102,5 @@ class MyRandomTest {
 		}
 	//	System.out.println("% below half a radius " + rp);
 	}
+	
 }
