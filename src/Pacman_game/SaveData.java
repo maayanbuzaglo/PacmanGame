@@ -1,4 +1,4 @@
-package Packman_Game;
+package Pacman_game;
 
 /*
  * This class represents the data of the pacman should eat next,
@@ -50,7 +50,7 @@ public class SaveData {
 		return "Step [Pacman = " + pacman.getID() +
 				", Fruit = " + fruit.getID() +
 				", Time = " + time +
-				", Index fruit = " + indexFruit + "]";
+				", Fruit index = " + indexFruit + "]";
 	}
 
 	public Pacman getPacman() {

@@ -1,4 +1,4 @@
-package Packman_Game;
+package Pacman_game;
 
 /*
  * This class represents a pixel in the game.

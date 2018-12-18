@@ -1,4 +1,4 @@
-package Packman_Game;
+package Pacman_game;
 
 import java.awt.Image;
 import java.io.File;

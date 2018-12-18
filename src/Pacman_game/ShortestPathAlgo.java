@@ -1,10 +1,10 @@
-package Packman_Game;
+package Pacman_game;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import Coords.Coords;
 import GUI.MyFrame;
-import Packman_Game.Game;
+import Pacman_game.Game;
 
 /*
  * This class represents an efficient algorithm which computes the path of every pacman.
@@ -16,7 +16,7 @@ public class ShortestPathAlgo {
 		double time;
 		Fruit fruitEaten = null;
 		Coords c = new Coords();
-		Packman_Game.Line l = null;
+		Pacman_game.Line l = null;
 		ArrayList<Fruit> fruitLeft = new ArrayList<Fruit>(); //list of the fruits left. 
 		ArrayList<Path> path_List = new ArrayList<Path>();
 		ArrayList<SaveData> data_List;
@@ -57,7 +57,7 @@ public class ShortestPathAlgo {
 					indexPacman = i;
 				}
 			}
-			l = new Packman_Game.Line(eatData.getPacman().getLocation(), fruitLeft.get(eatData.getIndexFruit()).getLocation());
+			l = new Pacman_game.Line(eatData.getPacman().getLocation(), fruitLeft.get(eatData.getIndexFruit()).getLocation());
 			g.Line_list.add(l);
 			g.Pacman_list.get(indexPacman).setTime(eatData.getTime()); //sets the time of the pacman that ate.
 			g.Pacman_list.get(indexPacman).setLocation(fruitLeft.get(eatData.getIndexFruit()).getLocation()); //moves the pacman to the location of the fruit.

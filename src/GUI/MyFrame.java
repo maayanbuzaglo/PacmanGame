@@ -21,13 +21,13 @@ import java.util.Scanner;
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 import Geom.Point3D;
-import Packman_Game.Fruit;
-import Packman_Game.Game;
-import Packman_Game.Line;
-import Packman_Game.Map;
-import Packman_Game.Pacman;
-import Packman_Game.Pixel;
-import Packman_Game.ShortestPathAlgo;
+import Pacman_game.Fruit;
+import Pacman_game.Game;
+import Pacman_game.Line;
+import Pacman_game.Map;
+import Pacman_game.Pacman;
+import Pacman_game.Pixel;
+import Pacman_game.ShortestPathAlgo;
 
 /*
  * This class represents the game frame.
@@ -321,6 +321,14 @@ public class MyFrame extends JFrame implements MouseListener {
 
 		m.changeFrame(pFram, pacmanPixel, fruitPixel, linePixel); //upload the game pixels if change the frame size.
 		
+		//draws all the lines on the list.
+		for (int i = 0; i < linePixel.size(); i++) {
+		    Graphics2D g2 = (Graphics2D) g;
+			g2.setStroke(new BasicStroke(1));
+			g2.setColor(Color.orange);
+			g2.drawLine((int)linePixel.get(i).getX(), (int)linePixel.get(i).getY(), (int)linePixel2.get(i).getX(), (int)linePixel2.get(i).getY());
+		}
+		
 		//draws all the pacmans on the list.
 		for (int i = 0; i < pacmanPixel.size(); i++) {
 			g.drawImage(pacmanImage, (int)pacmanPixel.get(i).getX(), (int)pacmanPixel.get(i).getY(), 30, 30, this);
@@ -329,14 +337,6 @@ public class MyFrame extends JFrame implements MouseListener {
 		//draws all the fruits on the list.
 		for (int i = 0; i < fruitPixel.size(); i++) {
 			g.drawImage(fruitImage, (int)fruitPixel.get(i).getX(), (int)fruitPixel.get(i).getY(), 40, 30, this);
-		}
-		
-		//draws all the lines on the list.
-		for (int i = 0; i < linePixel.size(); i++) {
-		    Graphics2D g2 = (Graphics2D) g;
-			g2.setStroke(new BasicStroke(1));
-			g2.setColor(Color.orange);
-			g2.drawLine((int)linePixel.get(i).getX(), (int)linePixel.get(i).getY(), (int)linePixel2.get(i).getX(), (int)linePixel2.get(i).getY());
 		}
 	}
 

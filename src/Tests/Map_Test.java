@@ -4,8 +4,8 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.io.IOException;
 import org.junit.jupiter.api.Test;
 import Geom.Point3D;
-import Packman_Game.Map;
-import Packman_Game.Pixel;
+import Pacman_game.Map;
+import Pacman_game.Pixel;
 
 /*
  * This class tests the Map functions.
