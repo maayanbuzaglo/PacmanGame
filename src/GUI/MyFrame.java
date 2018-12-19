@@ -19,6 +19,8 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Scanner;
 import javax.imageio.ImageIO;
+import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import Geom.Point3D;
 import Pacman_game.Fruit;
@@ -216,7 +218,7 @@ public class MyFrame extends JFrame implements MouseListener {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Game g = new Game(pList, fList ,lList);
-				g.createKML(g, "C:\\Users\\מעיין\\eclipse-workspace\\OopNavigtion\\data\\myGame.kml");
+				g.createKML(g, "C:\\Users\\nahama\\eclipse-workspace\\OopNavigtion\\data\\myGame.kml");
 			}
 		});
 
@@ -224,6 +226,9 @@ public class MyFrame extends JFrame implements MouseListener {
 		readCSV.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+			
+
+				
 				Game g = new Game();
 				//clears all before read a new game.
 				pList.clear();
@@ -232,7 +237,17 @@ public class MyFrame extends JFrame implements MouseListener {
 				pacmanPixel.clear();
 				fruitPixel.clear();
 				linePixel.clear();
-				g.readCsv("C:\\Users\\מעיין\\eclipse-workspace\\OopNavigtion\\data\\game_1543693911932_b.csv");
+				String place = "";
+				JButton open = new JButton();
+				JFileChooser fc = new JFileChooser();
+				fc.setDialogTitle("Choose A Pacman Game");
+				fc.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
+				if(fc.showOpenDialog(open)==JFileChooser.APPROVE_OPTION)
+				{
+					place = fc.getSelectedFile().getAbsolutePath();
+				
+				}
+				g.readCsv(place);
 				//adds all the pacmans in the game to pacman list in this game.
 				for(Pacman it: g.Pacman_list) {
 					pList.add(it);
@@ -249,6 +264,7 @@ public class MyFrame extends JFrame implements MouseListener {
 					fruitPixel.add(f);
 				}
 				repaint();
+			
 			}
 		});
 
@@ -263,7 +279,7 @@ public class MyFrame extends JFrame implements MouseListener {
 
 		//gets the pacman image.
 		try {
-			pacmanImage = ImageIO.read(new File("C:\\Users\\מעיין\\eclipse-workspace\\OopNavigtion\\pictures\\pacman2.png"));
+			pacmanImage = ImageIO.read(new File("C:\\Users\\nahama\\eclipse-workspace\\OopNavigtion\\pictures\\pacman2.png"));
 		}
 
 		catch (IOException e) {
@@ -272,7 +288,7 @@ public class MyFrame extends JFrame implements MouseListener {
 
 		//gets the fruit image.
 		try {
-			fruitImage = ImageIO.read(new File("C:\\Users\\מעיין\\eclipse-workspace\\OopNavigtion\\pictures\\fruit2.png"));
+			fruitImage = ImageIO.read(new File("C:\\Users\\nahama\\eclipse-workspace\\OopNavigtion\\pictures\\fruit2.png"));
 		}
 		catch (IOException e) {
 			e.printStackTrace();
