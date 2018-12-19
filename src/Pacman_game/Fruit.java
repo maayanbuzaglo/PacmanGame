@@ -14,7 +14,7 @@ public class Fruit {
 	private Point3D location;
 	private long id;
 	private int weight;
-
+	double endTime  = 0 ; 
 	/*
 	 * An empty constructor.
 	 */

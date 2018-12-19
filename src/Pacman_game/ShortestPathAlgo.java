@@ -63,10 +63,21 @@ public class ShortestPathAlgo {
 			g.Pacman_list.get(indexPacman).setTime(eatData.getTime()); //sets the time of the pacman that ate.
 			eatData.getPacman().setTime(eatData.getTime());
 			g.Pacman_list.get(indexPacman).setLocation(fruitLeft.get(eatData.getIndexFruit()).getLocation()); //moves the pacman to the location of the fruit.
-			g.getFruit_list().remove(eatData.getIndexFruit());
+//			g.getFruit_list().remove(eatData.getIndexFruit());
+		
+			fruitLeft.get(eatData.indexFruit).endTime =eatData.getTime();
 			fruitLeft.remove(eatData.getIndexFruit()); // removes the fruit.
 			MyFrame frame = new MyFrame(g);
-			kml_List.add(eatData.getPacman());			
+			kml_List.add(eatData.getPacman());
+		}
+		boolean flag = false;
+		for(Pacman it: g.Pacman_list) {
+			for(Pacman it2: kml_List){
+				if(it.getID() == it2.getID()) {
+					flag = true;
+					break;
+				}
+			}
 		}
 		System.out.println(kml_List.toString());
 		return kml_List;

@@ -10,11 +10,10 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Locale;
 import java.util.Date;
-
-
 import de.micromata.opengis.kml.v_2_2_0.Document;
 import de.micromata.opengis.kml.v_2_2_0.Kml;
 import de.micromata.opengis.kml.v_2_2_0.Placemark;
+import de.micromata.opengis.kml.v_2_2_0.TimeSpan;
 
 /*
  * This class represents a game that mades of pacmans and fruits.
@@ -123,12 +122,32 @@ public class Game {
 			long millis = Date2Millis(date);
 			millis += it.getTime()*100;
 			date = Millis2Date(millis);
-			p.createAndSetTimeStamp().withWhen(date);
+			String date1 = Millis2Date(Date2Millis(date)+1000);
+			String[] date2 = date.split(" ");
+			date = date2[0]+'T'+date2[1]+'Z';
+			String[] date3 = date1.split(" ");
+			date1 = date3[0]+'T'+date3[1]+'Z';
+			TimeSpan s = p.createAndSetTimeSpan();
+			s.setBegin(date);
+			s.setEnd(date1);
 			p.withDescription("Mac: " + it.getID() + "\nType: pacman")
 			.withOpen(Boolean.TRUE).createAndSetPoint().
 			addToCoordinates(it.getLocation().x(),it.getLocation().y());
 		}
 		
+		for(Fruit it: g.Fruit_list) {
+			String date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Calendar.getInstance().getTime());
+			long millis = Date2Millis(date);
+			Placemark p = doc.createAndAddPlacemark();
+			TimeSpan s = p.createAndSetTimeSpan();
+			String str = Millis2Date(millis+(long)(it.endTime)*1000);
+			String[] strA = str.split(" ");
+			str = strA[0] + "T" + strA[1]+"Z"; 
+			s.setEnd(str);
+			p.withDescription("Mac: " + it.getID() + "\nType: pacman")
+			.withOpen(Boolean.TRUE).createAndSetPoint().
+			addToCoordinates(it.getLocation().x(),it.getLocation().y());
+		}
 		try {
 			kml.marshal(new File(f));
 			/**

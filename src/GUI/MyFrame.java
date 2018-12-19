@@ -220,7 +220,7 @@ public class MyFrame extends JFrame implements MouseListener {
 			public void actionPerformed(ActionEvent e) {
 				Game g = new Game(pList, fList ,lList);
 				try {
-					g.createKML(g, "C:\\Users\\nahama\\eclipse-workspace\\OopNavigtion\\data\\myGame.kml");
+					g.createKML(g, "C:\\Users\\מעיין\\eclipse-workspace\\OopNavigtion\\data\\myGame.kml");
 				} catch (ParseException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -233,8 +233,6 @@ public class MyFrame extends JFrame implements MouseListener {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 			
-
-				
 				Game g = new Game();
 				//clears all before read a new game.
 				pList.clear();
@@ -248,10 +246,8 @@ public class MyFrame extends JFrame implements MouseListener {
 				JFileChooser fc = new JFileChooser();
 				fc.setDialogTitle("Choose A Pacman Game");
 				fc.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
-				if(fc.showOpenDialog(open)==JFileChooser.APPROVE_OPTION)
-				{
+				if(fc.showOpenDialog(open) == JFileChooser.APPROVE_OPTION) {
 					place = fc.getSelectedFile().getAbsolutePath();
-				
 				}
 				g.readCsv(place);
 				//adds all the pacmans in the game to pacman list in this game.
@@ -285,7 +281,7 @@ public class MyFrame extends JFrame implements MouseListener {
 
 		//gets the pacman image.
 		try {
-			pacmanImage = ImageIO.read(new File("C:\\Users\\nahama\\eclipse-workspace\\OopNavigtion\\pictures\\pacman2.png"));
+			pacmanImage = ImageIO.read(new File("C:\\Users\\מעיין\\eclipse-workspace\\OopNavigtion\\pictures\\pacman2.png"));
 		}
 
 		catch (IOException e) {
@@ -294,7 +290,7 @@ public class MyFrame extends JFrame implements MouseListener {
 
 		//gets the fruit image.
 		try {
-			fruitImage = ImageIO.read(new File("C:\\Users\\nahama\\eclipse-workspace\\OopNavigtion\\pictures\\fruit2.png"));
+			fruitImage = ImageIO.read(new File("C:\\Users\\מעיין\\eclipse-workspace\\OopNavigtion\\pictures\\fruit2.png"));
 		}
 		catch (IOException e) {
 			e.printStackTrace();
