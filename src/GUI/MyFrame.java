@@ -15,6 +15,7 @@ import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Scanner;
@@ -218,7 +219,12 @@ public class MyFrame extends JFrame implements MouseListener {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Game g = new Game(pList, fList ,lList);
-				g.createKML(g, "C:\\Users\\nahama\\eclipse-workspace\\OopNavigtion\\data\\myGame.kml");
+				try {
+					g.createKML(g, "C:\\Users\\nahama\\eclipse-workspace\\OopNavigtion\\data\\myGame.kml");
+				} catch (ParseException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
 

@@ -4,9 +4,13 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Locale;
+import java.util.Date;
+
 
 import de.micromata.opengis.kml.v_2_2_0.Document;
 import de.micromata.opengis.kml.v_2_2_0.Kml;
@@ -98,8 +102,9 @@ public class Game {
 
 	/**
 	 * This function creates a kml file.
+	 * @throws ParseException 
 	 */
-	public static void createKML(Game g, String f) {
+	public static void createKML(Game g, String f) throws ParseException {
 
 		ShortestPathAlgo algo = new ShortestPathAlgo();
 		ArrayList<Pacman> kml_List = new ArrayList<Pacman>();
@@ -114,19 +119,15 @@ public class Game {
 		
 		for (Pacman it: kml_List) { //The iterator runs on a csv file.
 			Placemark p = doc.createAndAddPlacemark();
-			p.createAndSetTimeStamp().withWhen(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Calendar.getInstance().getTime()));
+			String date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Calendar.getInstance().getTime());
+			long millis = Date2Millis(date);
+			millis += it.getTime()*100;
+			date = Millis2Date(millis);
+			p.createAndSetTimeStamp().withWhen(date);
 			p.withDescription("Mac: " + it.getID() + "\nType: pacman")
 			.withOpen(Boolean.TRUE).createAndSetPoint().
 			addToCoordinates(it.getLocation().x(),it.getLocation().y());
 		}
-
-//		for (Fruit it: g.Fruit_list) { //The iterator runs on a csv file.
-//			Placemark p = doc.createAndAddPlacemark();
-//			p.createAndSetTimeStamp().withWhen(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Calendar.getInstance().getTime()));
-//			p.withDescription("Mac: " + it.getID() + "\nType: fruit")
-//			.withOpen(Boolean.TRUE).createAndSetPoint().
-//			addToCoordinates(it.getLocation().x(),it.getLocation().y());
-//		}
 		
 		try {
 			kml.marshal(new File(f));
@@ -139,6 +140,18 @@ public class Game {
 		}
 	}
 
+	public static long Date2Millis (String date) throws ParseException {
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.US);
+		Date time = format.parse(date.toString());
+		long millis = time.getTime();
+		return millis;
+	}
+	
+	public static String Millis2Date(long millis) {
+		SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		return date.format(new Date(millis));
+	}
+	
 	public ArrayList<Pacman> getPacman_list() {
 		return Pacman_list;
 	}
