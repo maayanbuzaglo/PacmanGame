@@ -11,7 +11,7 @@ import Pacman_game.Game;
  */
 public class ShortestPathAlgo {
 
-	public static ArrayList<Path> closestFruit(Game g) throws IOException {
+	public static ArrayList<Pacman> closestFruit(Game g) throws IOException {
 
 		double time;
 		Fruit fruitEaten = null;
@@ -19,6 +19,7 @@ public class ShortestPathAlgo {
 		Pacman_game.Line l = null;
 		ArrayList<Fruit> fruitLeft = new ArrayList<Fruit>(); //list of the fruits left. 
 		ArrayList<Path> path_List = new ArrayList<Path>();
+		ArrayList<Pacman> kml_List = new ArrayList<Pacman>();
 		ArrayList<SaveData> data_List;
 		for(Fruit it: g.getFruit_list()) {
 			fruitLeft.add(it);
@@ -60,31 +61,33 @@ public class ShortestPathAlgo {
 			l = new Pacman_game.Line(eatData.getPacman().getLocation(), fruitLeft.get(eatData.getIndexFruit()).getLocation());
 			g.Line_list.add(l);
 			g.Pacman_list.get(indexPacman).setTime(eatData.getTime()); //sets the time of the pacman that ate.
+			eatData.getPacman().setTime(eatData.getTime());
 			g.Pacman_list.get(indexPacman).setLocation(fruitLeft.get(eatData.getIndexFruit()).getLocation()); //moves the pacman to the location of the fruit.
 			g.getFruit_list().remove(eatData.getIndexFruit());
 			fruitLeft.remove(eatData.getIndexFruit()); // removes the fruit.
 			MyFrame frame = new MyFrame(g);
-			System.out.println(eatData.toString());
+			kml_List.add(eatData.getPacman());			
 		}
-		return null;
+		System.out.println(kml_List.toString());
+		return kml_List;
 	}
 
-//	/*
-//	 * Example.
-//	 */
-//	public static void main(String[] args) throws IOException {
-//
-//		Game g = new Game();
-//		g.readCsv("C:\\Users\\מעיין\\eclipse-workspace\\OopNavigtion\\data\\game_1543693822377.csv");
-//		for (Pacman it1: g.Pacman_list) {
-//			System.out.println(it1.toString());
-//		}
-//		for (Fruit it: g.Fruit_list) {
-//			System.out.println(it.toString());
-//		}
-//		g.Line_list = new ArrayList<Line>();
-//		closestFruit(g);
-//	}
+	/*
+	 * Example.
+	 */
+	public static void main(String[] args) throws IOException {
+
+		Game g = new Game();
+		g.readCsv("C:\\Users\\מעיין\\eclipse-workspace\\OopNavigtion\\data\\game_1543693911932_b.csv");
+		for (Pacman it1: g.Pacman_list) {
+			System.out.println(it1.toString());
+		}
+		for (Fruit it: g.Fruit_list) {
+			System.out.println(it.toString());
+		}
+		g.Line_list = new ArrayList<Line>();
+		closestFruit(g);
+	}
 	
 }
 

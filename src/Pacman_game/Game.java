@@ -4,7 +4,10 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+
 import de.micromata.opengis.kml.v_2_2_0.Document;
 import de.micromata.opengis.kml.v_2_2_0.Kml;
 import de.micromata.opengis.kml.v_2_2_0.Placemark;
@@ -98,22 +101,33 @@ public class Game {
 	 */
 	public static void createKML(Game g, String f) {
 
+		ShortestPathAlgo algo = new ShortestPathAlgo();
+		ArrayList<Pacman> kml_List = new ArrayList<Pacman>();
+		try {
+			kml_List = algo.closestFruit(g);
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+		
 		Kml kml = new Kml();
 		Document doc = kml.createAndSetDocument();
 		
-		for (Pacman it: g.Pacman_list) { //The iterator runs on a csv file.
+		for (Pacman it: kml_List) { //The iterator runs on a csv file.
 			Placemark p = doc.createAndAddPlacemark();
+			p.createAndSetTimeStamp().withWhen(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Calendar.getInstance().getTime()));
 			p.withDescription("Mac: " + it.getID() + "\nType: pacman")
 			.withOpen(Boolean.TRUE).createAndSetPoint().
 			addToCoordinates(it.getLocation().x(),it.getLocation().y());
 		}
 
-		for (Fruit it: g.Fruit_list) { //The iterator runs on a csv file.
-			Placemark p = doc.createAndAddPlacemark();
-			p.withDescription("Mac: " + it.getID() + "\nType: fruit")
-			.withOpen(Boolean.TRUE).createAndSetPoint().
-			addToCoordinates(it.getLocation().x(),it.getLocation().y());
-		}
+//		for (Fruit it: g.Fruit_list) { //The iterator runs on a csv file.
+//			Placemark p = doc.createAndAddPlacemark();
+//			p.createAndSetTimeStamp().withWhen(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Calendar.getInstance().getTime()));
+//			p.withDescription("Mac: " + it.getID() + "\nType: fruit")
+//			.withOpen(Boolean.TRUE).createAndSetPoint().
+//			addToCoordinates(it.getLocation().x(),it.getLocation().y());
+//		}
+		
 		try {
 			kml.marshal(new File(f));
 			/**
