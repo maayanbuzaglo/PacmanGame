@@ -412,6 +412,12 @@ public class MyFrame extends JFrame implements MouseListener {
 	{
 		@Override
 		public void run() {
+			double max =0;
+			for (int i = 0; i < pList.size(); i++) {
+				if (pList.get(i).getTime() > max) {
+					max = pList.get(i).getTime();
+				}
+			}
 			for (int i = 1; i < 1000; i++) {
 				repaint();
 				for(Pacman it: pList)
@@ -432,8 +438,12 @@ public class MyFrame extends JFrame implements MouseListener {
 								System.out.println("ok");
 							}
 						}
+					} 
+					else if (it.getTime() == max && !fList.isEmpty())
+					{
+						fList.remove(0);
 					}
-					repaint();
+//					repaint();
 				}
 			}
 			repaint();

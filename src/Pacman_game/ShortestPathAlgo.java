@@ -60,12 +60,17 @@ public class ShortestPathAlgo {
 			}
 			l = new Pacman_game.Line(eatData.getPacman().getLocation(), fruitLeft.get(eatData.getIndexFruit()).getLocation());
 			g.Line_list.add(l);
-			System.out.println("===="+eatData.getFruit());
 //			System.out.println("===="+eatData.getPacman());
 			g.Pacman_list.get(indexPacman).path.getPath().add(l); //new
 			g.Pacman_list.get(indexPacman).setTime(eatData.getTime()); //sets the time of the pacman that ate.
+			eatData.getPacman().setLocation(eatData.getFruit().getLocation());
 			eatData.getPacman().setTime(eatData.getTime());
-			g.Pacman_list.get(indexPacman).setLocation(fruitLeft.get(eatData.getIndexFruit()).getLocation()); //moves the pacman to the location of the fruit.
+			System.out.println("===="+eatData.getFruit());
+			System.out.println("===="+g.Pacman_list.get(indexPacman));
+
+			g.Pacman_list.get(indexPacman).setLocation(eatData.getFruit().getLocation()); //moves the pacman to the location of the fruit.
+			System.out.println("===="+g.Pacman_list.get(indexPacman));
+
 //			System.out.println(g.Pacman_list.get(indexPacman));
 //			g.getFruit_list().remove(eatData.getIndexFruit());
 		
@@ -84,9 +89,9 @@ public class ShortestPathAlgo {
 			}
 			if(!flag)kml_List.add(it);
 		}
-		for(Pacman it: g.Pacman_list) {
-			kml_List.add(it);
-		}
+//		for(Pacman it: g.Pacman_list) {
+//			kml_List.add(it);
+//		}
 		System.out.println(kml_List);
 		return kml_List;
 	}
