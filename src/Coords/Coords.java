@@ -41,6 +41,11 @@ public class Coords implements coords_converter {
 		return Math.sqrt(dis);
 	}
 	
+	/**
+	 * This function computes the 3D distance (in meters) between the two gps like
+	 * points we used the file Excel that was send to use by Boaz.
+	 * 
+	 */
 	
 	@Override
 	public double distance3d(Point3D gps0, Point3D gps1) {
