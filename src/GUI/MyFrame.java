@@ -234,7 +234,7 @@ public class MyFrame extends JFrame implements MouseListener {
 		readCSV.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-			
+
 				Game g = new Game();
 				//clears all before read a new game.
 				pList.clear();
@@ -255,7 +255,7 @@ public class MyFrame extends JFrame implements MouseListener {
 				//adds all the pacmans in the game to pacman list in this game.
 				for(Pacman it: g.Pacman_list) {
 					pList.add(it);
-					
+
 					Pixel p = new Pixel(m.Point2Pixel(it.getLocation().x(),it.getLocation().y()));
 					pacmanPixel.add(p);
 				}
@@ -268,7 +268,7 @@ public class MyFrame extends JFrame implements MouseListener {
 					fruitPixel.add(f);
 				}
 				repaint();
-			
+
 			}
 		});
 
@@ -326,7 +326,7 @@ public class MyFrame extends JFrame implements MouseListener {
 			Pixel pix = m.Point2Pixel(fList.get(i).getLocation().x(), fList.get(i).getLocation().y());
 			fruitPixel.add(pix);
 		}
-		
+
 		//changes points of lines in game to pixels (point 1).
 		for (int i = 0; i < lList.size(); i++) {
 			Pixel pix = m.Point2Pixel(lList.get(i).getPoint1().x(), lList.get(i).getPoint1().y());
@@ -340,20 +340,20 @@ public class MyFrame extends JFrame implements MouseListener {
 		}
 
 		m.changeFrame(pFram, pacmanPixel, fruitPixel, linePixel); //upload the game pixels if change the frame size.
-		
+
 		//draws all the lines on the list.
 		for (int i = 0; i < linePixel.size(); i++) {
-		    Graphics2D g2 = (Graphics2D) g;
+			Graphics2D g2 = (Graphics2D) g;
 			g2.setStroke(new BasicStroke(1));
 			g2.setColor(Color.orange);
 			g2.drawLine((int)linePixel.get(i).getX(), (int)linePixel.get(i).getY(), (int)linePixel2.get(i).getX(), (int)linePixel2.get(i).getY());
 		}
-		
+
 		//draws all the pacmans on the list.
 		for (int i = 0; i < pacmanPixel.size(); i++) {
 			g.drawImage(pacmanImage, (int)pacmanPixel.get(i).getX(), (int)pacmanPixel.get(i).getY(), 30, 30, this);
 		}
-		
+
 		//draws all the fruits on the list.
 		for (int i = 0; i < fruitPixel.size(); i++) {
 			g.drawImage(fruitImage, (int)fruitPixel.get(i).getX(), (int)fruitPixel.get(i).getY(), 40, 30, this);
@@ -406,25 +406,31 @@ public class MyFrame extends JFrame implements MouseListener {
 	public void mouseReleased(MouseEvent arg0) {
 
 	}
-	
+
 	// NEW
 	public  class ThreadPacks extends Thread
 	{
 		@Override
 		public void run() {
-		for (int i = 1; i < 1000; i++) {
-			repaint();
-			pList.get(0).When(i,m);
-			try {
-				Thread.sleep(100);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			repaint();
-		}
-		}
-		
-	}
+			for (int i = 1; i < 1000; i++) {
+				repaint();
+				for(Pacman it: pList)
+				{
+					Pixel p = it.When(i, m);
+					if (p != null) {
+						try {
+							Thread.sleep(50);
+						} catch (InterruptedException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						repaint();
+					}
+					//			pList.get(0).When(i,m);
 
+				}
+			}
+		}
+
+	}
 }

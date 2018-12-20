@@ -148,6 +148,7 @@ public class Pacman {
 			}
 			tempTime += this.path.getPath().get(i).getDistance()/this.getSpeed(); 
 		}
+		if (thisLine.getPoint1() != null && thisLine.getPoint2() != null) {
 		Point3D vector = C.vector3D(thisLine.getPoint1(), thisLine.getPoint2());
 		double dis = time - tempTime ; 
 		System.out.println("---" + dis);
@@ -156,6 +157,8 @@ public class Pacman {
 		Point3D afterConvert = C.add(thisLine.point1, new Point3D(vector.x()/dvideTime,vector.y()/dvideTime,vector.z()/dvideTime));
 		this.setLocation(afterConvert);
 		return map.Point2Pixel(afterConvert.x(), afterConvert.y());
+		}
+		return null;
 				
 	}
 	@Override
