@@ -60,6 +60,7 @@ public class ShortestPathAlgo {
 			}
 			l = new Pacman_game.Line(eatData.getPacman().getLocation(), fruitLeft.get(eatData.getIndexFruit()).getLocation());
 			g.Line_list.add(l);
+			g.Pacman_list.get(indexPacman).path.getPath().add(l);
 			g.Pacman_list.get(indexPacman).setTime(eatData.getTime()); //sets the time of the pacman that ate.
 			eatData.getPacman().setTime(eatData.getTime());
 			g.Pacman_list.get(indexPacman).setLocation(fruitLeft.get(eatData.getIndexFruit()).getLocation()); //moves the pacman to the location of the fruit.
@@ -67,7 +68,7 @@ public class ShortestPathAlgo {
 		
 			fruitLeft.get(eatData.indexFruit).endTime =eatData.getTime();
 			fruitLeft.remove(eatData.getIndexFruit()); // removes the fruit.
-			MyFrame frame = new MyFrame(g);
+//			MyFrame frame = new MyFrame(g); //new
 			kml_List.add(eatData.getPacman());
 		}
 		boolean flag = false;
@@ -89,7 +90,7 @@ public class ShortestPathAlgo {
 	public static void main(String[] args) throws IOException {
 
 		Game g = new Game();
-		g.readCsv("C:\\Users\\מעיין\\eclipse-workspace\\OopNavigtion\\data\\game_1543693911932_b.csv");
+		g.readCsv("C:\\Users\\nahama\\eclipse-workspace\\OopNavigtion\\data\\game_1543693911932_b.csv");
 		for (Pacman it1: g.Pacman_list) {
 			System.out.println(it1.toString());
 		}

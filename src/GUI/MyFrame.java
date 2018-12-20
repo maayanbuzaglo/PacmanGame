@@ -210,6 +210,8 @@ public class MyFrame extends JFrame implements MouseListener {
 				} catch (IOException e1) {
 					e1.printStackTrace();
 				}
+				ThreadPacks P = new ThreadPacks(); //NEW
+				P.start(); //NEW
 				repaint();
 			}
 		});
@@ -220,7 +222,7 @@ public class MyFrame extends JFrame implements MouseListener {
 			public void actionPerformed(ActionEvent e) {
 				Game g = new Game(pList, fList ,lList);
 				try {
-					g.createKML(g, "C:\\Users\\מעיין\\eclipse-workspace\\OopNavigtion\\data\\myGame.kml");
+					g.createKML(g, "C:\\Users\\nahama\\eclipse-workspace\\OopNavigtion\\data\\myGame.kml");
 				} catch (ParseException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -281,7 +283,7 @@ public class MyFrame extends JFrame implements MouseListener {
 
 		//gets the pacman image.
 		try {
-			pacmanImage = ImageIO.read(new File("C:\\Users\\מעיין\\eclipse-workspace\\OopNavigtion\\pictures\\pacman2.png"));
+			pacmanImage = ImageIO.read(new File("C:\\Users\\nahama\\eclipse-workspace\\OopNavigtion\\pictures\\pacman2.png"));
 		}
 
 		catch (IOException e) {
@@ -290,7 +292,7 @@ public class MyFrame extends JFrame implements MouseListener {
 
 		//gets the fruit image.
 		try {
-			fruitImage = ImageIO.read(new File("C:\\Users\\מעיין\\eclipse-workspace\\OopNavigtion\\pictures\\fruit2.png"));
+			fruitImage = ImageIO.read(new File("C:\\Users\\nahama\\eclipse-workspace\\OopNavigtion\\pictures\\fruit2.png"));
 		}
 		catch (IOException e) {
 			e.printStackTrace();
@@ -403,6 +405,26 @@ public class MyFrame extends JFrame implements MouseListener {
 	@Override
 	public void mouseReleased(MouseEvent arg0) {
 
+	}
+	
+	// NEW
+	public  class ThreadPacks extends Thread
+	{
+		@Override
+		public void run() {
+		for (int i = 1; i < 1000; i++) {
+			repaint();
+			pList.get(0).When(i,m);
+			try {
+				Thread.sleep(100);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			repaint();
+		}
+		}
+		
 	}
 
 }

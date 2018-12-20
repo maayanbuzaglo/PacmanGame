@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
+
+import Coords.Coords;
 import Geom.Point3D;
 
 /*
@@ -16,6 +18,7 @@ public class Pacman {
 	double speed;
 	double radius;
 	public double time;
+	Path path ; 
 
 	/*
 	 * An empty constructor.
@@ -27,6 +30,7 @@ public class Pacman {
 		this.speed = 1;
 		this.radius = 1;
 		this.time = 0;
+		path = new Path();
 	}
 
 	/*
@@ -38,8 +42,9 @@ public class Pacman {
 		this.id = p.getID();
 		this.speed = p.getSpeed();
 		this.radius = p.getRadius();
+		path = new Path() ; 
 	}
-	
+
 	/*
 	 * Constructor.
 	 */
@@ -49,6 +54,7 @@ public class Pacman {
 		this.id = id;
 		this.speed = speed;
 		this.radius = radius;
+		path = new Path() ; 
 	}
 
 	/*
@@ -127,7 +133,31 @@ public class Pacman {
 	public void setTime(double time) {
 		this.time = time;
 	}
-
+	public Pixel When(double time ,Map map )
+	{
+		
+		double tempTime = 0 ; 
+		Coords C = new Coords() ; 
+		Line  thisLine = new Line() ; 
+//		System.out.println(this.path.getPath().size());
+		for (int i = 0; i < this.path.getPath().size(); i++)
+		{
+			if(tempTime + this.path.getPath().get(i).getDistance()/this.getSpeed() >= time) {
+				thisLine  =  this.path.getPath().get(i);
+				break ;
+			}
+			tempTime += this.path.getPath().get(i).getDistance()/this.getSpeed(); 
+		}
+		Point3D vector = C.vector3D(thisLine.getPoint1(), thisLine.getPoint2());
+		double dis = time - tempTime ; 
+		System.out.println("---" + dis);
+		double lineTime = thisLine.getDistance()/this.getSpeed(); 
+		double dvideTime = lineTime / dis ; 
+		Point3D afterConvert = C.add(thisLine.point1, new Point3D(vector.x()/dvideTime,vector.y()/dvideTime,vector.z()/dvideTime));
+		this.setLocation(afterConvert);
+		return map.Point2Pixel(afterConvert.x(), afterConvert.y());
+				
+	}
 	@Override
 	public String toString() {
 
@@ -138,37 +168,37 @@ public class Pacman {
 				", Time = " + time + "]\n";
 	}
 
-//	/*
-//	 * This function makes the pacman move to a new point.
-//	 */
-//	public void move(double Xmove, double Ymove, double Zmove) {
-//
-//		this.location.set_x(location.x() + Xmove);
-//		this.location.set_y(location.y() + Ymove);
-//		this.location.set_z(location.z() + Zmove);
-//	}
+	//	/*
+	//	 * This function makes the pacman move to a new point.
+	//	 */
+	//	public void move(double Xmove, double Ymove, double Zmove) {
+	//
+	//		this.location.set_x(location.x() + Xmove);
+	//		this.location.set_y(location.y() + Ymove);
+	//		this.location.set_z(location.z() + Zmove);
+	//	}
 
-//	/*
-//	 * This function gets a list of eaten fruits.
-//	 */
-//	public ArrayList<Fruit> eatenFruits(ArrayList<Fruit> list) {
-//		
-//		ArrayList<Fruit> eatenFruits = new ArrayList<Fruit>();
-//		for(Fruit it: list) {
-//			if (this.location.x() == it.getLocation().x()
-//			 && this.location.y() == it.getLocation().y()) {
-//				eatenFruits.add(it);
-//			}
-//		}
-//		return eatenFruits;
-//	}
+	//	/*
+	//	 * This function gets a list of eaten fruits.
+	//	 */
+	//	public ArrayList<Fruit> eatenFruits(ArrayList<Fruit> list) {
+	//		
+	//		ArrayList<Fruit> eatenFruits = new ArrayList<Fruit>();
+	//		for(Fruit it: list) {
+	//			if (this.location.x() == it.getLocation().x()
+	//			 && this.location.y() == it.getLocation().y()) {
+	//				eatenFruits.add(it);
+	//			}
+	//		}
+	//		return eatenFruits;
+	//	}
 
-//	/*
-//	 * This function returns the number of eaten fruits.
-//	 */
-//	public int numEatenfruits(ArrayList<Fruit> list) {
-//
-//		return eatenFruits(list).size();
-//	}
+	//	/*
+	//	 * This function returns the number of eaten fruits.
+	//	 */
+	//	public int numEatenfruits(ArrayList<Fruit> list) {
+	//
+	//		return eatenFruits(list).size();
+	//	}
 
 }

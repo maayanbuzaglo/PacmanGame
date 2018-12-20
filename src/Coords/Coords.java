@@ -13,12 +13,24 @@ public class Coords implements coords_converter {
 	@Override
 	public Point3D add(Point3D gps, Point3D local_vector_in_meter) {
 
-		double comp = local_vector_in_meter.x() / earth_rad;
-		double lat = gps.x() + (comp * 180 / Math.PI);
-		double comp2 = (local_vector_in_meter.y() + (comp * 180 / Math.PI)) / earth_rad;
-		double lon = gps.y() + (comp2 * 180 / Math.PI);
-		double alt = gps.z() + local_vector_in_meter.z();
-		return new Point3D(lat, lon, alt);
+//		gps.change_Geometric_To_Cart();
+//		gps.add(local_vector_in_meter);
+//		gps.change_Cart_To_Geometric();
+//		Point3D returnP = new Point3D(gps);
+		//nahama
+		gps.change_Geometric_To_Cart();
+		Point3D temp = new Point3D(gps);
+		temp.add(local_vector_in_meter);
+		gps.change_Cart_To_Geometric();
+		temp.change_Cart_To_Geometric();
+		return temp;
+		//maayan
+//		double comp = local_vector_in_meter.x() / earth_rad;
+//		double lat = gps.x() + (comp * 180 / Math.PI);
+//		double comp2 = (local_vector_in_meter.y() + (comp * 180 / Math.PI)) / earth_rad;
+//		double lon = gps.y() + (comp2 * 180 / Math.PI);
+//		double alt = gps.z() + local_vector_in_meter.z();
+//		return returnP ; 
 	}
 
 	/**
@@ -55,10 +67,16 @@ public class Coords implements coords_converter {
 	 * This function computes the 3D vector (in meters) between two gps like points.
 	 */
 	public Point3D vector3D(Point3D gps0, Point3D gps1) {
+		gps0.change_Geometric_To_Cart();
+		gps1.change_Geometric_To_Cart();
+		double x = gps1.x() - gps0.x();
+		double y = gps1.y() - gps0.y();
+		double z = gps1.z() - gps0.z();
+		gps0.change_Cart_To_Geometric();
+		gps1.change_Cart_To_Geometric();
+		Point3D vec = new Point3D(x, y, z);
+		return vec;
 
-		double radX = (gps1.x() - gps0.x()) * Math.PI / 180;
-		double radY = (gps1.y() - gps0.y()) * Math.PI / 180;
-		return new Point3D(Math.sin(radX) * earth_rad, Math.sin(radY) * earth_rad * norm_lan, gps1.z() - gps0.z());
 	}
 
 	/** computes the polar representation of the 3D vector be gps0-->gps1.
