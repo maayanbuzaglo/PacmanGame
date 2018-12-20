@@ -32,8 +32,8 @@ class Coords_Test {
 		/**
 		 * This test checks the vector3d function.
 		 */
-		assertEquals((int)c.vector3D(p1, p2).ix(), 337);
-		assertEquals((int)c.vector3D(p1, p2).iy(), -359);
+		assertEquals((int)c.vector3D(p1, p2).ix(), 286);
+		assertEquals((int)c.vector3D(p1, p2).iy(), -293);
 		assertEquals((int)c.vector3D(p1, p2).iz(), -20);
 		
 		/**

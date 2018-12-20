@@ -50,6 +50,8 @@ public class Csv2kml {
 	
 	/**
 	 * This function creates a kml file.
+	 * @param list represent the list of row.
+	 * @param f represent the file name. 
 	 */
 	public static void createKML(ArrayList<Row_Locate> list, String f) {
 		

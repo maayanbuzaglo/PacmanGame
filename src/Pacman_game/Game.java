@@ -198,7 +198,9 @@ public class Game {
 		}
 	}
 
-
+	/**
+	 * This function converse a String date to milliseconds.
+	 */
 	public static long Date2Millis (String date) throws ParseException {
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.US);
 		Date time = format.parse(date.toString());
@@ -206,6 +208,9 @@ public class Game {
 		return millis;
 	}
 
+	/**
+	 * This function converse milliseconds to a String date.
+	 */
 	public static String Millis2Date(long millis) {
 		SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		return date.format(new Date(millis));

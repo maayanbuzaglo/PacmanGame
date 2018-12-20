@@ -1,5 +1,7 @@
 package Coords;
 
+import java.util.Vector;
+
 import Geom.Point3D;
 
 public class Coords implements coords_converter {
@@ -107,5 +109,5 @@ public class Coords implements coords_converter {
 		}
 		return false;
 	}
-
+	
 }

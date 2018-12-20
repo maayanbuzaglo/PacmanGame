@@ -133,8 +133,8 @@ public class Pacman {
 	public void setTime(double time) {
 		this.time = time;
 	}
-	
-	
+
+
 	public Path getPath() {
 		return this.path;
 	}
@@ -143,9 +143,13 @@ public class Pacman {
 		this.path = path;
 	}
 
+	/**
+	 * This function find on which line the pacman is
+	 *  and the location acording to a certain time.
+	 */
 	public Point3D When(double time ,Map map )
 	{
-		
+
 		double tempTime = 0 ; 
 		Coords C = new Coords() ; 
 		Line  thisLine = new Line() ; 
@@ -158,16 +162,16 @@ public class Pacman {
 			tempTime += this.path.getPath().get(i).getDistance()/this.getSpeed(); 
 		}
 		if (thisLine.getPoint1() != null && thisLine.getPoint2() != null) {
-		Point3D vector = C.vector3D(thisLine.getPoint1(), thisLine.getPoint2());
-		double dis = time - tempTime ; 
-		double lineTime = thisLine.getDistance()/this.getSpeed(); 
-		double dvideTime = lineTime / dis ; 
-		Point3D afterConvert = C.add(thisLine.point1, new Point3D(vector.x()/dvideTime,vector.y()/dvideTime,vector.z()/dvideTime));
-		this.setLocation(afterConvert);
-		return afterConvert;
+			Point3D vector = C.vector3D(thisLine.getPoint1(), thisLine.getPoint2());
+			double dis = time - tempTime ; 
+			double lineTime = thisLine.getDistance()/this.getSpeed(); 
+			double dvideTime = lineTime / dis ; 
+			Point3D afterConvert = C.add(thisLine.point1, new Point3D(vector.x()/dvideTime,vector.y()/dvideTime,vector.z()/dvideTime));
+			this.setLocation(afterConvert);
+			return afterConvert;
 		}
 		return null;
-				
+
 	}
 	@Override
 	public String toString() {
@@ -178,38 +182,5 @@ public class Pacman {
 				", Radius = " + radius +
 				", Time = " + time + "]\n";
 	}
-
-	//	/*
-	//	 * This function makes the pacman move to a new point.
-	//	 */
-	//	public void move(double Xmove, double Ymove, double Zmove) {
-	//
-	//		this.location.set_x(location.x() + Xmove);
-	//		this.location.set_y(location.y() + Ymove);
-	//		this.location.set_z(location.z() + Zmove);
-	//	}
-
-	//	/*
-	//	 * This function gets a list of eaten fruits.
-	//	 */
-	//	public ArrayList<Fruit> eatenFruits(ArrayList<Fruit> list) {
-	//		
-	//		ArrayList<Fruit> eatenFruits = new ArrayList<Fruit>();
-	//		for(Fruit it: list) {
-	//			if (this.location.x() == it.getLocation().x()
-	//			 && this.location.y() == it.getLocation().y()) {
-	//				eatenFruits.add(it);
-	//			}
-	//		}
-	//		return eatenFruits;
-	//	}
-
-	//	/*
-	//	 * This function returns the number of eaten fruits.
-	//	 */
-	//	public int numEatenfruits(ArrayList<Fruit> list) {
-	//
-	//		return eatenFruits(list).size();
-	//	}
 
 }

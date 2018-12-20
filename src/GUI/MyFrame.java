@@ -407,9 +407,12 @@ public class MyFrame extends JFrame implements MouseListener {
 
 	}
 
-	// NEW
+	
 	public  class ThreadPacks extends Thread
 	{
+		/**
+		 * This class run the thread of the pacman.
+		 */
 		@Override
 		public void run() {
 			double max =0;
@@ -425,7 +428,6 @@ public class MyFrame extends JFrame implements MouseListener {
 					Point3D p = it.When(i, m);
 
 					if (p != null) {
-						//						System.out.println(i+") "+p.toString());
 						try {
 							Thread.sleep(10);
 						} catch (InterruptedException e) {
@@ -443,7 +445,6 @@ public class MyFrame extends JFrame implements MouseListener {
 					{
 						fList.remove(0);
 					}
-//					repaint();
 				}
 			}
 			repaint();

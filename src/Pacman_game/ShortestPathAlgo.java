@@ -76,7 +76,6 @@ public class ShortestPathAlgo {
 		
 			fruitLeft.get(eatData.indexFruit).endTime = eatData.getTime();
 			fruitLeft.remove(eatData.getIndexFruit()); // removes the fruit.
-			MyFrame frame = new MyFrame(g);
 			kml_List.add(eatData.getPacman());
 		}
 		boolean flag = false;

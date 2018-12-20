@@ -166,6 +166,8 @@ public class Project implements GIS_project {
 
 	/**
 	 * This function creates a kml file.
+	 * @param list represent a list of GIS layer.
+	 * @param f represent the file name.
 	 */
 	public static void createKML(Set<GIS_layer> list, String f) {
 
