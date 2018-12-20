@@ -18,16 +18,16 @@ public class ShortestPathAlgo {
 		Coords c = new Coords();
 		Pacman_game.Line l = null;
 		ArrayList<Fruit> fruitLeft = new ArrayList<Fruit>(); //list of the fruits left. 
-		ArrayList<Path> path_List = new ArrayList<Path>();
+//		ArrayList<Path> path_List = new ArrayList<Path>();
 		ArrayList<Pacman> kml_List = new ArrayList<Pacman>();
 		ArrayList<SaveData> data_List;
 		for(Fruit it: g.getFruit_list()) {
 			fruitLeft.add(it);
 		}
-		for (int i = 0; i < g.Pacman_list.size(); i++) {
-			Path path = new Path(g.getPacman_list().get(i));
-			path_List.add(path);
-		}
+//		for (int i = 0; i < g.Pacman_list.size(); i++) {
+//			Path path = new Path(g.getPacman_list().get(i));
+//			path_List.add(path);
+//		}
 		while (!fruitLeft.isEmpty()) { //until there are no more fruits to eat.
 			int indexFruit = 0;
 			int indexPacman = 0;
@@ -60,13 +60,16 @@ public class ShortestPathAlgo {
 			}
 			l = new Pacman_game.Line(eatData.getPacman().getLocation(), fruitLeft.get(eatData.getIndexFruit()).getLocation());
 			g.Line_list.add(l);
+			System.out.println("===="+eatData.getFruit());
+//			System.out.println("===="+eatData.getPacman());
 			g.Pacman_list.get(indexPacman).path.getPath().add(l); //new
 			g.Pacman_list.get(indexPacman).setTime(eatData.getTime()); //sets the time of the pacman that ate.
 			eatData.getPacman().setTime(eatData.getTime());
 			g.Pacman_list.get(indexPacman).setLocation(fruitLeft.get(eatData.getIndexFruit()).getLocation()); //moves the pacman to the location of the fruit.
+//			System.out.println(g.Pacman_list.get(indexPacman));
 //			g.getFruit_list().remove(eatData.getIndexFruit());
 		
-			fruitLeft.get(eatData.indexFruit).endTime =eatData.getTime();
+			fruitLeft.get(eatData.indexFruit).endTime = eatData.getTime();
 			fruitLeft.remove(eatData.getIndexFruit()); // removes the fruit.
 			MyFrame frame = new MyFrame(g);
 			kml_List.add(eatData.getPacman());
@@ -81,6 +84,9 @@ public class ShortestPathAlgo {
 			}
 			if(!flag)kml_List.add(it);
 		}
+		for(Pacman it: g.Pacman_list) {
+			kml_List.add(it);
+		}
 		System.out.println(kml_List);
 		return kml_List;
 	}
@@ -91,7 +97,7 @@ public class ShortestPathAlgo {
 	public static void main(String[] args) throws IOException {
 
 		Game g = new Game();
-		g.readCsv("C:\\Users\\מעיין\\eclipse-workspace\\OopNavigtion\\data\\game_1543685769754.csv");
+		g.readCsv("C:\\Users\\מעיין\\eclipse-workspace\\OopNavigtion\\data\\game_1543693911932_a.csv");
 		for (Pacman it1: g.Pacman_list) {
 			System.out.println(it1.toString());
 		}

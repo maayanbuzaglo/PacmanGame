@@ -112,4 +112,12 @@ public class Fruit {
 		this.weight = price;
 	}
 
+	public double getEndTime() {
+		return this.endTime;
+	}
+
+	public void setEndTime(double endTime) {
+		this.endTime = endTime;
+	}
+
 }

@@ -107,15 +107,53 @@ public class Game {
 
 		ShortestPathAlgo algo = new ShortestPathAlgo();
 		ArrayList<Pacman> kml_List = new ArrayList<Pacman>();
+		ArrayList<Pacman> kml_List2 = new ArrayList<Pacman>();
 		try {
 			kml_List = algo.closestFruit(g);
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
-		
+
 		Kml kml = new Kml();
 		Document doc = kml.createAndSetDocument();
-		
+
+		Pacman pac = new Pacman(kml_List.get(kml_List.size()-1));
+		boolean flag = true;
+		int arr[] = new int[g.getPacman_list().size()];
+		int ind = 0;
+		kml_List2.add(pac);
+		for (int i = kml_List.size()-1; i >= 0; i--) {
+			for (int j = 0; j < kml_List2.size(); j++) {
+				if(kml_List.get(i).getID() == kml_List2.get(j).getID()) {
+					flag = false;
+					break;	
+				}
+			}
+			if(flag == true) {
+				kml_List2.add(kml_List.get(i));
+				arr[ind] = i;
+				ind++;
+			}
+			flag = true;
+		}
+		for (int i = 0; i < arr.length; i++) {
+			kml_List.remove(arr[i]);
+		}
+
+		for(Pacman it: kml_List2) {
+			String date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Calendar.getInstance().getTime());
+//			long millis = Date2Millis(date);
+			Placemark p = doc.createAndAddPlacemark();
+//			TimeSpan s = p.createAndSetTimeSpan();
+//			String str = Millis2Date(millis+(long)(it.getTime())*1000);
+//			String[] strA = str.split(" ");
+//			str = strA[0] + "T" + strA[1]+"Z"; 
+//			s.setBegin(str);
+			p.withDescription("Mac: " + it.getID() + "\nType: pacman")
+			.withOpen(Boolean.TRUE).createAndSetPoint().
+			addToCoordinates(it.getLocation().x(),it.getLocation().y());
+		}
+
 		for (Pacman it: kml_List) { //The iterator runs on a csv file.
 			Placemark p = doc.createAndAddPlacemark();
 			String date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Calendar.getInstance().getTime());
@@ -134,7 +172,7 @@ public class Game {
 			.withOpen(Boolean.TRUE).createAndSetPoint().
 			addToCoordinates(it.getLocation().x(),it.getLocation().y());
 		}
-		
+
 		for(Fruit it: g.Fruit_list) {
 			String date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Calendar.getInstance().getTime());
 			long millis = Date2Millis(date);
@@ -144,10 +182,11 @@ public class Game {
 			String[] strA = str.split(" ");
 			str = strA[0] + "T" + strA[1]+"Z"; 
 			s.setEnd(str);
-			p.withDescription("Mac: " + it.getID() + "\nType: pacman")
+			p.withDescription("Mac: " + it.getID() + "\nType: fruit")
 			.withOpen(Boolean.TRUE).createAndSetPoint().
 			addToCoordinates(it.getLocation().x(),it.getLocation().y());
 		}
+
 		try {
 			kml.marshal(new File(f));
 			/**
@@ -159,18 +198,19 @@ public class Game {
 		}
 	}
 
+
 	public static long Date2Millis (String date) throws ParseException {
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.US);
 		Date time = format.parse(date.toString());
 		long millis = time.getTime();
 		return millis;
 	}
-	
+
 	public static String Millis2Date(long millis) {
 		SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		return date.format(new Date(millis));
 	}
-	
+
 	public ArrayList<Pacman> getPacman_list() {
 		return Pacman_list;
 	}
