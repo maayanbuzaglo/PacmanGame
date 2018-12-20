@@ -133,6 +133,16 @@ public class Pacman {
 	public void setTime(double time) {
 		this.time = time;
 	}
+	
+	
+	public Path getPath() {
+		return this.path;
+	}
+
+	public void setPath(Path path) {
+		this.path = path;
+	}
+
 	public Point3D When(double time ,Map map )
 	{
 		

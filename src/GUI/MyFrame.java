@@ -419,18 +419,16 @@ public class MyFrame extends JFrame implements MouseListener {
 					Point3D p = it.When(i, m);
 
 					if (p != null) {
-//						System.out.println(i+") "+p.toString());
+						//						System.out.println(i+") "+p.toString());
 						try {
-							Thread.sleep(30);
+							Thread.sleep(10);
 						} catch (InterruptedException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
-						for (Fruit it1: fList) {
-//							System.out.println(it1.getEndTime());
-//							if (it1.getEndTime()>i) {
-							if ((it1.getLocation().x() == it.getLocation().x())&&(it1.getLocation().y() == it.getLocation().y())) {
-								fList.remove(it1);
+						for (int j = 0; j < fList.size(); j++) {
+							if(fList.get(j).getEndTime() < i) {
+								fList.remove(j);
 								System.out.println("ok");
 							}
 						}
