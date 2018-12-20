@@ -133,13 +133,12 @@ public class Pacman {
 	public void setTime(double time) {
 		this.time = time;
 	}
-	public Pixel When(double time ,Map map )
+	public Point3D When(double time ,Map map )
 	{
 		
 		double tempTime = 0 ; 
 		Coords C = new Coords() ; 
 		Line  thisLine = new Line() ; 
-//		System.out.println(this.path.getPath().size());
 		for (int i = 0; i < this.path.getPath().size(); i++)
 		{
 			if(tempTime + this.path.getPath().get(i).getDistance()/this.getSpeed() >= time) {
@@ -151,12 +150,11 @@ public class Pacman {
 		if (thisLine.getPoint1() != null && thisLine.getPoint2() != null) {
 		Point3D vector = C.vector3D(thisLine.getPoint1(), thisLine.getPoint2());
 		double dis = time - tempTime ; 
-		System.out.println("---" + dis);
 		double lineTime = thisLine.getDistance()/this.getSpeed(); 
 		double dvideTime = lineTime / dis ; 
 		Point3D afterConvert = C.add(thisLine.point1, new Point3D(vector.x()/dvideTime,vector.y()/dvideTime,vector.z()/dvideTime));
 		this.setLocation(afterConvert);
-		return map.Point2Pixel(afterConvert.x(), afterConvert.y());
+		return afterConvert;
 		}
 		return null;
 				

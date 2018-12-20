@@ -264,7 +264,6 @@ public class MyFrame extends JFrame implements MouseListener {
 					fList.add(it);
 
 					Pixel f = new Pixel(m.Point2Pixel(it.getLocation().x(), it.getLocation().y()));
-					System.out.println(f.toString() +" :" +it.getID());
 					fruitPixel.add(f);
 				}
 				repaint();
@@ -315,6 +314,9 @@ public class MyFrame extends JFrame implements MouseListener {
 		linePixel = new ArrayList<Pixel>();
 		linePixel2 = new ArrayList<Pixel>();
 
+		m.changeFrame(pFram, pacmanPixel, fruitPixel, linePixel); //upload the game pixels if change the frame size.
+
+		
 		//changes points of pacmans in game to pixels.
 		for (int i = 0; i < pList.size(); i++) {
 			Pixel pix = m.Point2Pixel(pList.get(i).getLocation().x(), pList.get(i).getLocation().y());
@@ -339,7 +341,6 @@ public class MyFrame extends JFrame implements MouseListener {
 			linePixel2.add(pix);
 		}
 
-		m.changeFrame(pFram, pacmanPixel, fruitPixel, linePixel); //upload the game pixels if change the frame size.
 
 		//draws all the lines on the list.
 		for (int i = 0; i < linePixel.size(); i++) {
@@ -416,20 +417,21 @@ public class MyFrame extends JFrame implements MouseListener {
 				repaint();
 				for(Pacman it: pList)
 				{
-					Pixel p = it.When(i, m);
+					Point3D p = it.When(i, m);
+
 					if (p != null) {
+						System.out.println(i+") "+p.toString());
 						try {
-							Thread.sleep(50);
+							Thread.sleep(30);
 						} catch (InterruptedException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
 						repaint();
 					}
-					//			pList.get(0).When(i,m);
-
 				}
 			}
+			repaint();
 		}
 
 	}

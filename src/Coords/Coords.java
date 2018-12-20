@@ -13,24 +13,13 @@ public class Coords implements coords_converter {
 	@Override
 	public Point3D add(Point3D gps, Point3D local_vector_in_meter) {
 
-//		gps.change_Geometric_To_Cart();
-//		gps.add(local_vector_in_meter);
-//		gps.change_Cart_To_Geometric();
-//		Point3D returnP = new Point3D(gps);
-		//nahama
 		gps.change_Geometric_To_Cart();
 		Point3D temp = new Point3D(gps);
 		temp.add(local_vector_in_meter);
 		gps.change_Cart_To_Geometric();
 		temp.change_Cart_To_Geometric();
 		return temp;
-		//maayan
-//		double comp = local_vector_in_meter.x() / earth_rad;
-//		double lat = gps.x() + (comp * 180 / Math.PI);
-//		double comp2 = (local_vector_in_meter.y() + (comp * 180 / Math.PI)) / earth_rad;
-//		double lon = gps.y() + (comp2 * 180 / Math.PI);
-//		double alt = gps.z() + local_vector_in_meter.z();
-//		return returnP ; 
+
 	}
 
 	/**
@@ -39,8 +28,8 @@ public class Coords implements coords_converter {
 	 * https://stackoverflow.com/questions/5557706/calculating-distance-using-latitude-longitude-coordinates-in-kilometers-with-jav
 	 */
 	
-	public double distance2d(Point3D gps0, Point3D gps1)
-	{
+	public double distance2d(Point3D gps0, Point3D gps1){
+		
 		double lon_norm = Math.cos(gps0.x() * Math.PI / 180);
 		double dis_lat = gps1.x() - gps0.x();
 		double dis_lon = gps1.y() - gps0.y();
