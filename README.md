@@ -1,4 +1,9 @@
-In this project we have a complex system that enables the collection of geographic information, the production of insights from this information, and the presentation of information in graphical tools.
+This project is a pacman game.
+The game background is a map.
+![alt text](https://raw.githubusercontent.com/username/projectname/branch/path/to/img.png)
+pacmans and fruits .
+You can decide where the pacmans will be located by a mouse click on the map, or, you can read a game from a csv file that have al
+The purpose of the game is to make the pacmans eat all the fruits on the map in the shortest time possible.
 ***Learn more about Global's coordinate system here: https://en.wikipedia.org/wiki/Geographic_coordinate_system.***
 
 packages:
