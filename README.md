@@ -1,12 +1,14 @@
 
-
 This project is a kind of a pacman game, and like any Pacman game, there are fruits that need to be eaten by the Pacmans.\
-But what distinguishes this game is that the game background is a map that represents real coordinates on Earth.\
+But what distinguishes this game is that the game background is a map that represents real map which you can find on https://www.google.com/earth/.
 
 (The game background map)
 ![alt text](https://github.com/maayanbuzaglo/OopNavigtion/blob/master/pictures/Ariel1.png)
-pacmans and fruits .
-You can decide where the pacmans will be located by a mouse click on the map, or, you can read a game from a csv file that have al
+
+The pacmans and the fruits in the game represents real coordinates on Earth which are the real location on the map in the background.\
+Every pacman has speed and radius:
+- Speed - the 
+You can decide where the pacmans will be located by a mouse click on the map and also change their data. or, you can read a game from a csv file which already have all this.
 The purpose of the game is to make the pacmans eat all the fruits on the map in the shortest time possible.
 ***Learn more about Global's coordinate system here: https://en.wikipedia.org/wiki/Geographic_coordinate_system.***
 
