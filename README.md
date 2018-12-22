@@ -6,7 +6,7 @@ But what distinguishes this game is that the game background is a map that repre
 ![alt text](https://github.com/maayanbuzaglo/OopNavigtion/blob/master/pictures/Ariel1.png)
 
 The pacmans and the fruits in the game represents real coordinates on Earth which are the real location on the map in the background.\
-Every pacman has speed and radius:
+Every pacman has 'speed' and 'radius':
 - Speed - the 
 You can decide where the pacmans will be located by a mouse click on the map and also change their data. or, you can read a game from a csv file which already have all this.
 The purpose of the game is to make the pacmans eat all the fruits on the map in the shortest time possible.
