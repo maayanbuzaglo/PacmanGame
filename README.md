@@ -1,4 +1,4 @@
-This project is a pacman game.
+This project is a pacman game.\
 The game background is a map.
 ![alt text](https://github.com/maayanbuzaglo/OopNavigtion/blob/master/pictures/Ariel1.png)
 pacmans and fruits .
