@@ -1,5 +1,5 @@
-This project is a pacman game.\
-The game background is a map.
+> This project is about a game.
+The game background is a map.\
 ![alt text](https://github.com/maayanbuzaglo/OopNavigtion/blob/master/pictures/Ariel1.png)
 pacmans and fruits .
 You can decide where the pacmans will be located by a mouse click on the map, or, you can read a game from a csv file that have al
