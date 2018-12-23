@@ -23,14 +23,16 @@ A class that represents a map that contains a map image file and all the necessa
 A class that represents a pixel in the game.
 
 ## Pacman:
-A class that represents a "robot" with a location, orientation and ability to move (at a defined speed). it has the option to read a csv file of pacmans (it helps the same function on Game class).
-	Point3D location;
+A class that represents a "robot" with a location, orientation and ability to move (at a defined speed). It has the option to read a csv file of pacmans (it helps the same function on Game class).
 
 ## Fruit:
-A department that represents a "target" in a known geographic location (without movement).
+A department that represents a "target" in a known geographic location (without movement). It has the option to read a csv file of fruits (it helps the same function on Game class).
 
 ## Game:
 A class that includes a collection of fruit and a collection of robots, the class has the ability to build from a csv file, and save its information to such a file.
+
+## Line:
+A class that represents a line between 2 points.
 
 ## Path:
 A class that represents a track consisting of a collection of points.
