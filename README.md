@@ -15,8 +15,6 @@ Another option is to make a kml file from your game, open it on https://www.goog
 
 ***Learn more about Global's coordinate system here: https://en.wikipedia.org/wiki/Geographic_coordinate_system.***
 
-## Classes:
-
 ## Map:
 A class that represents a map that contains a map image file and all the necessary parameters of its alignment to a global coordinate system. The class allows conversion of the pixel to the image and vice versa.
 
