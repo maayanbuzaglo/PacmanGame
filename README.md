@@ -15,22 +15,22 @@ Another option is to make a kml file from your game, open it on https://www.goog
 
 ***Learn more about Global's coordinate system here: https://en.wikipedia.org/wiki/Geographic_coordinate_system.***
 
-Classes:
+## Classes:
 
-# Map:
+## Map:
 A class that represents a map that contains a map image file and all the necessary parameters of its alignment to a global coordinate system. The class allows conversion of the pixel to the image and vice versa.
 
-# Pacman:
+## Pacman:
 A class that represents a "robot" with a location, orientation and ability to move (at a defined speed).
 
-# Fruit:
+## Fruit:
 A department that represents a "target" in a known geographic location (without movement).
 
-# Game:
+## Game:
 A class that includes a collection of fruit and a collection of robots, the class has the ability to build from a csv file, and save its information to such a file.
 
-# ShortestPathAlgo:
+## ShortestPathAlgo:
 A class that gets Game and receives the optimal path (shortest) so that all fruits will be "eaten" as quickly as possible. This is the main algorithmic class and includes calculating "fruit tracks" for each of the producers. The purpose of the algorithm is to minimize the amount of time it takes for all the pacmans to eat all the fruits.
 
-# MyFrame
+## MyFrame:
 A graphical class that allows robots and fruits to be displayed on the map, displaying the activity of algorithms, saving data, and performing a reconstruction of data from csv files or creating a game by selecting robots and fruits and positioning them on the map.
