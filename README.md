@@ -5,11 +5,10 @@ But what distinguishes this game is that the game background is a map that repre
 (The game background map)
 ![alt text](https://github.com/maayanbuzaglo/OopNavigtion/blob/master/pictures/Ariel1.png)
 
-The pacmans and the fruits in the game represents real coordinates on Earth which are the real location on the map in the background.\
-Every pacman has `speed` and `radius`.\
-Every fruit has `weight`.\
+The pacmans and the fruits in the game represent real coordinates on Earth which are the real location on the map in the background.\
+Every pacman has `speed` and `radius` and every fruit has `weight`.\
 You can decide where the pacmans and the fruits will be located by a mouse click on the map and also change their data. or, you can read a game from a csv file which already have all this.\
-You also can make a game and save it by creating a scv file and open it later.
+You also can make a game and save it by creating a csv file and open it later.
 ### The purpose of the game is to make the pacmans eat all the fruits on the map in the shortest time possible.
 Another option is to make a kml file from your game, open it on https://www.google.com/earth/, see that the pacmans and the fruits are located as in the game map, play it and see how the fruits are eaten by the pacmans according to the order of eating in the game.
 
