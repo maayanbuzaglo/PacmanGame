@@ -39,7 +39,8 @@ A class that represents a track consisting of a collection of points.
 A class that represents the data of the pacman should eat next, the fruit should be eaten next, and the time it took.
 
 ## ShortestPathAlgo:
-A class that gets Game and receives the optimal path (shortest) so that all fruits will be "eaten" as quickly as possible. This is the main algorithmic class and includes calculating "fruit tracks" for each of the producers. The purpose of the algorithm is to minimize the amount of time it takes for all the pacmans to eat all the fruits.
+A class that gets Game and receives the optimal path (shortest) so that all fruits will be "eaten" as quickly as possible. This is the main algorithmic class and includes calculating "fruit tracks" for each of the producers. The purpose of the algorithm is to minimize the amount of time it takes for all the pacmans to eat all the fruits.\
+The algorithm works as long as there are fruits on the map. It checks every time that it takes every pacman to eat any fruit on the map, takes the smallest time for each one so there is one fruit per pacman. Then, checks out the smallest time of all the Pacmans. This pacman is the pacman which starts to eat. Then, removes the eaten fruit, move the pacman's coordinate to the coordinate of the eaten fruit, and repeat the algorithm.
 
 ## MyFrame:
 A class that represents the game frame.
