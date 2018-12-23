@@ -1,5 +1,5 @@
 
-This project is a kind of a pacman game, and like any Pacman game, there are fruits that need to be eaten by the Pacmans.\
+This project is a kind of a pacman game, and like any pacman game, there are fruits that need to be eaten by the Pacmans.\
 But what distinguishes this game is that the game background is a map that represents real map which you can find on https://www.google.com/earth/.
 
 (The game background map)
