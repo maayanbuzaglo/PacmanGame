@@ -1,6 +1,6 @@
 
 This project is a kind of a pacman game, and like any pacman game, there are fruits that need to be eaten by the Pacmans.\
-But what distinguishes this game is that the game background is a map that represents real map which you can find on https://www.google.com/earth/.
+But what distinguishes this game is that the game background is a map that represents a real map which you can find on https://www.google.com/earth/.
 
 (The game background map)
 ![alt text](https://github.com/maayanbuzaglo/OopNavigtion/blob/master/pictures/Ariel1.png)
