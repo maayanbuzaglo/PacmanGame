@@ -28,6 +28,9 @@ public class Coords implements coords_converter {
 	 * This function computes the 3D distance (in meters) between the two gps like points.
 	 * I used this website to get information for this function:
 	 * https://stackoverflow.com/questions/5557706/calculating-distance-using-latitude-longitude-coordinates-in-kilometers-with-jav
+	 * @param gps0 represent the first point.
+	 * @param gps1 represent the second point.
+	 * @return the distance 2D between the two points.
 	 */
 	
 	public double distance2d(Point3D gps0, Point3D gps1){
@@ -75,7 +78,7 @@ public class Coords implements coords_converter {
 
 	}
 
-	/** computes the polar representation of the 3D vector be gps0-->gps1.
+	/** computes the polar representation of the 3D vector be gps0--gps1.
 	 * I used this website for this function:
 	 * https://www.omnicalculator.com/other/azimuth#how-to-calculate-the-azimuth-from-latitude-and-longitude.
 	 */

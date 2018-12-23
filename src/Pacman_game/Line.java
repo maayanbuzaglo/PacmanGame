@@ -5,6 +5,8 @@ import Geom.Point3D;
 
 /*
  * This class represents a line between 2 points.
+ * @author maayan
+ * @author nahama
  */
 public class Line {
 

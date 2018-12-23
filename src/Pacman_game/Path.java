@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 /*
  * This class represents a track consisting of a collection of points.
+ * @author maayan
+ * @author nahama
  */
 public class Path {
 

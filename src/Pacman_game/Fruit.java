@@ -8,6 +8,8 @@ import Geom.Point3D;
 
 /*
  * This class represents a fruit.
+ * @author maayan
+ * @author nahama
  */
 public class Fruit {
 

@@ -2,6 +2,8 @@ package Pacman_game;
 
 /*
  * This class represents a pixel in the game.
+ * @author maayan
+ * @author nahama
  */
 public class Pixel {
 

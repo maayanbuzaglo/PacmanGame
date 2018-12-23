@@ -12,6 +12,8 @@ import de.micromata.opengis.kml.v_2_2_0.Placemark;
  * This class reads a csv file and create a kml file.
  * I used this GitHub to get information for this class:
  * https://github.com/igilfu/OOP_PROJECT
+ * @author maayan
+ * @author nahama
  */
 public class Csv2kml {
 

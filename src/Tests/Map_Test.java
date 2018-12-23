@@ -9,6 +9,8 @@ import Pacman_game.Pixel;
 
 /*
  * This class tests the Map functions.
+ * @author maayan
+ * @author nahama
  */
 class Map_Test {
 

@@ -7,6 +7,7 @@ import Geom.Point3D;
 /**
  * represents a random number generator - with controlled seed.
  * @author maayan
+ * @author nahama
  *
  */
 public class MyRandom {
@@ -32,8 +33,9 @@ public class MyRandom {
 	
 	/** 
 	 * should return a random number with in [min,max).
-	 * @param min
-	 * @param max
+	 * @param min represent a minimum number.
+	 * @param max represent a maximum number.
+	 * @return a random number between min and max.
 	 */
 	public double nextInRange(double min, double max) {
 		

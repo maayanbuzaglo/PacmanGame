@@ -4,6 +4,8 @@ package Pacman_game;
  * This class represents the data of the pacman should eat next,
  * the fruit should be eaten next,
  * and the time it took.
+ * @author maayan
+ * @author nahama
  */
 public class SaveData {
 

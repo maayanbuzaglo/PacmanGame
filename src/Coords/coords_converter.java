@@ -12,23 +12,43 @@ import Geom.Point3D;
  */
 public interface coords_converter {
 	
-	/** computes a new point which is the gps point transformed by a 3D vector (in meters)*/
+	/**
+	 * computes a new point which is the gps point transformed by a 3D vector (in meters)
+	 * @param gps represent a point
+	 * @param local_vector_in_meter represent a vector in meters
+	 * @return a point
+	 */
 	public Point3D add(Point3D gps, Point3D local_vector_in_meter);
 	
-	/** computes the 3D distance (in meters) between the two gps like points */
+	/**
+	 * computes the 3D distance (in meters) between the two gps like points
+	 * @param gps0 the first point
+	 * @param gps1 the second point
+	 * @return the distance 3D in meters
+	 */
 	public double distance3d(Point3D gps0, Point3D gps1);
 	
-	/** computes the 3D vector (in meters) between two gps like points */
+	/** 
+	 * computes the 3D vector (in meters) between two gps like points
+	 * @param gps0 the first point
+	 * @param gps1 the second point
+	 * @return the 3D vector
+	 */
 	public Point3D vector3D(Point3D gps0, Point3D gps1);
 	
-	/** computes the polar representation of the 3D vector be gps0-->gps1 
-	 * Note: this method should return an azimuth (aka yaw), elevation (pitch), and distance*/
+	/** 
+	 * computes the polar representation of the 3D vector be gps0--gps1 
+	 * Note: this method should return an azimuth (aka yaw), elevation (pitch), and distance
+	 * @param gps0 the first point
+	 * @param gps1 the second point
+	 * @return Double array- arr[0]- azimuth, arr[1]- elevation, arr[2]- distance
+	 */
 	public double[] azimuth_elevation_dist(Point3D gps0, Point3D gps1);
 	
 	/**
-	 * return true iff this point is a valid lat, lon ,alt coordinate: [-180,+180],[-90,+90],[-450, +inf]
-	 * @param p
-	 * @return
+	 * return true iff this point is a valid lat, lon , alt coordinate: [-180,+180],[-90,+90],[-450, +inf]
+	 * @param p 3D point
+	 * @return true- if the point is valid, false- otherwise
 	 */
 	public boolean isValid_GPS_Point(Point3D p);
 	

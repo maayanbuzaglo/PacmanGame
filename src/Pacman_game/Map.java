@@ -10,6 +10,8 @@ import Geom.Point3D;
 /*
  * This class represents a map that contains a map image file,
  * and all the necessary parameters of its alignment to a global coordinate system.
+ * @author maayan
+ * @author nahama
  */
 public class Map {
 

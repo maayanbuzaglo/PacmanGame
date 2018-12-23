@@ -205,6 +205,8 @@ public class Layer implements GIS_layer{
 
 	/**
 	 * This function creates a kml file.
+	 * @param list a list of element.
+	 * @param f represent the file.
 	 */
 	public static void createKML(Set<GIS_element> list, String f) {
 

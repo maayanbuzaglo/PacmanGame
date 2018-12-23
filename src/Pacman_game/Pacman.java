@@ -10,6 +10,8 @@ import Geom.Point3D;
 
 /*
  * This class represents a pacman.
+ * @author maayan
+ * @author nahama
  */
 public class Pacman {
 
@@ -146,6 +148,9 @@ public class Pacman {
 	/**
 	 * This function find on which line the pacman is
 	 *  and the location acording to a certain time.
+	 *  @param time a certain time.
+	 *  @param map the game map.
+	 *  @return the point where the pacman is.
 	 */
 	public Point3D When(double time ,Map map )
 	{

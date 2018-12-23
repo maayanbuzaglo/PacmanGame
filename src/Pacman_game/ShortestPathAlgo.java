@@ -8,6 +8,8 @@ import Pacman_game.Game;
 
 /*
  * This class represents an efficient algorithm which computes the path of every pacman.
+ * @author maayan
+ * @author nahama
  */
 public class ShortestPathAlgo {
 

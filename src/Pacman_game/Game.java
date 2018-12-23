@@ -17,6 +17,8 @@ import de.micromata.opengis.kml.v_2_2_0.TimeSpan;
 
 /*
  * This class represents a game that mades of pacmans and fruits.
+ * @author maayan
+ * @author nahama
  */
 public class Game {
 
@@ -81,6 +83,7 @@ public class Game {
 
 	/**
 	 * This function helps to create a csv file.
+	 * @param f represent the file.
 	 */
 	public static void createCSV2(String f) {
 
@@ -101,7 +104,9 @@ public class Game {
 
 	/**
 	 * This function creates a kml file.
-	 * @throws ParseException 
+	 * @throws ParseException an exception while parsing.
+	 * @param g represent the game.
+	 * @param f represent the file.
 	 */
 	public static void createKML(Game g, String f) throws ParseException {
 
@@ -200,6 +205,9 @@ public class Game {
 
 	/**
 	 * This function converse a String date to milliseconds.
+	 * @throws ParseException an exception while parsing.
+	 * @param date represent the date.
+	 * @return the date in milliseconds.
 	 */
 	public static long Date2Millis (String date) throws ParseException {
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.US);
@@ -210,6 +218,8 @@ public class Game {
 
 	/**
 	 * This function converse milliseconds to a String date.
+	 * @param millis represent the date in millisecond.
+	 * @return the date.
 	 */
 	public static String Millis2Date(long millis) {
 		SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");

@@ -5,6 +5,8 @@ public class Point3D implements Geom_element, Serializable {
 
 	/**
 	 * This class represents a 3D point in space.
+	 * @author maayan
+	 * @author nahama
 	 */
 	private static final long serialVersionUID = 1L;
 	private double _x, _y, _z;
@@ -182,22 +184,6 @@ public class Point3D implements Geom_element, Serializable {
 		return flag;
 	}
 
-	/** pointLineTest <br>
-	test the following location of a point regards a line segment - all in 2D projection.<br><br>
-
-	ONSEGMENT:  �����a----+----b������                              <br> <br>
-
-	           +       +        +                              <br>
-	LEFT:	 �����a---------b������                              <br> <br>
-
-
-	RIGHT:	 �����a---------b������                              <br>
-    		   +      +        +                              <br> <br>
-
-	INFRONTOFA:  ��+��a---------b������                              <br>
-    BEHINDB:  �����a---------b����+�                              <br>
-	ERROR: a==b || a==null || b == null;                               <br>
-	 */
 	public int pointLineTest(Point3D a, Point3D b) {
 
 		if(a == null || b == null || a.equalsXY(b)) return ERROR;
@@ -294,7 +280,7 @@ public class Point3D implements Geom_element, Serializable {
 		return Math.atan2((p._z - _z), this.distance2D(p));
 	}	
 
-	/** return the (planer angle of the vector between this --> p, in DEGREES, in a.
+	/** return the (planer angle of the vector between this -- p, in DEGREES, in a.
 	 * compass order: north 0, east 90, south 180, west 270.
 	 * @param p is the end point of the vector (z value is ignored). 
 	 * @return angle in compass styye [0,360).

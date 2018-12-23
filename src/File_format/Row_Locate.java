@@ -2,6 +2,8 @@ package File_format;
 
 /*
  * This class represents an object of csv file.
+ * @author maayan
+ * @author nahama
  */
 public class Row_Locate {
 	
