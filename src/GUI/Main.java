@@ -12,7 +12,7 @@ public class Main {
 			
 		MyFrame window = new MyFrame();
 		window.setTitle("Pacman Game");
-		BufferedImage image = ImageIO.read(new File("C:\\Users\\nahama\\eclipse-workspace\\OopNavigtion\\pictures\\pacman2.png"));
+		BufferedImage image = ImageIO.read(new File("C:\\Users\\מעיין\\eclipse-workspace\\OopNavigtion\\pictures\\pacman2.png"));
 		window.setIconImage(image);
 		window.setVisible(true);
 		window.setSize(1433, 642);

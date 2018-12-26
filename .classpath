@@ -13,5 +13,7 @@
 	<classpathentry kind="lib" path="JARS/jsr173_api-1.0.jar"/>
 	<classpathentry kind="lib" path="JARS/mysql-connector-java-5.1.45-bin.jar"/>
 	<classpathentry kind="lib" path="JARS/postgresql-database-1.7.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/מעיין/eclipse-workspace/PacmanGame/Ex4.jar"/>
+	<classpathentry kind="lib" path="C:/Users/מעיין/eclipse-workspace/PacmanGame/mysql-connector-java-5.1.47.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
