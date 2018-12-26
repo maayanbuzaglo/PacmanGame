@@ -282,7 +282,7 @@ public class MyFrame extends JFrame implements MouseListener {
 
 		//gets the pacman image.
 		try {
-			pacmanImage = ImageIO.read(new File("C:\\Users\\nahama\\eclipse-workspace\\OopNavigtion\\pictures\\pacman2.png"));
+			pacmanImage = ImageIO.read(new File("C:\\Users\\מעיין\\eclipse-workspace\\OopNavigtion\\pictures\\pacman2.png"));
 		}
 
 		catch (IOException e) {
@@ -291,7 +291,7 @@ public class MyFrame extends JFrame implements MouseListener {
 
 		//gets the fruit image.
 		try {
-			fruitImage = ImageIO.read(new File("C:\\Users\\nahama\\eclipse-workspace\\OopNavigtion\\pictures\\fruit2.png"));
+			fruitImage = ImageIO.read(new File("C:\\Users\\מעיין\\eclipse-workspace\\OopNavigtion\\pictures\\fruit2.png"));
 		}
 		catch (IOException e) {
 			e.printStackTrace();
