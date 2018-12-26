@@ -38,7 +38,7 @@ public class Map {
 	 */
 	public Map(int width, int height) throws IOException {
 
-		image = ImageIO.read(new File("C:\\Users\\מעיין\\eclipse-workspace\\OopNavigtion\\pictures\\Ariel1.png")); //gets the backgrounds image.
+		image = ImageIO.read(new File("C:\\Users\\nahama\\eclipse-workspace\\OopNavigtion\\pictures\\Ariel1.png")); //gets the backgrounds image.
 		pStart = new Point3D(35.20232, 32.10571);
 		pEnd = new Point3D(35.21239, 32.10180);
 		image_height = height;
