@@ -340,7 +340,7 @@ public class MyFrame extends JFrame implements MouseListener {
 			Pixel pix = m.Point2Pixel(lList.get(i).getPoint2().x(), lList.get(i).getPoint2().y());
 			linePixel2.add(pix);
 		}
-
+		
 		//draws all the lines on the list.
 		for (int i = 0; i < linePixel.size(); i++) {
 			Graphics2D g2 = (Graphics2D) g;
@@ -349,14 +349,14 @@ public class MyFrame extends JFrame implements MouseListener {
 			g2.drawLine((int)linePixel.get(i).getX(), (int)linePixel.get(i).getY(), (int)linePixel2.get(i).getX(), (int)linePixel2.get(i).getY());
 		}
 
-		//draws all the pacmans on the list.
-		for (int i = 0; i < pacmanPixel.size(); i++) {
-			g.drawImage(pacmanImage, (int)pacmanPixel.get(i).getX(), (int)pacmanPixel.get(i).getY(), 30, 30, this);
-		}
-
 		//draws all the fruits on the list.
 		for (int i = 0; i < fruitPixel.size(); i++) {
 			g.drawImage(fruitImage, (int)fruitPixel.get(i).getX(), (int)fruitPixel.get(i).getY(), 40, 30, this);
+		}
+		
+		//draws all the pacmans on the list.
+		for (int i = 0; i < pacmanPixel.size(); i++) {
+			g.drawImage(pacmanImage, (int)pacmanPixel.get(i).getX(), (int)pacmanPixel.get(i).getY(), 30, 30, this);
 		}
 	}
 
